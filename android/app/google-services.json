@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "888682993452",
+    "project_id": "ikxxa-saudi",
+    "storage_bucket": "ikxxa-saudi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888682993452:android:052a8b4ead5b8b22f03e89",
+        "android_client_info": {
+          "package_name": "com.ikkxa.saudi_adaminnovations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888682993452-vt4d4usqj9nbueq8v9q3fprrhcl33re5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu1R82_KS0rdpFzqjUhGUIshPsdQMJcL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888682993452-0hmc9cb53792regnantvafdujuh7t70d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
