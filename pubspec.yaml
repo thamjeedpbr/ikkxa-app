@@ -54,7 +54,8 @@ dependencies:
   new_version: ^0.3.1
   onesignal_flutter: ^3.2.8
   open_file_plus: ^3.3.0
-  package_info_plus:
+#  package_info_plus:
+  package_info_plus_windows: ^2.0.0
   pagination_view: ^2.0.0
   path: ^1.7.0
   path_provider: ^2.0.1
@@ -67,7 +68,7 @@ dependencies:
   shimmer: ^2.0.0
   sign_in_with_apple:
   store_redirect: ^2.0.1
-  #syncfusion_flutter_pdfviewer:
+  syncfusion_flutter_pdfviewer:
   timelines: ^0.1.0
   url_launcher: ^6.0.3
   photo_view: ^0.14.0
