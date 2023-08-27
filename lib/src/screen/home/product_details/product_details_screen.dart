@@ -1358,7 +1358,7 @@ class DetailsPage extends StatelessWidget {
                                                                     .data!
                                                                     .alsoAvaialbleIn![
                                                                         index]
-                                                                    .id
+                                                                    .id!
                                                                     .toString(),
                                                               },
                                                             );
