@@ -76,22 +76,24 @@ class Repository {
     var headers = {"apiKey": Config.apiKey};
     var url = Uri.parse("${NetworkService.apiUrl}/social-login");
 
-    Map<String, dynamic> data = LocalDataHelper().getCartTrxId()!=null?{
-      "name": name,
-      "email": email.toString(),
-      "phone": phone.toString(),
-      "image": image,
-      "provider": providerId,
-      "uid": uid,
-      "trx_id": LocalDataHelper().getCartTrxId(),
-    }:{
-      "name": name,
-      "email": email.toString(),
-      "phone": phone.toString(),
-      "image": image,
-      "provider": providerId,
-      "uid": uid,
-    };
+    Map<String, dynamic> data = LocalDataHelper().getCartTrxId() != null
+        ? {
+            "name": name,
+            "email": email.toString(),
+            "phone": phone.toString(),
+            "image": image,
+            "provider": providerId,
+            "uid": uid,
+            "trx_id": LocalDataHelper().getCartTrxId(),
+          }
+        : {
+            "name": name,
+            "email": email.toString(),
+            "phone": phone.toString(),
+            "image": image,
+            "provider": providerId,
+            "uid": uid,
+          };
 
     try {
       final response = await http.post(url,
@@ -118,7 +120,9 @@ class Repository {
   }
 
   //User Phone Login
-  Future<bool?> postPhoneLogin({String? phoneNumber,}) async {
+  Future<bool?> postPhoneLogin({
+    String? phoneNumber,
+  }) async {
     var headers = {"apiKey": Config.apiKey};
     String? loginOTPScreen = "loginOTPScreen";
     var body = {
@@ -140,19 +144,20 @@ class Repository {
     }
   }
 
-
   //send Otp Login
-  Future<bool?> sendOTPLogin(
-      {String? phoneNumber, String? otp}) async {
+  Future<bool?> sendOTPLogin({String? phoneNumber, String? otp}) async {
     var headers = {"apiKey": Config.apiKey};
-    var body =otp != null? {
-      'phone': phoneNumber,
-      'otp': otp,
-    }: {
-      'phone': phoneNumber,
-    };
+    var body = otp != null
+        ? {
+            'phone': phoneNumber,
+            'otp': otp,
+          }
+        : {
+            'phone': phoneNumber,
+          };
 
-    var url = Uri.parse("${NetworkService.apiUrl}/verify-login-otp?$langCurrCode");
+    var url =
+        Uri.parse("${NetworkService.apiUrl}/verify-login-otp?$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);
@@ -170,7 +175,8 @@ class Repository {
   }
 
   //User Phone Registration
-  Future<bool?> postPhoneRegistration({String? firstName, String? lastName, String? phoneNumber}) async {
+  Future<bool?> postPhoneRegistration(
+      {String? firstName, String? lastName, String? phoneNumber}) async {
     print("inside_post_phone_registration");
     var headers = {"apiKey": Config.apiKey};
     String? registrationOTpScreen = "registrationOTpScreen";
@@ -180,7 +186,8 @@ class Repository {
       'phone': phoneNumber,
     };
     printLog(body);
-    var url = Uri.parse("${NetworkService.apiUrl}/register-by-phone?$langCurrCode");
+    var url =
+        Uri.parse("${NetworkService.apiUrl}/register-by-phone?$langCurrCode");
     print("${NetworkService.apiUrl}/register-by-phone?$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
@@ -198,25 +205,28 @@ class Repository {
       return false;
     }
   }
-  //User Login Registration
-  Future<bool?> sendOtpRegistration({
-    String? phoneNumber,
-    String? otp,
-    String? firstName,
-    String? lastName}) async {
 
+  //User Login Registration
+  Future<bool?> sendOtpRegistration(
+      {String? phoneNumber,
+      String? otp,
+      String? firstName,
+      String? lastName}) async {
     var headers = {"apiKey": Config.apiKey};
-    var body =otp != null? {
-      'phone': phoneNumber,
-      'otp': otp,
-      'first_name': firstName,
-      'last_name': lastName,
-    }: {
-      'phone': phoneNumber,
-      'first_name': firstName,
-      'last_name': lastName,
-    };
-    var url = Uri.parse("${NetworkService.apiUrl}/verify-registration-otp?$langCurrCode");
+    var body = otp != null
+        ? {
+            'phone': phoneNumber,
+            'otp': otp,
+            'first_name': firstName,
+            'last_name': lastName,
+          }
+        : {
+            'phone': phoneNumber,
+            'first_name': firstName,
+            'last_name': lastName,
+          };
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/verify-registration-otp?$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);
@@ -262,16 +272,19 @@ class Repository {
   // }
 
   //User Login
-  Future<bool> loginWithEmailPassword(String email, String password,String? trxId) async {
+  Future<bool> loginWithEmailPassword(
+      String email, String password, String? trxId) async {
     var headers = {"apiKey": Config.apiKey};
-    var body = trxId!=null? {
-      'email': email,
-      'password': password,
-      'trx_id':trxId,
-    }:{
-      'email': email,
-      'password': password,
-    };
+    var body = trxId != null
+        ? {
+            'email': email,
+            'password': password,
+            'trx_id': trxId,
+          }
+        : {
+            'email': email,
+            'password': password,
+          };
     var url = Uri.parse("${NetworkService.apiUrl}/login?$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
@@ -299,7 +312,8 @@ class Repository {
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
       ForgetPasswordModel forgetPassword = ForgetPasswordModel.fromJson(data);
-      LocalDataHelper().saveForgotPasswordCode(forgetPassword.data!.code.toString());
+      LocalDataHelper()
+          .saveForgotPasswordCode(forgetPassword.data!.code.toString());
       return forgetPassword;
     } else {
       showErrorToast(data['message']);
@@ -307,12 +321,10 @@ class Repository {
   }
 
   //Confirm OTP
-  Future<bool?> postForgetPasswordConfirmOTP({String? email,String? otp}) async {
+  Future<bool?> postForgetPasswordConfirmOTP(
+      {String? email, String? otp}) async {
     var headers = {"apiKey": Config.apiKey};
-    var body = {
-      'email': email,
-      'otp' :otp
-    };
+    var body = {'email': email, 'otp': otp};
     printLog("$email");
     var url = Uri.parse("${NetworkService.apiUrl}/verify-otp");
     final response = await http.post(url, body: body, headers: headers);
@@ -327,12 +339,11 @@ class Repository {
 
   //User Forget Password Set
   Future<bool?> postForgetPassword(
-      { String? code,
-        String? email,
-        String? password,
-        String? confirmPassword,
-        String? otp
-      }) async {
+      {String? code,
+      String? email,
+      String? password,
+      String? confirmPassword,
+      String? otp}) async {
     var headers = {"apiKey": Config.apiKey};
     var body = {
       'code': code,
@@ -378,7 +389,7 @@ class Repository {
     if (response.statusCode == 200) {
       showShortToast(data['message'], bgColor: Colors.green);
       return data['success'];
-    }else {
+    } else {
       showErrorToast(data['message']);
 
       return data['success'];
@@ -461,7 +472,7 @@ class Repository {
       requestBody.fields['title'] = title;
       requestBody.fields['comment'] = comment;
       requestBody.fields['rating'] = rating;
-      if(image!=null){
+      if (image != null) {
         var stream = http.ByteStream(image.openRead())..cast();
         var length = await image.length();
         var multipartFile = http.MultipartFile('image', stream, length,
@@ -626,7 +637,8 @@ class Repository {
     printLog("addToCart: variants_name ${variantsNames.toString()}");
     printLog("addToCart: trx_id $trxId");
 
-    var url = Uri.parse("${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);
@@ -654,7 +666,8 @@ class Repository {
       'variants_name': variantsNames.toString(),
     };
 
-    var url = Uri.parse("${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);
@@ -846,8 +859,7 @@ class Repository {
 
   //Guest Order List
   Future<OrderListModel> getGuestOrderList({String? trxId}) async {
-    var url =
-        "${NetworkService.apiUrl}/order-by-trx?trx_id=$trxId";
+    var url = "${NetworkService.apiUrl}/order-by-trx?trx_id=$trxId";
     final response = await _service.fetchJsonData(url);
     return OrderListModel.fromJson(response);
   }
@@ -913,8 +925,10 @@ class Repository {
   }
 
   //All Product
-  Future<List<video_shopping.Data>> allVideoShopping({required int page}) async {
-    var url = "${NetworkService.apiUrl}/video-shopping?page=$page&$langCurrCode";
+  Future<List<video_shopping.Data>> allVideoShopping(
+      {required int page}) async {
+    var url =
+        "${NetworkService.apiUrl}/video-shopping?page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return video_shopping.VideoShoppingModel.fromJson(response).data!;
   }
@@ -929,8 +943,8 @@ class Repository {
   }
 
   //View Product
-  Future<List<recent_product.RecentViewedProductModelData>> getRecentViewedProduct(
-      {required int page}) async {
+  Future<List<recent_product.RecentViewedProductModelData>>
+      getRecentViewedProduct({required int page}) async {
     var url =
         "${NetworkService.apiUrl}/viewed-products?page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
@@ -1122,16 +1136,18 @@ class Repository {
   }
 
   //Video Shopping Details
-  Future<VideoShoppingDetailsModel ?> videoShoppingDetails(String slug) async {
+  Future<VideoShoppingDetailsModel?> videoShoppingDetails(String slug) async {
     printLog("inside-video_shiopping");
     VideoShoppingDetailsModel videoShoppingDetailsModel;
     var headers = {"apiKey": Config.apiKey};
-    var url = Uri.parse("${NetworkService.apiUrl}/video-shops-details/$slug?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/video-shops-details/$slug?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
     final response = await http.get(url, headers: headers);
     try {
       var data = json.decode(response.body);
       videoShoppingDetailsModel = VideoShoppingDetailsModel.fromJson(data);
-      printLog("Video Type => ${videoShoppingDetailsModel.data!.video!.videoType}");
+      printLog(
+          "Video Type => ${videoShoppingDetailsModel.data!.video!.videoType}");
       return videoShoppingDetailsModel;
     } catch (e) {
       return null;
@@ -1376,7 +1392,8 @@ class Repository {
     var body = {
       'converted_reward': reward,
     };
-    var url = Uri.parse("${NetworkService.apiUrl}/user/convert-reward?token=$token&$langCurrCode");
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/user/convert-reward?token=$token&$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);

@@ -7,7 +7,7 @@ class Config {
   static String apiKey = "IKXXAKSAADAMINNOVATION";
 
   //enter onesignal app id below
-  static String oneSignalAppId = "f32f698a-8c87-4e5c-8ecf-c37d33fa1c32";
+  static String oneSignalAppId = "";
   // find your ios APP id from app store
   static const String iosAppId = "";
   static const bool enableGoogleLogin = true;
@@ -17,7 +17,6 @@ class Config {
 
   static var supportedLanguageList = [
     const Locale("en", "US"),
-    const Locale("bn", "BD"),
     const Locale("ar", "SA"),
   ];
   static const String initialCountrySelection = "US";

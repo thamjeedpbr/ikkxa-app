@@ -9,25 +9,25 @@ environment:
   sdk: ">=2.18.0 <3.0.0"
 
 dependencies:
-  awesome_dialog: ^2.2.1
-  badges: ^2.0.3
+  awesome_dialog: 
+  badges:
   cached_network_image: 
-  carousel_slider: ^4.0.0
-  change_app_package_name: ^1.1.0
-  connectivity_plus: ^2.2.1
-  country_pickers: ^2.0.0
-  cupertino_icons: ^1.0.2
-  dio: ^4.0.6
+  carousel_slider: 
+  change_app_package_name: 
+  connectivity_plus: 
+  country_pickers: 
+  cupertino_icons: 
+  dio: 
   firebase_analytics: 
   firebase_auth: 
   firebase_core: 
   flutter:
     sdk: flutter
-  flutter_countdown_timer: ^4.1.0
-  flutter_facebook_auth: ^4.4.0+1
-  flutter_holo_date_picker: ^1.0.3
-  flutter_inappwebview: ^5.4.3+7
-  flutter_isolate: ^2.0.2
+  flutter_countdown_timer: 
+  flutter_facebook_auth: 
+  flutter_holo_date_picker: 
+  flutter_inappwebview: 
+  flutter_isolate: 
   flutter_localizations:
     sdk: flutter
   flutter_rating_bar: ^4.0.1
@@ -67,7 +67,7 @@ dependencies:
   shimmer: ^2.0.0
   sign_in_with_apple:
   store_redirect: ^2.0.1
-  #syncfusion_flutter_pdfviewer:
+  syncfusion_flutter_pdfviewer:
   timelines: ^0.1.0
   url_launcher: ^6.0.3
   photo_view: ^0.14.0
