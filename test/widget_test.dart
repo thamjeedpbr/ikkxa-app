@@ -8,11 +8,11 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:yoori_ecommerce/config.dart';
-import 'package:yoori_ecommerce/src/models/my_reward_model.dart';
-import 'package:yoori_ecommerce/src/models/my_wallet_model.dart';
-import 'package:yoori_ecommerce/src/models/video_shopping_details_model.dart';
-import 'package:yoori_ecommerce/src/utils/constants.dart';
+import 'package:saudi_adaminnovations/config.dart';
+import 'package:saudi_adaminnovations/src/models/my_reward_model.dart';
+import 'package:saudi_adaminnovations/src/utils/constants.dart';
+
+
 
 
 void main() {
