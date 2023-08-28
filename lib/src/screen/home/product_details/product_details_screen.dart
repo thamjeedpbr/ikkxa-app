@@ -493,201 +493,201 @@ class DetailsPage extends StatelessWidget {
                   SizedBox(height: 20.h),
 
                   //Timer CountDown
-                  Container(
-                    child: detailsModel.data!.specialDiscountEnd!.isNotEmpty
-                        ? Padding(
-                            padding: EdgeInsets.symmetric(vertical: 6.h),
-                            child: CountdownTimer(
-                                endTime: detailsModel
-                                            .data!.specialDiscountEnd !=
-                                        null
-                                    ? DateTime.now().millisecondsSinceEpoch +
-                                        DateTime.parse(detailsModel
-                                                .data!.specialDiscountEnd!)
-                                            .difference(DateTime.now())
-                                            .inMilliseconds
-                                    : DateTime.now().microsecondsSinceEpoch,
-                                widgetBuilder: (_, time) {
-                                  if (time == null) {
-                                    return Center(
-                                      child: Text(
-                                        AppTags.campaignOver.tr,
-                                        style: isMobile(context)
-                                            ? AppThemeData.timeDateTextStyle_12
-                                            : AppThemeData.timeDateTextStyleTab,
-                                      ),
-                                    );
-                                  } else {
-                                    return Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            width: 44.w,
-                                            decoration: BoxDecoration(
-                                              color: AppThemeData
-                                                  .productBoxDecorationColor
-                                                  .withOpacity(0.10),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(3.r)),
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  "${time.days ?? 0}"
-                                                      .padLeft(2, "0"),
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_13
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_10Tab,
-                                                ),
-                                                Text(
-                                                  AppTags.days.tr,
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_10
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_8Tab,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.w),
-                                          Container(
-                                            width: 44.w,
-                                            decoration: BoxDecoration(
-                                              color: AppThemeData
-                                                  .productBoxDecorationColor
-                                                  .withOpacity(0.10),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(3.r)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  spreadRadius: 30.r,
-                                                  blurRadius: 5.r,
-                                                  color: AppThemeData
-                                                      .boxShadowColor
-                                                      .withOpacity(0.01),
-                                                  offset: const Offset(0, 15),
-                                                ),
-                                              ],
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  "${time.hours ?? 0}"
-                                                      .padLeft(2, "0"),
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_13
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_10Tab,
-                                                ),
-                                                Text(
-                                                  AppTags.hrs.tr,
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_10
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_8Tab,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.w),
-                                          Container(
-                                            width: 44.w,
-                                            decoration: BoxDecoration(
-                                              color: AppThemeData
-                                                  .productBoxDecorationColor
-                                                  .withOpacity(0.10),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(3.r)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  spreadRadius: 30.r,
-                                                  blurRadius: 5.r,
-                                                  color: AppThemeData
-                                                      .boxShadowColor
-                                                      .withOpacity(0.01),
-                                                  offset: const Offset(0, 15),
-                                                ),
-                                              ],
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  " ${time.min ?? 0}"
-                                                      .padLeft(2, "0"),
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_13
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_10Tab,
-                                                ),
-                                                Text(
-                                                  AppTags.minutes.tr,
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_10
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_8Tab,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          SizedBox(width: 5.w),
-                                          Container(
-                                            width: 44.w,
-                                            decoration: BoxDecoration(
-                                              color: AppThemeData
-                                                  .productBoxDecorationColor
-                                                  .withOpacity(0.10),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(3.r)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  spreadRadius: 30.r,
-                                                  blurRadius: 5.r,
-                                                  color: AppThemeData
-                                                      .boxShadowColor
-                                                      .withOpacity(0.01),
-                                                  offset: const Offset(0, 15),
-                                                ),
-                                              ],
-                                            ),
-                                            child: Column(
-                                              children: [
-                                                Text(
-                                                  "${time.sec ?? 0}"
-                                                      .padLeft(2, "0"),
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_13
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_10Tab,
-                                                ),
-                                                Text(
-                                                  AppTags.secs.tr,
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .timeDateTextStyle_10
-                                                      : AppThemeData
-                                                          .timeDateTextStyle_8Tab,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ]);
-                                  }
-                                }),
-                          )
-                        : Container(),
-                  ),
-                  SizedBox(height: 20.h),
+                  // Container(
+                  //   child: detailsModel.data!.specialDiscountEnd!.isNotEmpty
+                  //       ? Padding(
+                  //           padding: EdgeInsets.symmetric(vertical: 6.h),
+                  //           child: CountdownTimer(
+                  //               endTime: detailsModel
+                  //                           .data!.specialDiscountEnd !=
+                  //                       null
+                  //                   ? DateTime.now().millisecondsSinceEpoch +
+                  //                       DateTime.parse(detailsModel
+                  //                               .data!.specialDiscountEnd!)
+                  //                           .difference(DateTime.now())
+                  //                           .inMilliseconds
+                  //                   : DateTime.now().microsecondsSinceEpoch,
+                  //               widgetBuilder: (_, time) {
+                  //                 if (time == null) {
+                  //                   return Center(
+                  //                     child: Text(
+                  //                       AppTags.campaignOver.tr,
+                  //                       style: isMobile(context)
+                  //                           ? AppThemeData.timeDateTextStyle_12
+                  //                           : AppThemeData.timeDateTextStyleTab,
+                  //                     ),
+                  //                   );
+                  //                 } else {
+                  //                   return Row(
+                  //                       mainAxisAlignment:
+                  //                           MainAxisAlignment.center,
+                  //                       crossAxisAlignment:
+                  //                           CrossAxisAlignment.center,
+                  //                       children: [
+                  //                         Container(
+                  //                           width: 44.w,
+                  //                           decoration: BoxDecoration(
+                  //                             color: AppThemeData
+                  //                                 .productBoxDecorationColor
+                  //                                 .withOpacity(0.10),
+                  //                             borderRadius: BorderRadius.all(
+                  //                                 Radius.circular(3.r)),
+                  //                           ),
+                  //                           child: Column(
+                  //                             children: [
+                  //                               Text(
+                  //                                 "${time.days ?? 0}"
+                  //                                     .padLeft(2, "0"),
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_13
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_10Tab,
+                  //                               ),
+                  //                               Text(
+                  //                                 AppTags.days.tr,
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_10
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_8Tab,
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                         ),
+                  //                         SizedBox(width: 5.w),
+                  //                         Container(
+                  //                           width: 44.w,
+                  //                           decoration: BoxDecoration(
+                  //                             color: AppThemeData
+                  //                                 .productBoxDecorationColor
+                  //                                 .withOpacity(0.10),
+                  //                             borderRadius: BorderRadius.all(
+                  //                                 Radius.circular(3.r)),
+                  //                             boxShadow: [
+                  //                               BoxShadow(
+                  //                                 spreadRadius: 30.r,
+                  //                                 blurRadius: 5.r,
+                  //                                 color: AppThemeData
+                  //                                     .boxShadowColor
+                  //                                     .withOpacity(0.01),
+                  //                                 offset: const Offset(0, 15),
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                           child: Column(
+                  //                             children: [
+                  //                               Text(
+                  //                                 "${time.hours ?? 0}"
+                  //                                     .padLeft(2, "0"),
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_13
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_10Tab,
+                  //                               ),
+                  //                               Text(
+                  //                                 AppTags.hrs.tr,
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_10
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_8Tab,
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                         ),
+                  //                         SizedBox(width: 5.w),
+                  //                         Container(
+                  //                           width: 44.w,
+                  //                           decoration: BoxDecoration(
+                  //                             color: AppThemeData
+                  //                                 .productBoxDecorationColor
+                  //                                 .withOpacity(0.10),
+                  //                             borderRadius: BorderRadius.all(
+                  //                                 Radius.circular(3.r)),
+                  //                             boxShadow: [
+                  //                               BoxShadow(
+                  //                                 spreadRadius: 30.r,
+                  //                                 blurRadius: 5.r,
+                  //                                 color: AppThemeData
+                  //                                     .boxShadowColor
+                  //                                     .withOpacity(0.01),
+                  //                                 offset: const Offset(0, 15),
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                           child: Column(
+                  //                             children: [
+                  //                               Text(
+                  //                                 " ${time.min ?? 0}"
+                  //                                     .padLeft(2, "0"),
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_13
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_10Tab,
+                  //                               ),
+                  //                               Text(
+                  //                                 AppTags.minutes.tr,
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_10
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_8Tab,
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                         ),
+                  //                         SizedBox(width: 5.w),
+                  //                         Container(
+                  //                           width: 44.w,
+                  //                           decoration: BoxDecoration(
+                  //                             color: AppThemeData
+                  //                                 .productBoxDecorationColor
+                  //                                 .withOpacity(0.10),
+                  //                             borderRadius: BorderRadius.all(
+                  //                                 Radius.circular(3.r)),
+                  //                             boxShadow: [
+                  //                               BoxShadow(
+                  //                                 spreadRadius: 30.r,
+                  //                                 blurRadius: 5.r,
+                  //                                 color: AppThemeData
+                  //                                     .boxShadowColor
+                  //                                     .withOpacity(0.01),
+                  //                                 offset: const Offset(0, 15),
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                           child: Column(
+                  //                             children: [
+                  //                               Text(
+                  //                                 "${time.sec ?? 0}"
+                  //                                     .padLeft(2, "0"),
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_13
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_10Tab,
+                  //                               ),
+                  //                               Text(
+                  //                                 AppTags.secs.tr,
+                  //                                 style: isMobile(context)
+                  //                                     ? AppThemeData
+                  //                                         .timeDateTextStyle_10
+                  //                                     : AppThemeData
+                  //                                         .timeDateTextStyle_8Tab,
+                  //                               ),
+                  //                             ],
+                  //                           ),
+                  //                         ),
+                  //                       ]);
+                  //                 }
+                  //               }),
+                  //         )
+                  //       : Container(),
+                  // ),
+                  // SizedBox(height: 20.h),
 
                   //Product Details
                   Padding(
@@ -962,47 +962,47 @@ class DetailsPage extends StatelessWidget {
                             SizedBox(height: 20.h),
 
                             // Delivery Time
-                            Container(
-                              alignment: Alignment.center,
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: AppThemeData.borderSideColor,
-                                ),
-                                color: Colors.white,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(3.r),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(10.r),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        Text("${AppTags.delivery.tr}:",
-                                            style: isMobile(context)
-                                                ? AppThemeData.titleTextStyle_13
-                                                : AppThemeData
-                                                    .titleTextStyleTab),
-                                        SizedBox(width: 5.w),
-                                        Text(
-                                          "${detailsModel.data!.delivery.toString()} days, ${detailsModel.data!.returnData.toString()} days return",
-                                          style: isMobile(context)
-                                              ? AppThemeData.titleTextStyle_13
-                                              : AppThemeData.titleTextStyleTab,
-                                        ),
-                                      ],
-                                    ),
-                                    // const Icon(Icons.arrow_forward_ios_rounded,size: 16,color:  Color(0xff999999))
-                                  ],
-                                ),
-                              ),
-                            ),
-                            detailsModel.data!.hasVariant!
-                                ? SizedBox(height: 10.h)
-                                : const SizedBox(),
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   decoration: BoxDecoration(
+                            //     border: Border.all(
+                            //       color: AppThemeData.borderSideColor,
+                            //     ),
+                            //     color: Colors.white,
+                            //     borderRadius: BorderRadius.all(
+                            //       Radius.circular(3.r),
+                            //     ),
+                            //   ),
+                            //   child: Padding(
+                            //     padding: EdgeInsets.all(10.r),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Row(
+                            //           children: [
+                            //             Text("${AppTags.delivery.tr}:",
+                            //                 style: isMobile(context)
+                            //                     ? AppThemeData.titleTextStyle_13
+                            //                     : AppThemeData
+                            //                         .titleTextStyleTab),
+                            //             SizedBox(width: 5.w),
+                            //             Text(
+                            //               "${detailsModel.data!.delivery.toString()} days, ${detailsModel.data!.returnData.toString()} days return",
+                            //               style: isMobile(context)
+                            //                   ? AppThemeData.titleTextStyle_13
+                            //                   : AppThemeData.titleTextStyleTab,
+                            //             ),
+                            //           ],
+                            //         ),
+                            //         // const Icon(Icons.arrow_forward_ios_rounded,size: 16,color:  Color(0xff999999))
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // detailsModel.data!.hasVariant!
+                            //     ? SizedBox(height: 10.h)
+                            //     : const SizedBox(),
 
                             //Color Attribute
                             detailsModel.data!.hasVariant!
