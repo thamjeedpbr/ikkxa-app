@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
+// import 'package:flutter_countdown_timer/flutter_countdown_timer.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -1354,12 +1354,12 @@ class DetailsPage extends StatelessWidget {
                                                             Get.toNamed(
                                                               Routes
                                                                   .detailsPage,
-                                                              arguments: {
+                                                              parameters: {
                                                                 'productId': detailsModel
                                                                     .data!
                                                                     .alsoAvaialbleIn![
                                                                         index]
-                                                                    .id
+                                                                    .id!
                                                                     .toString(),
                                                               },
                                                             );
