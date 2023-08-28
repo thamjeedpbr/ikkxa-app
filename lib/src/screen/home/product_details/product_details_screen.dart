@@ -1339,7 +1339,7 @@ class DetailsPage extends StatelessWidget {
                                                 ),
                                                 SizedBox(height: 5.h),
                                                 SizedBox(
-                                                  height: 35.h,
+                                                  height: 80.h,
                                                   child: ListView.builder(
                                                       itemCount: detailsModel
                                                           .data!
@@ -1386,7 +1386,8 @@ class DetailsPage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                      )
+                                      ),
+                                      SizedBox(height: 8.h),
                                     ],
                                   )
                                 : const SizedBox(),
