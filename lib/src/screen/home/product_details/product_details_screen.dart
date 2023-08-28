@@ -1306,8 +1306,9 @@ class DetailsPage extends StatelessWidget {
                                         ),
                                       ),
                                       Visibility(
-                                        visible: detailsModel
-                                            .data!.alsoAvaialbleIn!.isNotEmpty,
+                                        visible: detailsModel.data
+                                                ?.alsoAvaialbleIn?.isNotEmpty ??
+                                            false,
                                         child: Container(
                                           alignment: Alignment.center,
                                           decoration: BoxDecoration(
@@ -1327,7 +1328,7 @@ class DetailsPage extends StatelessWidget {
                                                 Row(
                                                   children: [
                                                     Text(
-                                                      "${AppTags.color.tr}:",
+                                                      "${AppTags.alsoAvailableIn.tr}:",
                                                       style: isMobile(context)
                                                           ? AppThemeData
                                                               .whyUsTextStyle_13
@@ -1353,12 +1354,12 @@ class DetailsPage extends StatelessWidget {
                                                             Get.toNamed(
                                                               Routes
                                                                   .detailsPage,
-                                                              parameters: {
+                                                              arguments: {
                                                                 'productId': detailsModel
                                                                     .data!
                                                                     .alsoAvaialbleIn![
                                                                         index]
-                                                                    .id!
+                                                                    .id
                                                                     .toString(),
                                                               },
                                                             );

@@ -239,6 +239,7 @@ class AppTags {
   static const String clickHereToSeePhone = "clickHereToSeePhone";
   static const String learnMore = "learnMore";
   static const String color = "color";
+  static const String alsoAvailableIn = "alsoAvailableIn";
 
   //notification
   static const String noNotification = "noNotification";
