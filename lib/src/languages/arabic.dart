@@ -1,6 +1,6 @@
 // Arabic Translations
 const Map<String, String> arSA = {
-  "appName": "يوري",
+  "appName": "Ikkxa",
   "languages": "اللغات",
   "notificationSettings": "إعدادات الإشعار",
   "notification": "تنبيه",
@@ -298,5 +298,6 @@ const Map<String, String> arSA = {
   "noBrand": "لم يتم العثور على علامة تجارية",
   "emptyOrderHistory": "محفوظات الطلبات الفارغة",
   "backToShopping": "العودة إلى التسوق",
-  "alsoAvailableIn": "Also Available In"
+  "alsoAvailableIn": "موجود ايضا في",
+  "ikkxaDiscount": "خصم اضافي"
 };

@@ -8,7 +8,9 @@ class AddToCartListModel {
   AddToCartListModel.fromJson(dynamic json) {
     success = json['success'];
     message = json['message'] ?? "";
-    data = json['data'] != null ? AddToCartListModelData.fromJson(json['data']) : null;
+    data = json['data'] != null
+        ? AddToCartListModelData.fromJson(json['data'])
+        : null;
   }
   bool? success;
   String? message;
@@ -72,6 +74,7 @@ class Calculations {
     this.tax,
     this.formattedTax,
     this.couponDiscount,
+    this.ikkxaDiscount,
     this.formattedCouponDiscount,
     this.total,
     this.formattedTotal,
@@ -87,6 +90,7 @@ class Calculations {
     tax = json['tax'];
     formattedTax = json['formatted_tax'];
     couponDiscount = json['coupon_discount'];
+    ikkxaDiscount = json['ikkxa_discount'];
     formattedCouponDiscount = json['formatted_coupon_discount'];
     total = json['total'];
     formattedTotal = json['formatted_total'];
@@ -99,6 +103,7 @@ class Calculations {
   String? formattedShippingCost;
   String? tax;
   String? formattedTax;
+  String? ikkxaDiscount;
   String? couponDiscount;
   String? formattedCouponDiscount;
   dynamic total;
@@ -115,6 +120,7 @@ class Calculations {
     map['tax'] = tax;
     map['formatted_tax'] = formattedTax;
     map['coupon_discount'] = couponDiscount;
+    map['ikkxa_discount'] = ikkxaDiscount;
     map['formatted_coupon_discount'] = formattedCouponDiscount;
     map['total'] = total;
     map['formatted_total'] = formattedTotal;

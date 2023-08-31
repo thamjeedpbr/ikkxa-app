@@ -1,6 +1,6 @@
 // English Translations
 const Map<String, String> enUS = {
-  "appName": "UNIEAT",
+  "appName": "IKKXA",
   "languages": "Languages",
   "notificationSettings": "Notification Settings",
   "notification": "Notification",
@@ -297,5 +297,6 @@ const Map<String, String> enUS = {
   "noProduct": "No product found",
   "noBrand": "No brand found",
   "emptyOrderHistory": "Empty Order history",
-  "alsoAvailableIn": "Also Available In"
+  "alsoAvailableIn": "Also Available In",
+  "ikkxaDiscount": "Extra Discount"
 };

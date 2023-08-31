@@ -307,6 +307,7 @@ class AppTags {
   //Payment Screen
   static const String getInvoice = "getInvoice";
   static const String special = "special";
+  static const String ikkxaDiscount = "ikkxaDiscount";
 
   //Invoice Screen
   static const String qty = "qty";
