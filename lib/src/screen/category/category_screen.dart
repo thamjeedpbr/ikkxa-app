@@ -16,10 +16,10 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() =>
-        _catController.isLoading ? const ShimmerCategoryContent() : _mainUi(context));
+    return Obx(() => _catController.isLoading
+        ? const ShimmerCategoryContent()
+        : _mainUi(context));
   }
-
 
   Widget _mainUi(context) {
     final orientation = MediaQuery.of(context).orientation;
@@ -57,30 +57,53 @@ class CategoryScreen extends StatelessWidget {
                                         ? InkWell(
                                             onTap: () {
                                               _catController
-                                                  .updateFeaturedIndexData(true);
+                                                  .updateFeaturedIndexData(
+                                                      true);
                                             },
                                             child: Container(
                                               height: 70.h,
                                               color: _catController
-                                                  .featuredIndex.value?AppThemeData.buttonTextColor:AppThemeData.categoryColor,
+                                                      .featuredIndex.value
+                                                  ? AppThemeData.buttonTextColor
+                                                  : AppThemeData.categoryColor,
                                               alignment: Alignment.center,
                                               child: Row(
                                                 children: [
                                                   Expanded(
                                                     child: Column(
                                                       mainAxisAlignment:
-                                                          MainAxisAlignment.center,
+                                                          MainAxisAlignment
+                                                              .center,
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment.center,
+                                                          CrossAxisAlignment
+                                                              .center,
                                                       children: [
-                                                        _catController.featuredCategory.value.icon!.isNotEmpty?Icon(
-                                                          MdiIcons.fromString(
-                                                            _catController.featuredCategory.value.icon!.substring(8),
-                                                          ),
-                                                          size: 30.r,
-                                                          color: AppThemeData.headlineTextColor,
-                                                        ):Icon( MdiIcons.fromString("checkbox-multiple-blank-outline"),size: 30.r,
-                                                          color: AppThemeData.headlineTextColor,),
+                                                        _catController
+                                                                .featuredCategory
+                                                                .value
+                                                                .icon!
+                                                                .isNotEmpty
+                                                            ? Icon(
+                                                                MdiIcons
+                                                                    .fromString(
+                                                                  _catController
+                                                                      .featuredCategory
+                                                                      .value
+                                                                      .icon!
+                                                                      .substring(
+                                                                          8),
+                                                                ),
+                                                                size: 30.r,
+                                                                color: AppThemeData
+                                                                    .headlineTextColor,
+                                                              )
+                                                            : Icon(
+                                                                MdiIcons.fromString(
+                                                                    "checkbox-multiple-blank-outline"),
+                                                                size: 30.r,
+                                                                color: AppThemeData
+                                                                    .headlineTextColor,
+                                                              ),
                                                         SizedBox(height: 5.h),
                                                         Text(
                                                           _catController
@@ -89,9 +112,16 @@ class CategoryScreen extends StatelessWidget {
                                                               .title
                                                               .toString()
                                                               .replaceAll(
-                                                                  "Category", ""),
-                                                          style: isMobile(context)? AppThemeData.categoryTitleTextStyle_12:AppThemeData.categoryTitleTextStyle_9Tab,
-                                                          overflow: TextOverflow.ellipsis,
+                                                                  "Category",
+                                                                  ""),
+                                                          style: isMobile(
+                                                                  context)
+                                                              ? AppThemeData
+                                                                  .categoryTitleTextStyle_12
+                                                              : AppThemeData
+                                                                  .categoryTitleTextStyle_9Tab,
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
                                                         )
                                                       ],
                                                     ),
@@ -100,7 +130,7 @@ class CategoryScreen extends StatelessWidget {
                                               ),
                                             ),
                                           )
-                                        : _categoryContent(index - 1,context),
+                                        : _categoryContent(index - 1, context),
                                   ],
                                 );
                               },
@@ -161,7 +191,9 @@ class CategoryScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     AppTags.featuredCategories.tr,
-                                    style: isMobile(context)? AppThemeData.priceTextStyle_14:AppThemeData.titleTextStyle_11Tab,
+                                    style: isMobile(context)
+                                        ? AppThemeData.priceTextStyle_14
+                                        : AppThemeData.titleTextStyle_11Tab,
                                   ),
                                 ],
                               ),
@@ -172,8 +204,8 @@ class CategoryScreen extends StatelessWidget {
                                     vertical: 8.h,
                                   ),
                                   shrinkWrap: true,
-                                  itemCount: _catController.featuredCategory.value
-                                      .featuredSubCategories!.length,
+                                  itemCount: _catController.featuredCategory
+                                      .value.featuredSubCategories!.length,
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount:
@@ -249,8 +281,13 @@ class CategoryScreen extends StatelessWidget {
                                                       .title
                                                       .toString(),
                                                   maxLines: 1,
-                                                  overflow: TextOverflow.ellipsis,
-                                                  style: isMobile(context)? AppThemeData.categoryTitleTextStyle_12:AppThemeData.categoryTitleTextStyle_9Tab,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: isMobile(context)
+                                                      ? AppThemeData
+                                                          .categoryTitleTextStyle_12
+                                                      : AppThemeData
+                                                          .categoryTitleTextStyle_9Tab,
                                                 ),
                                               ),
                                             ],
@@ -274,11 +311,11 @@ class CategoryScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               Container(
-                                height: isMobile(context)?100.h:130.h,
+                                height: isMobile(context) ? 100.h : 130.h,
                                 decoration: BoxDecoration(
                                   color: const Color(0xffDBE8C2),
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(10)),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(10)),
                                   image: DecorationImage(
                                     image: NetworkImage(
                                       _catController
@@ -347,31 +384,42 @@ class CategoryScreen extends StatelessWidget {
                                                 SizedBox(height: 15.h),
                                                 Text(
                                                   _catController
-                                                      .categoryList[_catController
-                                                          .index.value]
-                                                      .subCategories![subCtIndex]
+                                                      .categoryList[
+                                                          _catController
+                                                              .index.value]
+                                                      .subCategories![
+                                                          subCtIndex]
                                                       .title
                                                       .toString(),
-                                                  style: isMobile(context)? AppThemeData.priceTextStyle_14:AppThemeData.titleTextStyle_11Tab,
+                                                  style: isMobile(context)
+                                                      ? AppThemeData
+                                                          .priceTextStyle_14
+                                                      : AppThemeData
+                                                          .titleTextStyle_11Tab,
                                                 ),
                                                 SizedBox(height: 10.h),
                                                 GridView.builder(
                                                   physics:
                                                       const NeverScrollableScrollPhysics(),
-                                                  scrollDirection: Axis.vertical,
+                                                  scrollDirection:
+                                                      Axis.vertical,
                                                   shrinkWrap: true,
                                                   itemCount: _catController
-                                                      .categoryList[_catController
-                                                          .index.value]
-                                                      .subCategories![subCtIndex]
+                                                      .categoryList[
+                                                          _catController
+                                                              .index.value]
+                                                      .subCategories![
+                                                          subCtIndex]
                                                       .childCategories!
                                                       .length,
                                                   gridDelegate:
                                                       SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount: orientation ==
-                                                            Orientation.portrait
-                                                        ? 3
-                                                        : 3,
+                                                    crossAxisCount:
+                                                        orientation ==
+                                                                Orientation
+                                                                    .portrait
+                                                            ? 3
+                                                            : 3,
                                                     crossAxisSpacing: 15,
                                                     mainAxisSpacing: 16,
                                                     childAspectRatio: 0.73,
@@ -412,11 +460,14 @@ class CategoryScreen extends StatelessWidget {
                                                       child: Container(
                                                         alignment:
                                                             Alignment.center,
-                                                        decoration: BoxDecoration(
-                                                          color: AppThemeData.buttonTextColor,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: AppThemeData
+                                                              .buttonTextColor,
                                                           borderRadius:
                                                               BorderRadius.all(
-                                                            Radius.circular(10.r),
+                                                            Radius.circular(
+                                                                10.r),
                                                           ),
                                                           border: Border.all(
                                                             color: const Color(
@@ -425,7 +476,8 @@ class CategoryScreen extends StatelessWidget {
                                                           ),
                                                           boxShadow: [
                                                             BoxShadow(
-                                                              spreadRadius: 30.r,
+                                                              spreadRadius:
+                                                                  30.r,
                                                               blurRadius: 1,
                                                               color: const Color(
                                                                       0xff404040)
@@ -446,13 +498,12 @@ class CategoryScreen extends StatelessWidget {
                                                           child: Column(
                                                             children: [
                                                               Expanded(
-                                                                child:
-                                                                    Image.network(
+                                                                child: Image
+                                                                    .network(
                                                                   _catController
-                                                                      .categoryList[
-                                                                          _catController
-                                                                              .index
-                                                                              .value]
+                                                                      .categoryList[_catController
+                                                                          .index
+                                                                          .value]
                                                                       .subCategories![
                                                                           subCtIndex]
                                                                       .childCategories![
@@ -467,10 +518,9 @@ class CategoryScreen extends StatelessWidget {
                                                               Center(
                                                                 child: Text(
                                                                   _catController
-                                                                      .categoryList[
-                                                                          _catController
-                                                                              .index
-                                                                              .value]
+                                                                      .categoryList[_catController
+                                                                          .index
+                                                                          .value]
                                                                       .subCategories![
                                                                           subCtIndex]
                                                                       .childCategories![
@@ -481,7 +531,12 @@ class CategoryScreen extends StatelessWidget {
                                                                   overflow:
                                                                       TextOverflow
                                                                           .ellipsis,
-                                                                  style: isMobile(context)? AppThemeData.categoryTitleTextStyle_12:AppThemeData.categoryTitleTextStyle_9Tab,
+                                                                  style: isMobile(
+                                                                          context)
+                                                                      ? AppThemeData
+                                                                          .categoryTitleTextStyle_12
+                                                                      : AppThemeData
+                                                                          .categoryTitleTextStyle_9Tab,
                                                                 ),
                                                               ),
                                                             ],
@@ -525,8 +580,10 @@ class CategoryScreen extends StatelessWidget {
                                               child: Container(
                                                 height: 80.h,
                                                 decoration: BoxDecoration(
-                                                  color: AppThemeData.buttonTextColor,
-                                                  borderRadius: BorderRadius.all(
+                                                  color: AppThemeData
+                                                      .buttonTextColor,
+                                                  borderRadius:
+                                                      BorderRadius.all(
                                                     Radius.circular(10.r),
                                                   ),
                                                   border: Border.all(
@@ -544,7 +601,8 @@ class CategoryScreen extends StatelessWidget {
                                                             padding:
                                                                 EdgeInsets.all(
                                                                     8.r),
-                                                            child: Image.network(
+                                                            child:
+                                                                Image.network(
                                                               _catController
                                                                   .categoryList[
                                                                       _catController
@@ -552,7 +610,7 @@ class CategoryScreen extends StatelessWidget {
                                                                           .value]
                                                                   .subCategories![
                                                                       subCtIndex]
-                                                                  .banner!,
+                                                                  .image!,
                                                             ),
                                                           ),
                                                         )
@@ -578,7 +636,10 @@ class CategoryScreen extends StatelessWidget {
                                                                 .title
                                                                 .toString(),
                                                             style: TextStyle(
-                                                                fontSize: isMobile(context)? 12.sp:10.sp,
+                                                                fontSize: isMobile(
+                                                                        context)
+                                                                    ? 12.sp
+                                                                    : 10.sp,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w600,
@@ -586,9 +647,12 @@ class CategoryScreen extends StatelessWidget {
                                                                     "Poppins_Medium"),
                                                           ),
                                                           Text(
-                                                            "${AppTags.totalProduct.tr}: ${_catController.categoryList[_catController.index.value].subCategories![subCtIndex].childCategories!.length}",
+                                                            "${AppTags.totalProduct.tr}: ${_catController.categoryList[_catController.index.value].subCategories![subCtIndex].totalProduct}",
                                                             style: TextStyle(
-                                                              fontSize: isMobile(context)? 12.sp:10.sp,
+                                                              fontSize: isMobile(
+                                                                      context)
+                                                                  ? 12.sp
+                                                                  : 10.sp,
                                                               fontFamily:
                                                                   "Poppins",
                                                               color: const Color(
@@ -618,7 +682,7 @@ class CategoryScreen extends StatelessWidget {
     );
   }
 
-  Widget _categoryContent(int index,context) {
+  Widget _categoryContent(int index, context) {
     return InkWell(
       onTap: () {
         _catController.updateFeaturedIndexData(false);
@@ -626,7 +690,10 @@ class CategoryScreen extends StatelessWidget {
       },
       child: Container(
         height: 70.h,
-        color: _catController.index.value == index && !_catController.featuredIndex.value ?AppThemeData.buttonTextColor:AppThemeData.categoryColor,
+        color: _catController.index.value == index &&
+                !_catController.featuredIndex.value
+            ? AppThemeData.buttonTextColor
+            : AppThemeData.categoryColor,
         alignment: Alignment.center,
         child: Row(
           children: [
@@ -634,20 +701,28 @@ class CategoryScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _catController.categoryList[index].icon!.isNotEmpty?Icon(
-                    MdiIcons.fromString(
-                      _catController.categoryList[index].icon!.substring(8),
-                    ),
-                    size: 30.r,
-                    color: AppThemeData.headlineTextColor,
-                  ):Icon( MdiIcons.fromString("checkbox-multiple-blank-outline"),size: 30.r,
-                    color: AppThemeData.headlineTextColor,),
+                  _catController.categoryList[index].icon!.isNotEmpty
+                      ? Icon(
+                          MdiIcons.fromString(
+                            _catController.categoryList[index].icon!
+                                .substring(8),
+                          ),
+                          size: 30.r,
+                          color: AppThemeData.headlineTextColor,
+                        )
+                      : Icon(
+                          MdiIcons.fromString(
+                              "checkbox-multiple-blank-outline"),
+                          size: 30.r,
+                          color: AppThemeData.headlineTextColor,
+                        ),
                   SizedBox(height: 5.h),
                   Text(
                     _catController.categoryList[index].title.toString(),
                     overflow: TextOverflow.ellipsis,
-                    style: isMobile(context)? AppThemeData.categoryTitleTextStyle_12:AppThemeData.categoryTitleTextStyle_9Tab,
-
+                    style: isMobile(context)
+                        ? AppThemeData.categoryTitleTextStyle_12
+                        : AppThemeData.categoryTitleTextStyle_9Tab,
                   )
                 ],
               ),

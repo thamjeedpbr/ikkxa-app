@@ -64,7 +64,7 @@ class FeaturedCategory {
   FeaturedCategory.fromJson(Map<String, dynamic> json) {
     title = json['title'];
     icon = json['icon'];
-    banner = json['banner'] ??"";
+    banner = json['banner'] ?? "";
     if (json['featured_sub_categories'] != null) {
       featuredSubCategories = <FeaturedSubCategories>[];
       json['featured_sub_categories'].forEach((v) {
@@ -178,6 +178,7 @@ class SubCategories {
   String? banner;
   String? title;
   String? image;
+  int? totalProduct;
   List<ChildCategories>? childCategories;
 
   SubCategories(
@@ -188,6 +189,7 @@ class SubCategories {
       this.banner,
       this.title,
       this.image,
+      this.totalProduct,
       this.childCategories});
 
   SubCategories.fromJson(Map<String, dynamic> json) {
@@ -198,6 +200,7 @@ class SubCategories {
     banner = json['banner'];
     title = json['title'];
     image = json['image'];
+    totalProduct = json['total_products'];
     if (json['child_categories'] != null) {
       childCategories = <ChildCategories>[];
       json['child_categories'].forEach((v) {
