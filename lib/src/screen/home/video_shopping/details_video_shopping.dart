@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 import 'package:get/get.dart';
-import 'package:vimeo_video_player/vimeo_video_player.dart';
 import 'package:saudi_adaminnovations/src/_route/routes.dart';
 import 'package:saudi_adaminnovations/src/controllers/video_shopping_details_controller.dart';
 import 'package:saudi_adaminnovations/src/utils/images.dart';
@@ -93,23 +92,7 @@ class  DetailsVideoShopping extends StatelessWidget {
           ],
         ):const SizedBox(),
 
-        videoShoppingDetailsModel.data!.video!.videoType=="vimeo"?
-        Stack(
-          alignment: Alignment.topRight,
-          children: [
-            VimeoVideoPlayer(
-              vimeoPlayerModel: VimeoPlayerModel(
-                url: videoShoppingDetailsController.vimeoLink.value,
-                deviceOrientation: DeviceOrientation.portraitUp,
-                systemUiOverlay: const [
-                  SystemUiOverlay.top,
-                  SystemUiOverlay.bottom,
-                ],
-              ),
-            ),
-            backButton(context),
-          ],
-        ): const SizedBox(),
+
 
         SizedBox(height: 5.h,),
         videoShoppingDetailsModel.data!.video!.products!.isNotEmpty?

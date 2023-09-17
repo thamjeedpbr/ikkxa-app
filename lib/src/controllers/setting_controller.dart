@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:saudi_adaminnovations/src/models/config_model.dart';
 import 'package:saudi_adaminnovations/src/servers/repository.dart';
 import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
@@ -12,7 +11,6 @@ class SettingController extends GetxController {
   var selectedCurrency = "".obs;
   var selectedCurrencyName = "".obs;
 
-  PackageInfo? packageInfo;
 
   List<Currencies>? curr;
 
@@ -45,7 +43,6 @@ class SettingController extends GetxController {
     selectedCurrencyName.value = selectedCurrencyName.isEmpty
         ? "US Dollar"
         : curr![getIndex(selectedCurrencyName)].name.toString();
-    packageInfo = await PackageInfo.fromPlatform();
     super.onInit();
   }
 }

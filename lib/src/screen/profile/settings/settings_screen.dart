@@ -1,9 +1,7 @@
 import 'dart:io';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:store_redirect/store_redirect.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import '../../../../config.dart';
 import 'package:saudi_adaminnovations/src/_route/routes.dart';
@@ -207,12 +205,12 @@ class Settings extends StatelessWidget {
               padding:  EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
               child: InkWell(
                 onTap: () {
-                  if (Platform.isAndroid) {
+                /*  if (Platform.isAndroid) {
                     Share.share(
                         "https://play.google.com/store/apps/details?id=${settingController.packageInfo!.packageName}");
                   } else if (Platform.isIOS) {
                     Share.share("https://google.com");
-                  }
+                  }*/
                 },
                 child: ListTile(
                   title: Text(
@@ -249,10 +247,7 @@ class Settings extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
               child: InkWell(
                 onTap: () {
-                  StoreRedirect.redirect(
-                    androidAppId: settingController.packageInfo!.packageName,
-                    iOSAppId: Config.iosAppId,
-                  );
+
                 },
                 child: ListTile(
                   title: Text(

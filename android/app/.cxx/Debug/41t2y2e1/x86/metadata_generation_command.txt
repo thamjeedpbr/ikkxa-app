@@ -1,0 +1,20 @@
+Executable : C:\Users\prave\AppData\Local\Android\sdk\cmake\3.18.1\bin\cmake.exe
+arguments : 
+-HC:\ikkxa-app\android\app\src\main\cpp
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=21
+-DANDROID_PLATFORM=android-21
+-DANDROID_ABI=x86
+-DCMAKE_ANDROID_ARCH_ABI=x86
+-DANDROID_NDK=C:\Users\prave\AppData\Local\Android\sdk\ndk\25.1.8937393
+-DCMAKE_ANDROID_NDK=C:\Users\prave\AppData\Local\Android\sdk\ndk\25.1.8937393
+-DCMAKE_TOOLCHAIN_FILE=C:\Users\prave\AppData\Local\Android\sdk\ndk\25.1.8937393\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=C:\Users\prave\AppData\Local\Android\sdk\cmake\3.18.1\bin\ninja.exe
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=C:\ikkxa-app\build\app\intermediates\cxx\Debug\41t2y2e1\obj\x86
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=C:\ikkxa-app\build\app\intermediates\cxx\Debug\41t2y2e1\obj\x86
+-DCMAKE_BUILD_TYPE=Debug
+-BC:\ikkxa-app\android\app\.cxx\Debug\41t2y2e1\x86
+-GNinja
+jvmArgs : 
+

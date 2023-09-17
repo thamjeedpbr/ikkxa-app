@@ -53,14 +53,14 @@ class CartContentController extends GetxController {
       required String quantity,
         String? variantsIds,
        String? variantsNames}) async {
-    AnalyticsHelper().setAnalyticsData(
+   /* AnalyticsHelper().setAnalyticsData(
         screenName: "ProductDetailsScreen",
         eventTitle: "AddToCart",
         additionalData: {
           "productId": productId,
           "quantity": quantity,
           "variantsNames": variantsNames,
-        });
+        });*/
     String? trxId = LocalDataHelper().getCartTrxId();
     printLog(trxId);
     if (trxId == null) {
@@ -87,12 +87,12 @@ class CartContentController extends GetxController {
   Future deleteAProductFromCart({required String productId}) async {
     await Repository().deleteCartProduct(productId: productId).then((value) {
       getCartList(isShowLoading: false);
-       AnalyticsHelper().setAnalyticsData(
+      /* AnalyticsHelper().setAnalyticsData(
           screenName: "ProductDetailsScreen",
           eventTitle: "DeleteFromCart",
           additionalData: {
             "productId": productId,
-          });
+          });*/
     });
   }
 

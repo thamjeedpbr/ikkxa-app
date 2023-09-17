@@ -251,7 +251,8 @@ class LoginScreen extends StatelessWidget {
                             ),
                             child: InkWell(
                               onTap: () {
-                                authController.signInWithApple();
+                               // authController.signInWithApple();
+                                authController.signInWithGoogle();
                               },
                               splashColor: Colors.transparent,
                               highlightColor: Colors.transparent,

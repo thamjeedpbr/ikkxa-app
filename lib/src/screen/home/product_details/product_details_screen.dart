@@ -107,8 +107,7 @@ class DetailsPage extends StatelessWidget {
                     }
                   },
                   child: badges.Badge(
-                    animationDuration: const Duration(milliseconds: 300),
-                    animationType: badges.BadgeAnimationType.slide,
+
                     badgeContent: Text(
                       cartContentController
                           .addToCartListModel.data!.carts!.length
@@ -227,9 +226,7 @@ class DetailsPage extends StatelessWidget {
                     }
                   },
                   child: badges.Badge(
-                    padding: EdgeInsets.all(4.r),
-                    animationDuration: const Duration(milliseconds: 300),
-                    animationType: badges.BadgeAnimationType.slide,
+
                     badgeContent: Text(
                       cartContentController
                           .addToCartListModel.data!.carts!.length

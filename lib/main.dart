@@ -1,19 +1,26 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'firebase_option.dart';
 import 'src/bindings/init_bindings.dart';
 import 'src/controllers/init_controller.dart';
 import 'src/_route/routes.dart';
 import 'src/data/data_storage_service.dart';
 import 'src/languages/language_translation.dart';
 
+late final FirebaseApp app;
+late final FirebaseAuth auth;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await initialConfig();
-  await Firebase.initializeApp();
+  app = await Firebase.initializeApp(
+  options: DefaultFirebaseOptions.currentPlatform,
+  );
+  auth = FirebaseAuth.instanceFor(app: app);  await initialConfig();
+
   await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
@@ -22,6 +29,8 @@ void main() async {
 }
 
 Future<void> initialConfig() async {
+  await Firebase.initializeApp();
+
   await Get.putAsync(() => StorageService().init());
 } 
 
@@ -36,7 +45,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       builder: (context, child) {
         return GetMaterialApp(
-          navigatorObservers: <NavigatorObserver>[initController.observer],
+          //navigatorObservers: <NavigatorObserver>[initController.observer],
           initialBinding: InitBindings(),
           locale: storage.languageCode != null
               ? Locale(storage.languageCode!, storage.countryCode)

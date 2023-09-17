@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:saudi_adaminnovations/src/_route/routes.dart';
 import 'package:saudi_adaminnovations/src/servers/repository.dart';
@@ -14,7 +13,6 @@ import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
 
 class SplashController extends GetxController {
   var isLoading = true.obs;
-  PackageInfo? packageInfo;
   String? appName;
   String? packageName;
   String? appVersion;
@@ -27,15 +25,7 @@ class SplashController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
-    packageInfo = await PackageInfo.fromPlatform().then(
-      (value) {
-        appName = value.appName;
-        packageName = value.packageName;
-        appVersion = value.version;
-        buildNumber = value.buildNumber;
-        return null;
-      },
-    );
+
     handleConfigData();
   }
 

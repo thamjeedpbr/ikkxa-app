@@ -37,7 +37,7 @@ class DashboardController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    AnalyticsHelper().setAnalyticsData(screenName: "HomeScreen");
+    //AnalyticsHelper().setAnalyticsData(screenName: "HomeScreen");
     getAddToCartList();
   }
 }

@@ -4,7 +4,6 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:saudi_adaminnovations/src/models/user_data_model.dart';
 import 'package:saudi_adaminnovations/src/screen/auth_screen/login_screen.dart';
 import 'package:saudi_adaminnovations/src/screen/dashboard/dashboard_screen.dart';
@@ -237,6 +236,7 @@ class AuthController extends GetxController {
     return trimmed;
   }
 
+/*
   Future signInWithApple() async {
     final appleCredential = await SignInWithApple.getAppleIDCredential(
       scopes: [
@@ -287,6 +287,7 @@ class AuthController extends GetxController {
     printLog("--- User----$currentUser");
     return user;
   }
+*/
 
   int addonIndex({String? addonIndex}){
     int index = LocalDataHelper().getConfigData().data!.addons!.indexWhere((element) => element.addonIdentifier==addonIndex);

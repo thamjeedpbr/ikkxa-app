@@ -169,13 +169,13 @@ class DetailsPageController extends GetxController {
       calculateTotalPrice();
       setProductVariantData(value);
       isFavorite(value.data!.isFavourite);
-      AnalyticsHelper().setAnalyticsData(
+     /* AnalyticsHelper().setAnalyticsData(
           screenName: "ProductDetailsScreen",
           eventTitle: "ProductDetails",
           additionalData: {
             "productId": proId,
             "price": value.data != null ? value.data!.price : null,
-          });
+          });*/
       isLoading(false);
       update();
       return value;

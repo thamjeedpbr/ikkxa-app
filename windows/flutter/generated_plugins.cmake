@@ -3,10 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus_windows
+  connectivity_plus
   file_selector_windows
   firebase_core
-  smart_auth
+  flutter_secure_storage_windows
   syncfusion_pdfviewer_windows
   url_launcher_windows
 )

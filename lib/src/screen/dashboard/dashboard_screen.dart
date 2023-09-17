@@ -136,8 +136,7 @@ class DashboardScreen extends StatelessWidget {
   }) {
     return isCart
         ? badges.Badge(
-            animationDuration: const Duration(milliseconds: 300),
-            animationType: badges.BadgeAnimationType.slide,
+
             badgeContent: Text(
               cartContentController.addToCartListModel.data != null
                   ? cartContentController.addToCartListModel.data!.carts != null

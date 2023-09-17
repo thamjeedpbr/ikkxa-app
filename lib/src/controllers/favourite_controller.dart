@@ -24,12 +24,12 @@ class FavouriteController extends GetxController {
   Future<bool> addOrRemoveFromFav(var productId) async {
     await Repository().addOrRemoveFromFavoriteList(productId).then((value) {
       fetchData();
-      AnalyticsHelper().setAnalyticsData(
+/*      AnalyticsHelper().setAnalyticsData(
           screenName: "FavouriteScreen",
           eventTitle: "AddOrRemoveProductToFavouriteList",
           additionalData: {
             "productId": productId,
-          });
+          });*/
       return value;
     });
     return false;
@@ -38,12 +38,12 @@ class FavouriteController extends GetxController {
   Future<bool> followOrUnfollowShopFromFav(var shopId) async {
     await Repository().followOrUnfollowShopList(shopId).then((value) {
       fetchData();
-      AnalyticsHelper().setAnalyticsData(
+     /* AnalyticsHelper().setAnalyticsData(
           screenName: "FavouriteScreen",
           eventTitle: "AddOrRemoveShop",
           additionalData: {
             "shopId": shopId,
-          });
+          });*/
       return value;
     });
     return false;

@@ -17,12 +17,12 @@ class ProductSearchController extends GetxController {
     await Repository().getSearchProducts(searchKey: searchValue).then((value) {
       if (value.data!.isNotEmpty) {
         _searchResult.value = value;
-        AnalyticsHelper().setAnalyticsData(
+      /*  AnalyticsHelper().setAnalyticsData(
             screenName: "SearchScreen",
             eventTitle: "Search",
             additionalData: {
               "searchTag": searchValue,
-            });
+            });*/
       } else {
         searchResult.data = [];
       }
