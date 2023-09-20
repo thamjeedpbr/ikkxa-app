@@ -15,11 +15,17 @@ class SettingController extends GetxController {
   List<Currencies>? curr;
 
   getIndex(value) {
-    return curr!.indexWhere(((currIndex) => currIndex.code == value));
+    return curr!.indexWhere(((currIndex) =>
+
+        currIndex.code == value
+
+
+
+    ));
   }
 
   void updateCurrency(value) {
-    selectedCurrency.value = value;
+    selectedCurrency. value = value;
   }
 
   void updateCurrencyName(value) {
@@ -39,10 +45,8 @@ class SettingController extends GetxController {
   @override
   void onInit() async {
     curr = LocalDataHelper().getConfigData().data!.currencies!;
-    selectedCurrency.value = LocalDataHelper().getCurrCode() ?? "USD";
-    selectedCurrencyName.value = selectedCurrencyName.isEmpty
-        ? "US Dollar"
-        : curr![getIndex(selectedCurrencyName)].name.toString();
+    selectedCurrency.value = LocalDataHelper().getCurrCode() ?? "SAR";
+    selectedCurrencyName.value = "Soudi Riyal";
     super.onInit();
   }
 }

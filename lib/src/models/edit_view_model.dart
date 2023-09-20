@@ -48,6 +48,10 @@ class Address {
   String? email;
   String? phoneNo;
   String? address;
+  String? building;
+  String? street;
+  String? area;
+  String? landMark;
   AddressIds? addressIds;
   String? country;
   String? state;
@@ -77,7 +81,9 @@ class Address {
         this.defaultShipping,
         this.defaultBilling,
         this.createdAt,
-        this.updatedAt});
+        this.updatedAt,
+        this.street,
+        this.building,this.area,this.landMark});
 
   Address.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -86,6 +92,10 @@ class Address {
     email = json['email'];
     phoneNo = json['phone_no'];
     address = json['address'];
+    street = json['street'];
+    building = json['building'];
+    area = json['area'];
+    landMark = json['land_mark'];
     addressIds = json['address_ids'] != null
         ? AddressIds.fromJson(json['address_ids'])
         : null;
@@ -109,6 +119,10 @@ class Address {
     data['email'] = email;
     data['phone_no'] = phoneNo;
     data['address'] = address;
+    data['street']=street;
+    data['building']=building;
+    data['area']=area;
+    data['land_mark']=landMark;
     if (addressIds != null) {
       data['address_ids'] = addressIds!.toJson();
     }

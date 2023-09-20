@@ -12,6 +12,8 @@ class Images {
   static String get cart => 'cart'.svg;
   static String get exit => 'exit'.svg;
   static String get notification => 'notification'.svg;
+  static String get english => 'english'.svg;
+  static String get arabic => 'arabic'.svg;
   static String get menuBar => 'menu_bar'.svg;
   static String get searchBar => 'search_bar'.svg;
   static String get comment => 'comment'.svg;

@@ -78,6 +78,10 @@ class AddressScreenController extends GetxController{
     required int stateId,
     required int cityId,
     required String postalCode,
+    required String street,
+    required String building,
+    required String area,
+    required String landmark,
     required String address,
     }) async{
     await Repository()
@@ -89,6 +93,10 @@ class AddressScreenController extends GetxController{
       stateId: countryId,
       cityId: countryId,
       postalCode: postalCode,
+        building: building,
+        street: street,
+        area: area,
+       landmark: landmark,
       address: address,
     );
   }
@@ -102,6 +110,10 @@ class AddressScreenController extends GetxController{
     required int stateId,
     required int cityId,
     required String postalCode,
+    required String street,
+    required String building,
+    required String area,
+    required String landmark,
     required String address,
     required int addressId})async{
     await Repository().updateEditAddress(
@@ -112,6 +124,10 @@ class AddressScreenController extends GetxController{
       stateId: stateId,
       cityId: cityId,
       postalCode: postalCode,
+      street: street,
+      building: building,
+      area: area,
+      landmark: landmark,
       address: address,
       addressId: addressId,
     );

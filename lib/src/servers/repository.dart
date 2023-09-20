@@ -709,6 +709,10 @@ class Repository {
     required int stateId,
     required int cityId,
     required String postalCode,
+    required String street,
+    required String building,
+    required String area,
+    required String landmark,
     required String address,
   }) async {
     var headers = {"apiKey": Config.apiKey};
@@ -720,6 +724,10 @@ class Repository {
       'state_id': stateId.toString(),
       'city_id': cityId.toString(),
       'postal_code': postalCode.toString(),
+      'building': building.toString(),
+      'street': street.toString(),
+      'area': area.toString(),
+      'land_mark': landmark.toString(),
       'address': address.toString()
     };
     var url = Uri.parse(
@@ -742,6 +750,10 @@ class Repository {
     required int stateId,
     required int cityId,
     required String postalCode,
+    required String street,
+    required String building,
+    required String area,
+    required String landmark,
     required String address,
     required int addressId,
   }) async {
@@ -754,6 +766,10 @@ class Repository {
       'state_id': stateId.toString(),
       'city_id': cityId.toString(),
       'postal_code': postalCode.toString(),
+      'building': building.toString(),
+      'street': street.toString(),
+      'area': area.toString(),
+      'land_mark': landmark.toString(),
       'address': address.toString()
     };
     var url = Uri.parse(

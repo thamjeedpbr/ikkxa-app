@@ -71,7 +71,7 @@ class Settings extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 20.h),
+            SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.w),
               child: Row(
@@ -182,10 +182,15 @@ class Settings extends StatelessWidget {
                           },
                           items: settingController.curr!.map(
                             (curr) {
-                              return DropdownMenuItem(
-                                value: curr.code,
-                                child: Text(curr.name.toString()),
-                              );
+                              if (curr.name == "US Dollar") {
+                                return DropdownMenuItem(value: 48,child: Container(height: 0,),);
+                              }else {
+                                return DropdownMenuItem(
+                                  value: curr.code,
+                                  child: Text(curr.name.toString()),
+
+                                );
+                              }
                             },
                           ).toList(),
                         ),
@@ -205,12 +210,8 @@ class Settings extends StatelessWidget {
               padding:  EdgeInsets.symmetric(horizontal: isMobile(context)? 0.w:10.w,vertical: isMobile(context)? 0.h:8.h),
               child: InkWell(
                 onTap: () {
-                /*  if (Platform.isAndroid) {
-                    Share.share(
-                        "https://play.google.com/store/apps/details?id=${settingController.packageInfo!.packageName}");
-                  } else if (Platform.isIOS) {
-                    Share.share("https://google.com");
-                  }*/
+
+
                 },
                 child: ListTile(
                   title: Text(

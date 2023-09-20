@@ -32,28 +32,30 @@ class CategoryScreen extends StatelessWidget {
           width: size.width,
           child: Padding(
             padding: EdgeInsets.only(top: 8.h),
-            child: Row(
+            child: Column(
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.only(
-                      left: 15.0.w,
-                      right: 7.5.w,
-                    ),
-                    child: Container(
-                      height: MediaQuery.of(context).size.height,
-                      color: const Color(0xfff3f3f3),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              controller: _catController.scrollController,
-                              itemCount: _catController.categoryList.length + 1,
-                              itemBuilder: (context, index) {
-                                return Column(
-                                  children: [
-                                    index == 0
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 15.0.w,
+                    right: 7.5.w,
+                  ),
+                  child: Container(
+                    height: MediaQuery.of(context).size.width*0.19,
+                    color: const Color(0xfff3f3f3),
+                    child:
+                        ListView.builder(
+                          shrinkWrap: true,
+scrollDirection: Axis.horizontal,
+                          physics: BouncingScrollPhysics(),
+                          controller: _catController.scrollController,
+                          itemCount: _catController.categoryList.length + 1,
+                          itemBuilder: (context, index) {
+                            return Container(width:80.h,
+
+                              child: Column(
+                                children: [
+                                  Expanded(
+                                    child: index == 0
                                         ? InkWell(
                                             onTap: () {
                                               _catController
@@ -61,7 +63,8 @@ class CategoryScreen extends StatelessWidget {
                                                       true);
                                             },
                                             child: Container(
-                                              height: 70.h,
+                                              height: MediaQuery.of(context).size.width*0.19,
+
                                               color: _catController
                                                       .featuredIndex.value
                                                   ? AppThemeData.buttonTextColor
@@ -131,478 +134,500 @@ class CategoryScreen extends StatelessWidget {
                                             ),
                                           )
                                         : _categoryContent(index - 1, context),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-
-                          //pagination progress
-                          _catController.isMoreDataLoading.value
-                              ? const Center(
-                                  child: CircularProgressIndicator(),
-                                )
-                              : const SizedBox()
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                //
-                _catController.featuredIndex.value
-                    ? Expanded(
-                        flex: 2,
-                        child: Container(
-                          height: size.height,
-                          padding: EdgeInsets.only(
-                            left: 7.5.w,
-                            right: 15.w,
-                          ),
-                          //color: Colors.green,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 100.h,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffDBE8C2),
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10.r),
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                      _catController
-                                          .featuredCategory.value.banner!,
-                                    ),
-                                    fit: BoxFit.fill,
-                                  ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      spreadRadius: 30.r,
-                                      blurRadius: 1,
-                                      color: const Color(0xff404040)
-                                          .withOpacity(0.01),
-                                      offset: const Offset(0, 15),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 15.h),
-                              Row(
-                                children: [
-                                  Text(
-                                    AppTags.featuredCategories.tr,
-                                    style: isMobile(context)
-                                        ? AppThemeData.priceTextStyle_14
-                                        : AppThemeData.titleTextStyle_11Tab,
                                   ),
                                 ],
                               ),
-                              SizedBox(height: 10.h),
-                              Expanded(
-                                child: GridView.builder(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: 8.h,
-                                  ),
-                                  shrinkWrap: true,
-                                  itemCount: _catController.featuredCategory
-                                      .value.featuredSubCategories!.length,
-                                  gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount:
-                                        (orientation == Orientation.portrait)
-                                            ? 3
-                                            : 3,
-                                    crossAxisSpacing: 15,
-                                    mainAxisSpacing: 16,
-                                    childAspectRatio: 0.73,
-                                  ),
-                                  itemBuilder: (context, index) {
-                                    return InkWell(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: (_) => ProductByCategory(
-                                              id: _catController
-                                                  .featuredCategory
-                                                  .value
-                                                  .featuredSubCategories![index]
-                                                  .id,
-                                              title: _catController
-                                                  .featuredCategory
-                                                  .value
-                                                  .featuredSubCategories![index]
-                                                  .title,
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                      child: Container(
-                                        alignment: Alignment.center,
-                                        decoration: BoxDecoration(
-                                          color: AppThemeData.buttonTextColor,
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(10.r),
-                                          ),
-                                          border: Border.all(
-                                            color: const Color(0xFFEEEEEE),
-                                            width: 1,
-                                          ),
-                                          boxShadow: [
-                                            BoxShadow(
-                                                spreadRadius: 30.r,
-                                                blurRadius: 1,
-                                                color: const Color(0xff404040)
-                                                    .withOpacity(0.01),
-                                                offset: const Offset(0, 15))
-                                          ],
-                                        ),
-                                        child: Padding(
-                                          padding: EdgeInsets.all(8.r),
-                                          child: Column(
-                                            children: [
-                                              Expanded(
-                                                child: Image.network(
-                                                  _catController
-                                                      .featuredCategory
-                                                      .value
-                                                      .featuredSubCategories![
-                                                          index]
-                                                      .image!
-                                                      .toString(),
-                                                ),
-                                              ),
-                                              Center(
-                                                child: Text(
-                                                  _catController
-                                                      .featuredCategory
-                                                      .value
-                                                      .featuredSubCategories![
-                                                          index]
-                                                      .title
-                                                      .toString(),
-                                                  maxLines: 1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .categoryTitleTextStyle_12
-                                                      : AppThemeData
-                                                          .categoryTitleTextStyle_9Tab,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                            ],
-                          ),
+                            );
+                          },
                         ),
-                      )
-                    : Expanded(
-                        flex: 2,
-                        child: Container(
-                          height: size.height,
-                          padding: EdgeInsets.only(left: 7.5.w, right: 15.w),
-                          //color: Colors.green,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: isMobile(context) ? 100.h : 130.h,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xffDBE8C2),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                      _catController
-                                          .categoryList[
-                                              _catController.index.value]
-                                          .banner!,
+
+                        //pagination progress
+
+
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.width*0.05,),
+                //
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      child: _catController.featuredIndex.value
+                          ? Container(
+                            height: size.height,
+                            padding: EdgeInsets.only(
+                              left: 7.5.w,
+                              right: 15.w,
+                            ),
+                            //color: Colors.green,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: 100.h,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffDBE8C2),
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.r),
                                     ),
-                                    fit: BoxFit.fill,
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        _catController
+                                            .featuredCategory.value.banner!,
+                                      ),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        spreadRadius: 30.r,
+                                        blurRadius: 1,
+                                        color: const Color(0xff404040)
+                                            .withOpacity(0.01),
+                                        offset: const Offset(0, 15),
+                                      )
+                                    ],
                                   ),
-                                  boxShadow: [
-                                    BoxShadow(
-                                      spreadRadius: 30.r,
-                                      blurRadius: 1,
-                                      color: const Color(0xff404040)
-                                          .withOpacity(0.01),
-                                      offset: const Offset(0, 15),
-                                    )
+                                ),
+                                SizedBox(height: 15.h),
+                                Row(
+                                  children: [
+                                    Text(
+                                      AppTags.featuredCategories.tr,
+                                      style: isMobile(context)
+                                          ? AppThemeData.priceTextStyle_14
+                                          : AppThemeData.titleTextStyle_11Tab,
+                                    ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(
-                                height: 20.h,
-                              ),
-                              Expanded(
-                                child: ListView.builder(
-                                  shrinkWrap: true,
-                                  itemCount: _catController
-                                      .categoryList[_catController.index.value]
-                                      .subCategories!
-                                      .length,
-                                  itemBuilder: (_, subCtIndex) {
-                                    return _catController
+                                SizedBox(height: 10.h),
+                                Expanded(
+                                  child: GridView.builder(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 8.h,
+                                    ),
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: _catController.featuredCategory
+                                        .value.featuredSubCategories!.length,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                      crossAxisCount:
+                                          (orientation == Orientation.portrait)
+                                              ? 3
+                                              : 3,
+                                      crossAxisSpacing: 15,
+                                      mainAxisSpacing: 16,
+                                      childAspectRatio: 0.73,
+                                    ),
+                                    itemBuilder: (context, index) {
+                                      return InkWell(
+                                        onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (_) => ProductByCategory(
+                                                id: _catController
+                                                    .featuredCategory
+                                                    .value
+                                                    .featuredSubCategories![index]
+                                                    .id,
+                                                title: _catController
+                                                    .featuredCategory
+                                                    .value
+                                                    .featuredSubCategories![index]
+                                                    .title,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        child: Container(
+                                          alignment: Alignment.center,
+                                          decoration: BoxDecoration(
+                                            color: AppThemeData.buttonTextColor,
+                                            borderRadius: BorderRadius.all(
+                                              Radius.circular(10.r),
+                                            ),
+                                            border: Border.all(
+                                              color: const Color(0xFFEEEEEE),
+                                              width: 1,
+                                            ),
+                                            boxShadow: [
+                                              BoxShadow(
+                                                  spreadRadius: 30.r,
+                                                  blurRadius: 1,
+                                                  color: const Color(0xff404040)
+                                                      .withOpacity(0.01),
+                                                  offset: const Offset(0, 15))
+                                            ],
+                                          ),
+                                          child: Padding(
+                                            padding: EdgeInsets.all(8.r),
+                                            child: Column(
+                                              children: [
+                                                Expanded(
+                                                  child: Image.network(
+                                                    _catController
+                                                        .featuredCategory
+                                                        .value
+                                                        .featuredSubCategories![
+                                                            index]
+                                                        .image!
+                                                        .toString(),
+                                                  ),
+                                                ),
+                                                Center(
+                                                  child: Text(
+                                                    _catController
+                                                        .featuredCategory
+                                                        .value
+                                                        .featuredSubCategories![
+                                                            index]
+                                                        .title
+                                                        .toString(),
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: isMobile(context)
+                                                        ? AppThemeData
+                                                            .categoryTitleTextStyle_12
+                                                        : AppThemeData
+                                                            .categoryTitleTextStyle_9Tab,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                          : Container(
+                            height: size.height,
+                            padding: EdgeInsets.only(left: 7.5.w, right: 15.w),
+                            //color: Colors.green,
+                            child: Column(
+                              children: [
+                                Container(
+                                  height: isMobile(context) ? 100.h : 130.h,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffDBE8C2),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(10)),
+                                    image: DecorationImage(
+                                      image: NetworkImage(
+                                        _catController
                                             .categoryList[
                                                 _catController.index.value]
-                                            .subCategories![subCtIndex]
-                                            .childCategories!
-                                            .isNotEmpty
-                                        ? InkWell(
-                                            onTap: () {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      ProductByCategory(
-                                                    id: _catController
+                                            .banner!,
+                                      ),
+                                      fit: BoxFit.fill,
+                                    ),
+                                    boxShadow: [
+                                      BoxShadow(
+                                        spreadRadius: 30.r,
+                                        blurRadius: 1,
+                                        color: const Color(0xff404040)
+                                            .withOpacity(0.01),
+                                        offset: const Offset(0, 15),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 20.h,
+                                ),
+                                Expanded(
+                                  child: ListView.builder(
+                                    shrinkWrap: true,
+                                    physics: NeverScrollableScrollPhysics(),
+
+                                    itemCount: _catController
+                                        .categoryList[_catController.index.value]
+                                        .subCategories!
+                                        .length,
+                                    itemBuilder: (_, subCtIndex) {
+                                      return _catController
+                                              .categoryList[
+                                                  _catController.index.value]
+                                              .subCategories![subCtIndex]
+                                              .childCategories!
+                                              .isNotEmpty
+                                          ? InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        ProductByCategory(
+                                                      id: _catController
+                                                          .categoryList[
+                                                              _catController
+                                                                  .index.value]
+                                                          .subCategories![
+                                                              subCtIndex]
+                                                          .id,
+                                                      title: _catController
+                                                          .categoryList[
+                                                              _catController
+                                                                  .index.value]
+                                                          .subCategories![
+                                                              subCtIndex]
+                                                          .title,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: ListView(
+                                                shrinkWrap: true,
+                                                physics: NeverScrollableScrollPhysics(),
+
+                                                primary: false,
+                                                children: [
+                                                  SizedBox(height: 15.h),
+                                                  Text(
+                                                    _catController
                                                         .categoryList[
                                                             _catController
                                                                 .index.value]
                                                         .subCategories![
                                                             subCtIndex]
-                                                        .id,
-                                                    title: _catController
+                                                        .title
+                                                        .toString(),
+                                                    style: isMobile(context)
+                                                        ? AppThemeData
+                                                            .priceTextStyle_14
+                                                        : AppThemeData
+                                                            .titleTextStyle_11Tab,
+                                                  ),
+                                                  SizedBox(height: 10.h),
+                                                  GridView.builder(
+                                                    physics:
+                                                        const NeverScrollableScrollPhysics(),
+                                                    scrollDirection:
+                                                        Axis.vertical,
+                                                    shrinkWrap: true,
+                                                    itemCount: _catController
                                                         .categoryList[
                                                             _catController
                                                                 .index.value]
                                                         .subCategories![
                                                             subCtIndex]
-                                                        .title,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: ListView(
-                                              shrinkWrap: true,
-                                              primary: false,
-                                              children: [
-                                                SizedBox(height: 15.h),
-                                                Text(
-                                                  _catController
-                                                      .categoryList[
-                                                          _catController
-                                                              .index.value]
-                                                      .subCategories![
-                                                          subCtIndex]
-                                                      .title
-                                                      .toString(),
-                                                  style: isMobile(context)
-                                                      ? AppThemeData
-                                                          .priceTextStyle_14
-                                                      : AppThemeData
-                                                          .titleTextStyle_11Tab,
-                                                ),
-                                                SizedBox(height: 10.h),
-                                                GridView.builder(
-                                                  physics:
-                                                      const NeverScrollableScrollPhysics(),
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  shrinkWrap: true,
-                                                  itemCount: _catController
-                                                      .categoryList[
-                                                          _catController
-                                                              .index.value]
-                                                      .subCategories![
-                                                          subCtIndex]
-                                                      .childCategories!
-                                                      .length,
-                                                  gridDelegate:
-                                                      SliverGridDelegateWithFixedCrossAxisCount(
-                                                    crossAxisCount:
-                                                        orientation ==
-                                                                Orientation
-                                                                    .portrait
-                                                            ? 3
-                                                            : 3,
-                                                    crossAxisSpacing: 15,
-                                                    mainAxisSpacing: 16,
-                                                    childAspectRatio: 0.73,
-                                                  ),
-                                                  itemBuilder:
-                                                      (context, childIndex) {
-                                                    return InkWell(
-                                                      onTap: () {
-                                                        Navigator.of(context)
-                                                            .push(
-                                                          MaterialPageRoute(
-                                                            builder: (_) =>
-                                                                ProductByCategory(
-                                                              id: _catController
-                                                                  .categoryList[
-                                                                      _catController
-                                                                          .index
-                                                                          .value]
-                                                                  .subCategories![
-                                                                      subCtIndex]
-                                                                  .childCategories![
-                                                                      childIndex]
-                                                                  .id,
-                                                              title: _catController
-                                                                  .categoryList[
-                                                                      _catController
-                                                                          .index
-                                                                          .value]
-                                                                  .subCategories![
-                                                                      subCtIndex]
-                                                                  .childCategories![
-                                                                      childIndex]
-                                                                  .title,
+                                                        .childCategories!
+                                                        .length,
+                                                    gridDelegate:
+                                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                                      crossAxisCount:
+                                                          orientation ==
+                                                                  Orientation
+                                                                      .portrait
+                                                              ? 3
+                                                              : 3,
+                                                      crossAxisSpacing: 15,
+                                                      mainAxisSpacing: 16,
+                                                      childAspectRatio: 0.73,
+                                                    ),
+                                                    itemBuilder:
+                                                        (context, childIndex) {
+                                                      return InkWell(
+                                                        onTap: () {
+                                                          Navigator.of(context)
+                                                              .push(
+                                                            MaterialPageRoute(
+                                                              builder: (_) =>
+                                                                  ProductByCategory(
+                                                                id: _catController
+                                                                    .categoryList[
+                                                                        _catController
+                                                                            .index
+                                                                            .value]
+                                                                    .subCategories![
+                                                                        subCtIndex]
+                                                                    .childCategories![
+                                                                        childIndex]
+                                                                    .id,
+                                                                title: _catController
+                                                                    .categoryList[
+                                                                        _catController
+                                                                            .index
+                                                                            .value]
+                                                                    .subCategories![
+                                                                        subCtIndex]
+                                                                    .childCategories![
+                                                                        childIndex]
+                                                                    .title,
+                                                              ),
                                                             ),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        alignment:
-                                                            Alignment.center,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: AppThemeData
-                                                              .buttonTextColor,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                            Radius.circular(
-                                                                10.r),
-                                                          ),
-                                                          border: Border.all(
-                                                            color: const Color(
-                                                                0xFFEEEEEE),
-                                                            width: 1,
-                                                          ),
-                                                          boxShadow: [
-                                                            BoxShadow(
-                                                              spreadRadius:
-                                                                  30.r,
-                                                              blurRadius: 1,
+                                                          );
+                                                        },
+                                                        child: Container(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: AppThemeData
+                                                                .buttonTextColor,
+                                                            borderRadius:
+                                                                BorderRadius.all(
+                                                              Radius.circular(
+                                                                  10.r),
+                                                            ),
+                                                            border: Border.all(
                                                               color: const Color(
-                                                                      0xff404040)
-                                                                  .withOpacity(
-                                                                      0.01),
-                                                              offset:
-                                                                  const Offset(
-                                                                      0, 15),
+                                                                  0xFFEEEEEE),
+                                                              width: 1,
                                                             ),
-                                                          ],
-                                                        ),
-                                                        child: Padding(
-                                                          padding: EdgeInsets
-                                                              .symmetric(
-                                                            horizontal: 8.w,
-                                                            vertical: 9.h,
-                                                          ),
-                                                          child: Column(
-                                                            children: [
-                                                              Expanded(
-                                                                child: Image
-                                                                    .network(
-                                                                  _catController
-                                                                      .categoryList[_catController
-                                                                          .index
-                                                                          .value]
-                                                                      .subCategories![
-                                                                          subCtIndex]
-                                                                      .childCategories![
-                                                                          childIndex]
-                                                                      .image
-                                                                      .toString(),
-                                                                ),
-                                                              ),
-                                                              SizedBox(
-                                                                height: 6.h,
-                                                              ),
-                                                              Center(
-                                                                child: Text(
-                                                                  _catController
-                                                                      .categoryList[_catController
-                                                                          .index
-                                                                          .value]
-                                                                      .subCategories![
-                                                                          subCtIndex]
-                                                                      .childCategories![
-                                                                          childIndex]
-                                                                      .title
-                                                                      .toString(),
-                                                                  maxLines: 1,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  style: isMobile(
-                                                                          context)
-                                                                      ? AppThemeData
-                                                                          .categoryTitleTextStyle_12
-                                                                      : AppThemeData
-                                                                          .categoryTitleTextStyle_9Tab,
-                                                                ),
+                                                            boxShadow: [
+                                                              BoxShadow(
+                                                                spreadRadius:
+                                                                    30.r,
+                                                                blurRadius: 1,
+                                                                color: const Color(
+                                                                        0xff404040)
+                                                                    .withOpacity(
+                                                                        0.01),
+                                                                offset:
+                                                                    const Offset(
+                                                                        0, 15),
                                                               ),
                                                             ],
                                                           ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                )
-                                              ],
-                                            ),
-                                          )
-                                        : InkWell(
-                                            onTap: () {
-                                              Navigator.of(context).push(
-                                                MaterialPageRoute(
-                                                  builder: (_) =>
-                                                      ProductByCategory(
-                                                    id: _catController
-                                                        .categoryList[
-                                                            _catController
-                                                                .index.value]
-                                                        .subCategories![
-                                                            subCtIndex]
-                                                        .id!,
-                                                    title: _catController
-                                                        .categoryList[
-                                                            _catController
-                                                                .index.value]
-                                                        .subCategories![
-                                                            subCtIndex]
-                                                        .title,
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                            child: Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                vertical: 10.h,
-                                              ),
-                                              child: Container(
-                                                height: 80.h,
-                                                decoration: BoxDecoration(
-                                                  color: AppThemeData
-                                                      .buttonTextColor,
-                                                  borderRadius:
-                                                      BorderRadius.all(
-                                                    Radius.circular(10.r),
-                                                  ),
-                                                  border: Border.all(
-                                                    color:
-                                                        const Color(0xFFEEEEEE),
-                                                    width: 1.w,
-                                                  ),
-                                                ),
-                                                child: Row(
-                                                  children: [
-                                                    Column(
-                                                      children: [
-                                                        Expanded(
                                                           child: Padding(
-                                                            padding:
-                                                                EdgeInsets.all(
-                                                                    8.r),
-                                                            child:
-                                                                Image.network(
+                                                            padding: EdgeInsets
+                                                                .symmetric(
+                                                              horizontal: 8.w,
+                                                              vertical: 9.h,
+                                                            ),
+                                                            child: Column(
+                                                              children: [
+                                                                Expanded(
+                                                                  child: Image
+                                                                      .network(
+                                                                    _catController
+                                                                        .categoryList[_catController
+                                                                            .index
+                                                                            .value]
+                                                                        .subCategories![
+                                                                            subCtIndex]
+                                                                        .childCategories![
+                                                                            childIndex]
+                                                                        .image
+                                                                        .toString(),
+                                                                  ),
+                                                                ),
+                                                                SizedBox(
+                                                                  height: 6.h,
+                                                                ),
+                                                                Center(
+                                                                  child: Text(
+                                                                    _catController
+                                                                        .categoryList[_catController
+                                                                            .index
+                                                                            .value]
+                                                                        .subCategories![
+                                                                            subCtIndex]
+                                                                        .childCategories![
+                                                                            childIndex]
+                                                                        .title
+                                                                        .toString(),
+                                                                    maxLines: 1,
+                                                                    overflow:
+                                                                        TextOverflow
+                                                                            .ellipsis,
+                                                                    style: isMobile(
+                                                                            context)
+                                                                        ? AppThemeData
+                                                                            .categoryTitleTextStyle_12
+                                                                        : AppThemeData
+                                                                            .categoryTitleTextStyle_9Tab,
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  )
+                                                ],
+                                              ),
+                                            )
+                                          : InkWell(
+                                              onTap: () {
+                                                Navigator.of(context).push(
+                                                  MaterialPageRoute(
+                                                    builder: (_) =>
+                                                        ProductByCategory(
+                                                      id: _catController
+                                                          .categoryList[
+                                                              _catController
+                                                                  .index.value]
+                                                          .subCategories![
+                                                              subCtIndex]
+                                                          .id!,
+                                                      title: _catController
+                                                          .categoryList[
+                                                              _catController
+                                                                  .index.value]
+                                                          .subCategories![
+                                                              subCtIndex]
+                                                          .title,
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                  vertical: 10.h,
+                                                ),
+                                                child: Container(
+                                                  height: 80.h,
+                                                  decoration: BoxDecoration(
+                                                    color: AppThemeData
+                                                        .buttonTextColor,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(10.r),
+                                                    ),
+                                                    border: Border.all(
+                                                      color:
+                                                          const Color(0xFFEEEEEE),
+                                                      width: 1.w,
+                                                    ),
+                                                  ),
+                                                  child: Row(
+                                                    children: [
+                                                      Column(
+                                                        children: [
+                                                          Expanded(
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets.all(
+                                                                      8.r),
+                                                              child:
+                                                                  Image.network(
+                                                                _catController
+                                                                    .categoryList[
+                                                                        _catController
+                                                                            .index
+                                                                            .value]
+                                                                    .subCategories![
+                                                                        subCtIndex]
+                                                                    .image!,
+                                                              ),
+                                                            ),
+                                                          )
+                                                        ],
+                                                      ),
+                                                      Expanded(
+                                                        child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
                                                               _catController
                                                                   .categoryList[
                                                                       _catController
@@ -610,70 +635,49 @@ class CategoryScreen extends StatelessWidget {
                                                                           .value]
                                                                   .subCategories![
                                                                       subCtIndex]
-                                                                  .image!,
+                                                                  .title
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: isMobile(
+                                                                          context)
+                                                                      ? 12.sp
+                                                                      : 10.sp,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontFamily:
+                                                                      "Poppins_Medium"),
                                                             ),
-                                                          ),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    Expanded(
-                                                      child: Column(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          Text(
-                                                            _catController
-                                                                .categoryList[
-                                                                    _catController
-                                                                        .index
-                                                                        .value]
-                                                                .subCategories![
-                                                                    subCtIndex]
-                                                                .title
-                                                                .toString(),
-                                                            style: TextStyle(
+                                                            Text(
+                                                              "${AppTags.totalProduct.tr}: ${_catController.categoryList[_catController.index.value].subCategories![subCtIndex].totalProduct}",
+                                                              style: TextStyle(
                                                                 fontSize: isMobile(
                                                                         context)
                                                                     ? 12.sp
                                                                     : 10.sp,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
                                                                 fontFamily:
-                                                                    "Poppins_Medium"),
-                                                          ),
-                                                          Text(
-                                                            "${AppTags.totalProduct.tr}: ${_catController.categoryList[_catController.index.value].subCategories![subCtIndex].totalProduct}",
-                                                            style: TextStyle(
-                                                              fontSize: isMobile(
-                                                                      context)
-                                                                  ? 12.sp
-                                                                  : 10.sp,
-                                                              fontFamily:
-                                                                  "Poppins",
-                                                              color: const Color(
-                                                                  0xFF666666),
+                                                                    "Poppins",
+                                                                color: const Color(
+                                                                    0xFF666666),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          );
-                                  },
-                                ),
-                              )
-                            ],
+                                            );
+                                    },
+                                  ),
+                                )
+                              ],
+                            ),
                           ),
-                        ),
-                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

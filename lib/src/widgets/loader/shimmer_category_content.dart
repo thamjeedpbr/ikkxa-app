@@ -19,7 +19,7 @@ class ShimmerCategoryContent extends StatelessWidget {
           width: size.width,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Row(
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(

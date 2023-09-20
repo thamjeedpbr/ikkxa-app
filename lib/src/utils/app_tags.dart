@@ -177,6 +177,10 @@ class AppTags {
   static const String phone = "phone";
   static const String email = "email";
   static const String address = "address";
+  static const String building = "building";
+  static const String street = "street";
+  static const String area = "area";
+  static const String landmark = "landmark";
   static const String update = "update";
   static const String gender = "gender";
   static const String dateOfBirth = "dateOfBirth";

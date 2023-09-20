@@ -21,7 +21,7 @@ class CurrencyConverterController extends GetxController implements GetxService{
 
   void fetchCurrencyData() {
     ConfigModel data = LocalDataHelper().getConfigData();
-    appCurrencyCode = LocalDataHelper().getCurrCode() ?? "USD";
+    appCurrencyCode = LocalDataHelper().getCurrCode() ?? "SAR";
     currencyIndex = data.data!.currencies!.indexWhere(((currIndex) => currIndex.code == appCurrencyCode));
     appCurrencySymbol = data.data!.currencies![currencyIndex].symbol!;
     currencySymbolFormat = data.data!.currencyConfig!.currencySymbolFormat!;

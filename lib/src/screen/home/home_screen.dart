@@ -14,6 +14,7 @@ import '../../controllers/cart_content_controller.dart';
 import '../../controllers/details_screen_controller.dart';
 import '../../controllers/home_screen_controller.dart';
 import '../../controllers/dashboard_controller.dart';
+import '../../controllers/language_controller.dart';
 import '../../screen/drawer/drawer_screen.dart';
 import '../../screen/news/all_news_screen.dart';
 import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
@@ -48,9 +49,12 @@ class HomeScreenContent extends StatelessWidget {
     () => DetailsPageController(),
     fenix: true,
   );
+  final controller = Get.put(LanguageController());
 
   @override
   Widget build(BuildContext context) {
+    controller.getAppLanguageList();
+
     Size size = MediaQuery.of(context).size;
     return Obx(
       () => homeScreenContentController.homeDataModel.value.data != null &&
@@ -129,6 +133,21 @@ class HomeScreenContent extends StatelessWidget {
                       ),
                       actions: [
                         IconButton(
+                          icon: SvgPicture.asset(
+                            controller.locale.toString()=="en_US"? Images.arabic:  Images.english,
+                            height: 22.h,
+                            width: 19.w,
+                          ),
+                          onPressed: () {
+                           if(controller.locale.toString()=="en_US") {
+                             controller.updateLocale("ar_SA");
+                           }
+                           else{
+                             controller.updateLocale("en_US");
+
+                           }
+                           },
+                        ), IconButton(
                           icon: SvgPicture.asset(
                             Images.notification,
                             height: 22.h,

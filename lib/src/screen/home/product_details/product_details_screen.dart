@@ -1188,18 +1188,30 @@ class DetailsPage extends StatelessWidget {
                                                         height: 5.h,
                                                       ),
                                                       SizedBox(
-                                                        height: 24.h,
+                                                        height: detailsModel
+                                                            .data!
+                                                            .attributes![i]
+                                                            .attributeValue!
+                                                            .length>6? 50.h:24.h,
                                                         width: MediaQuery.of(
                                                                 context)
                                                             .size
                                                             .width,
-                                                        child: ListView.builder(
+                                                        child:  detailsModel
+                                                            .data!
+                                                            .attributes![i]
+                                                            .attributeValue!
+                                                            .length>6?GridView.builder(
+                                                          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
+                                                              crossAxisSpacing: 5.h,
+                                                              childAspectRatio: 0.44),
+                                                          scrollDirection:
+                                                          Axis.horizontal,
                                                           shrinkWrap: true,
                                                           padding:
                                                               EdgeInsets.only(
                                                                   right: 15.w),
-                                                          scrollDirection:
-                                                              Axis.horizontal,
+
                                                           itemCount: detailsModel
                                                               .data!
                                                               .attributes![i]
@@ -1292,6 +1304,106 @@ class DetailsPage extends StatelessWidget {
                                                               ),
                                                             );
                                                           },
+                                                        ):
+                                                        ListView.builder(
+                                                          shrinkWrap: true,
+                                                          padding:
+                                                          EdgeInsets.only(
+                                                              right: 15.w),
+                                                          scrollDirection:
+                                                          Axis.horizontal,
+                                                          itemCount: detailsModel
+                                                              .data!
+                                                              .attributes![i]
+                                                              .attributeValue!
+                                                              .length,
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            return Padding(
+                                                              padding: EdgeInsets
+                                                                  .only(
+                                                                  right:
+                                                                  8.w),
+                                                              child: InkWell(
+                                                                onTap: () {
+                                                                  _colorSelectionController
+                                                                      .changeAttrSelection(
+                                                                      attrIndex:
+                                                                      i,
+                                                                      value:
+                                                                      index);
+                                                                  _colorSelectionController.insertAttrNameToList(
+                                                                      name: detailsModel
+                                                                          .data!
+                                                                          .attributes![
+                                                                      i]
+                                                                          .attributeValue![
+                                                                      index]
+                                                                          .value!,
+                                                                      index: i);
+                                                                  _colorSelectionController.insertAttrIdToList(
+                                                                      id: detailsModel
+                                                                          .data!
+                                                                          .attributes![
+                                                                      i]
+                                                                          .attributeValue![
+                                                                      index]
+                                                                          .id!
+                                                                          .toString(),
+                                                                      index: i);
+                                                                },
+                                                                child: Obx(
+                                                                      () =>
+                                                                      Container(
+                                                                        height:
+                                                                        24.h,
+                                                                        alignment:
+                                                                        Alignment
+                                                                            .center,
+                                                                        decoration:
+                                                                        BoxDecoration(
+                                                                          border:
+                                                                          Border
+                                                                              .all(
+                                                                            color: _colorSelectionController.selectedArray[i] ==
+                                                                                index
+                                                                                ? const Color(0xffF51E46)
+                                                                                : const Color(0xffF4F4F4),
+                                                                          ),
+                                                                          borderRadius:
+                                                                          BorderRadius
+                                                                              .all(
+                                                                            Radius.circular(
+                                                                                3.r),
+                                                                          ),
+                                                                        ),
+                                                                        child:
+                                                                        Padding(
+                                                                          padding: EdgeInsets.symmetric(
+                                                                              horizontal:
+                                                                              8.w),
+                                                                          child:
+                                                                          Text(
+                                                                            detailsModel
+                                                                                .data!
+                                                                                .attributes![i]
+                                                                                .attributeValue![index]
+                                                                                .value!,
+                                                                            style: _colorSelectionController.selectedArray[i] ==
+                                                                                index
+                                                                                ? isMobile(context)
+                                                                                ? AppThemeData.detwailsScreenBottomSheetTitle.copyWith(color: AppThemeData.productBoxDecorationColor)
+                                                                                : AppThemeData.detailsScreenBottomSheetTitleTab.copyWith(color: AppThemeData.productBoxDecorationColor)
+                                                                                : isMobile(context)
+                                                                                ? AppThemeData.detwailsScreenBottomSheetTitle
+                                                                                : AppThemeData.detailsScreenBottomSheetTitleTab,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
                                                         ),
                                                       ),
                                                     ],
@@ -1348,7 +1460,8 @@ class DetailsPage extends StatelessWidget {
                                                           (context, index) {
                                                         return InkWell(
                                                           onTap: () {
-                                                            Get.toNamed(
+
+                                                         /*   Get.toNamed(
                                                               Routes
                                                                   .detailsPage,
                                                               parameters: {
@@ -1359,7 +1472,15 @@ class DetailsPage extends StatelessWidget {
                                                                     .id!
                                                                     .toString(),
                                                               },
-                                                            );
+                                                            );*/
+                                                            detailsController
+                                                                .getProductDetails(int.parse(detailsModel
+                                                                .data!
+                                                                .alsoAvaialbleIn![
+                                                            index]
+                                                                .id!
+                                                                .toString()));
+
                                                           },
                                                           child: Padding(
                                                             padding:

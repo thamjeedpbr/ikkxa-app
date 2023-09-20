@@ -38,6 +38,10 @@ class _AddressesState extends State<Addresses> {
   final phoneController = TextEditingController();
   final postalCodeController = TextEditingController();
   final addressController = TextEditingController();
+  final buildingController = TextEditingController();
+  final streetController = TextEditingController();
+  final areaController = TextEditingController();
+  final landMarkController = TextEditingController();
   final currencyConverterController = Get.find<CurrencyConverterController>();
   int? shippingIndex = 0;
   String? token = LocalDataHelper().getUserToken();
@@ -105,6 +109,11 @@ class _AddressesState extends State<Addresses> {
     phoneController.dispose();
     postalCodeController.dispose();
     addressController.dispose();
+    buildingController.dispose();
+    streetController.dispose();
+    areaController.dispose();
+    landMarkController.dispose();
+
     super.dispose();
   }
 
@@ -864,6 +873,174 @@ class _AddressesState extends State<Addresses> {
                           height: 10.h,
                         ),
                         Text(
+                          AppTags.building.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: buildingController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+                            validator: (value) => textFieldValidator(
+                              AppTags.building.tr,
+                              buildingController,
+                            ),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: AppTags.building.tr,
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.street.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: streetController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+                            validator: (value) => textFieldValidator(
+                              AppTags.street.tr,
+                              streetController,
+                            ),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: AppTags.street.tr,
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.area.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: areaController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+                            validator: (value) => textFieldValidator(
+                              AppTags.area.tr,
+                              areaController,
+                            ),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: AppTags.area.tr,
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.landmark.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: landMarkController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+                            validator: (value) => textFieldValidator(
+                              AppTags.landmark.tr,
+                              landMarkController,
+                            ),
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: AppTags.landmark.tr,
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
                           AppTags.address.tr,
                           style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
                         ),
@@ -925,8 +1102,11 @@ class _AddressesState extends State<Addresses> {
                             countryId: _selectedCountry,
                             stateId: _selectedState,
                             cityId: _selectedCity,
-                            postalCode:
-                            postalCodeController.text.toString(),
+                            postalCode: postalCodeController.text.toString(),
+                            street: streetController.text.toString(),
+                            building: buildingController.text.toString(),
+                            area: areaController.text.toString(),
+                            landmark: landMarkController.text.toString(),
                             address: addressController.text.toString(),
                           )
                               .then((value) => getShippingAddress());
@@ -1325,8 +1505,9 @@ class _AddressesState extends State<Addresses> {
                                                 left: 6.w),
                                             child: Text(
                                               editViewModel
+                                                  .data!.address!.city!=null?editViewModel
                                                   .data!.address!.city!
-                                                  .toString(),
+                                                  .toString():"",
                                               style: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
                                             ),
                                           ),
@@ -1369,9 +1550,10 @@ class _AddressesState extends State<Addresses> {
                                               padding: EdgeInsets.all(
                                                   6.r),
                                               child: Text(
-                                                editViewModel
+                                                  editViewModel
+                                                      .data!.address!.city!=null? editViewModel
                                                     .data!.address!.city!
-                                                    .toString(),
+                                                    .toString():"",
                                                 style:isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
                                               ),
                                             ),
@@ -1442,6 +1624,166 @@ class _AddressesState extends State<Addresses> {
                           ),
                         ),
                         SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.building.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: buildingController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText:  editViewModel.data!.address!.building!=null? editViewModel.data!.address!.building!
+                                  .toString():"",
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.street.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: streetController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText:   editViewModel.data!.address!.street!=null?editViewModel.data!.address!.street!
+                                  .toString():"",
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.area.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: areaController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: editViewModel.data!.address!.area!=null?editViewModel.data!.address!.area!
+                                  .toString():"",
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Text(
+                          AppTags.landmark.tr,
+                          style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
+                        ),
+                        SizedBox(
+                          height: 8.h,
+                        ),
+                        Container(
+                          height: 65.h,
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.symmetric(horizontal: 4.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(color: AppThemeData.addressBoxBorderColor),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(5.r),
+                            ),
+                          ),
+                          child: TextFormField(
+                            controller: landMarkController,
+                            maxLines: 2,
+                            textAlign: TextAlign.left,
+                            keyboardType: TextInputType.name,
+
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText:  editViewModel.data!.address!.landMark!=null?editViewModel.data!.address!.landMark!
+                                  .toString():"",
+                              hintStyle: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
+                              contentPadding: EdgeInsets.only(
+                                left: 8.w,
+                                right: 8.w,
+                                bottom: 5.h,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
                           height: 16.h,
                         ),
                         Text(
@@ -1499,7 +1841,12 @@ class _AddressesState extends State<Addresses> {
                             stateId: _selectedState ?? int.parse(editViewModel.data!.address!.addressIds!.stateId.toString()),
                             cityId: _selectedCity ?? int.parse(editViewModel.data!.address!.addressIds!.cityId.toString()),
                             postalCode: postalCodeController.text.isNotEmpty?postalCodeController.text.toString():editViewModel.data!.address!.postalCode.toString(),
+                            street: streetController.text.isNotEmpty?streetController.text.toString():editViewModel.data!.address!.street.toString(),
+                            building: buildingController.text.isNotEmpty?buildingController.text.toString():editViewModel.data!.address!.building.toString(),
+                            area: areaController.text.toString().isNotEmpty?areaController.text.toString():editViewModel.data!.address!.area.toString(),
+                            landmark: landMarkController.text.toString().isNotEmpty?landMarkController.text.toString():editViewModel.data!.address!.landMark.toString(),
                             address: addressController.text.isNotEmpty?addressController.text.toString():editViewModel.data!.address!.address.toString(),
+
                             addressId: addressId!,
                           )
                               .then((value) => getShippingAddress());
