@@ -22,10 +22,9 @@ class SplashScreen extends GetView<SplashController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                width: 142.w,
-                height: 142.h,
+
                 child: Center(
-                  child: Image.asset("assets/logos/logo.png"),
+                  child: Image.asset("assets/logos/ikkxa_splash.png",height: MediaQuery.of(context).size.width*0.6,),
                 ),
               ),
             ],
