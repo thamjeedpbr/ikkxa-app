@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>858468987379-8u8uqlfttj2c3bpkbuo2u4f1vm4t7f2e.apps.googleusercontent.com</string>
+	<string>888682993452-hcjdkuof04gniu0bpt2cvgfcl7v5qa6a.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.858468987379-8u8uqlfttj2c3bpkbuo2u4f1vm4t7f2e</string>
+	<string>com.googleusercontent.apps.888682993452-hcjdkuof04gniu0bpt2cvgfcl7v5qa6a</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>858468987379-677muvn6j4urfj6tv8e34vaeo36illon.apps.googleusercontent.com</string>
+	<string>888682993452-4consglk5lbm1v6ji9taf69af3a88lra.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyD0i4KhJGT8KPNJhwue6nUDFT9IIe0cJU0</string>
+	<string>AIzaSyBHVVMPRmDuSG-QOlhoosxnvaH_vX0-a5w</string>
 	<key>GCM_SENDER_ID</key>
-	<string>858468987379</string>
+	<string>888682993452</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.spagreen.yoori</string>
+	<string>com.akas.ikkxa</string>
 	<key>PROJECT_ID</key>
-	<string>yoori-ecommerce</string>
+	<string>ikxxa-saudi</string>
 	<key>STORAGE_BUCKET</key>
-	<string>yoori-ecommerce.appspot.com</string>
+	<string>ikxxa-saudi.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:858468987379:ios:b45c3731253a0c2c012286</string>
+	<string>1:888682993452:ios:d62e43f24bb9fd1df03e89</string>
 </dict>
 </plist>
