@@ -240,7 +240,7 @@ class LoginScreen extends StatelessWidget {
                         : const SizedBox(),
 
                     //apple login
-                   /* Platform.isIOS
+                  /*  Platform.isIOS
                         ? Container(
                             height: 48.h,
                             width: 48.w,
@@ -261,6 +261,7 @@ class LoginScreen extends StatelessWidget {
                                 padding: EdgeInsets.all(12.r),
                                 child: SvgPicture.asset(Images.appleLogo)),
                             ),
+
                           )
                         : Container(
                             color: Colors.red,
