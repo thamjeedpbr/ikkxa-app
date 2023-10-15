@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:888682993452:android:052a8b4ead5b8b22f03e89",
+        "mobilesdk_app_id": "1:888682993452:android:8e20cd95a896ac72f03e89",
         "android_client_info": {
-          "package_name": "com.ikkxa.saudi_adaminnovations"
+          "package_name": "com.akas.ikkxa"
         }
       },
       "oauth_client": [
@@ -29,6 +29,65 @@
             {
               "client_id": "888682993452-0hmc9cb53792regnantvafdujuh7t70d.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "888682993452-etv343v3k5hjagnidj71hog8b8505kq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ikkxa.saudiadaminoovations"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888682993452:android:052a8b4ead5b8b22f03e89",
+        "android_client_info": {
+          "package_name": "com.ikkxa.saudi_adaminnovations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888682993452-4consglk5lbm1v6ji9taf69af3a88lra.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ikkxa.saudi_adaminnovations",
+            "certificate_hash": "a00b99b7e7193a73ede78b3b9d3bde1866d682cc"
+          }
+        },
+        {
+          "client_id": "888682993452-u95gvklvf1k9oln1hq6vffc9r9ecgri2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ikkxa.saudi_adaminnovations",
+            "certificate_hash": "84f371c6f8dc924c6235204efabca58e5a1a53c2"
+          }
+        },
+        {
+          "client_id": "888682993452-vt4d4usqj9nbueq8v9q3fprrhcl33re5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu1R82_KS0rdpFzqjUhGUIshPsdQMJcL4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888682993452-0hmc9cb53792regnantvafdujuh7t70d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "888682993452-etv343v3k5hjagnidj71hog8b8505kq7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ikkxa.saudiadaminoovations"
+              }
             }
           ]
         }

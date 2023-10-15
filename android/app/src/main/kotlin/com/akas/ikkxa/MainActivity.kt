@@ -1,4 +1,4 @@
-package com.ikkxa.saudi_adaminnovations
+package com.akas.ikkxa
 
 import io.flutter.embedding.android.FlutterActivity
 

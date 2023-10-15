@@ -240,7 +240,7 @@ class LoginScreen extends StatelessWidget {
                         : const SizedBox(),
 
                     //apple login
-                    Platform.isIOS
+                   /* Platform.isIOS
                         ? Container(
                             height: 48.h,
                             width: 48.w,
@@ -265,7 +265,7 @@ class LoginScreen extends StatelessWidget {
                         : Container(
                             color: Colors.red,
                             height: 10.h,
-                          ),
+                          ),*/
                     Config.enableFacebookLogin
                         ? Container(
                           height: 48.h,
