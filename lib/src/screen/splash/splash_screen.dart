@@ -12,7 +12,7 @@ class SplashScreen extends GetView<SplashController> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: AppThemeData.splashScreenColor,
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: SizedBox(
           height: size.height,
@@ -22,9 +22,11 @@ class SplashScreen extends GetView<SplashController> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-
                 child: Center(
-                  child: Image.asset("assets/logos/ikkxa_splash.png",height: MediaQuery.of(context).size.width*0.6,),
+                  child: Image.asset(
+                    "assets/logos/ikkxa_splash.png",
+                    height: MediaQuery.of(context).size.width * 0.6,
+                  ),
                 ),
               ),
             ],

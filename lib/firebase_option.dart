@@ -15,21 +15,18 @@ import 'package:flutter/foundation.dart'
 /// ```
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
-
     // ignore: missing_enum_constant_in_switch
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
         return ios;
-
     }
 
     throw UnsupportedError(
       'DefaultFirebaseOptions are not supported for this platform.',
     );
   }
-
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyD7kstNKXmc2fq6tJw7jgp-YyYYRvrAwl4',
@@ -42,13 +39,13 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD7kstNKXmc2fq6tJw7jgp-YyYYRvrAwl4',
-    appId: '1:888682993452:android:052a8b4ead5b8b22f03e89',
+    appId: '1:888682993452:ios:d62e43f24bb9fd1df03e89',
     messagingSenderId: 'xxxxxxxxxxxxxxxxxxx',
-    projectId: 'xxxxxxxxxxxxxxxxxxx',
+    projectId: 'ikxxa-saudi',
     databaseURL: 'xxxxxxxxxxxxxxxxxxx',
     storageBucket: 'xxxxxxxxxxxxxxxxxxx',
     androidClientId: 'xxxxxxxxxxxxxxxxxxx',
     iosClientId: 'xxxxxxxxxxxxxxxxxxx',
-    iosBundleId: 'xxxxxxxxxxxxxxxxxxx',
+    iosBundleId: 'com.akas.ikkxa',
   );
 }

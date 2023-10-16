@@ -17,14 +17,16 @@ late final FirebaseAuth auth;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   app = await Firebase.initializeApp(
-  options: DefaultFirebaseOptions.currentPlatform,
+    name: 'ikxxa-saudi',
+    options: DefaultFirebaseOptions.currentPlatform,
   );
-  auth = FirebaseAuth.instanceFor(app: app);  await initialConfig();
+  auth = FirebaseAuth.instanceFor(app: app);
+  await initialConfig();
 
   await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp( MyApp());
+    runApp(MyApp());
   });
 }
 
@@ -32,7 +34,7 @@ Future<void> initialConfig() async {
   await Firebase.initializeApp();
 
   await Get.putAsync(() => StorageService().init());
-} 
+}
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
