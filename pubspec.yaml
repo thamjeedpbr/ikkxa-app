@@ -69,6 +69,7 @@ dependencies:
   youtube_player_flutter:
 
   country_code_picker: ^3.0.0
+  sign_in_with_apple: ^5.0.0
 
 dev_dependencies:
 
