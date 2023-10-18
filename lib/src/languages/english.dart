@@ -287,7 +287,7 @@ const Map<String, String> enUS = {
   "totalAmountYouWillGet": "Total Amount you will Get",
   "selectDateOfBirth": "Select Date of Birth",
   "selectGender": "Select Gender",
-  "selectAttr": "Please select color and other specifications.",
+  "selectAttr": "Please select any Size.",
   "videoShopping": "Video Shopping",
   "recommendedProducts": "Recommended Products",
   "relatedProducts": "Related Products",
