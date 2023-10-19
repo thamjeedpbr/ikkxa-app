@@ -58,7 +58,7 @@ class _AddressesState extends State<Addresses> {
     });
   }
 
-  String? phoneCode = "880";
+  String? phoneCode = "966";
   dynamic selectPickUpAddress;
   dynamic _selectedCountry; // Option 2
   dynamic _selectedState; // Option 2// Option 2
@@ -582,7 +582,7 @@ class _AddressesState extends State<Addresses> {
                                 flex: 7,
                                 child: CountryPickerDropdown(
                                   isFirstDefaultIfInitialValueNotProvided: false,
-                                  initialValue: 'BD',
+                                  initialValue: 'SA',
                                   isExpanded: true,
                                   itemBuilder: (Country country) => Row(
                                     children: <Widget>[

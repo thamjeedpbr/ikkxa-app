@@ -63,7 +63,7 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
     });
   }
 
-  String? phoneCode = "880";
+  String? phoneCode = "966";
   dynamic selectPickUpAddress;
   dynamic _selectedCountry; // Option 2
   dynamic _selectedState; // Option 2// Option 2
@@ -1451,7 +1451,8 @@ class _CheckOutScreenState extends State<CheckOutScreen> {
                                 flex: 7,
                                 child: CountryPickerDropdown(
                                   //itemFilter:  (c) => ['GB'].contains(c.isoCode),
-                                  initialValue: 'BD',
+                                  initialValue: 'SA',
+
                                   isFirstDefaultIfInitialValueNotProvided:
                                       false,
                                   isExpanded: true,

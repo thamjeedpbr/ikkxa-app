@@ -40,6 +40,7 @@ class DetailsPageController extends GetxController {
   final _minimumOrderQuantity = 1.obs;
   var productQuantity = 1.obs;
   var totalPrice = 0.0.obs;
+  var discountPrice = 0.0.obs;
   String colorId = '';
   String colorValue = '';
   var pageView=0.obs;
@@ -234,8 +235,11 @@ class DetailsPageController extends GetxController {
   }
 
   void calculateTotalPrice() {
+    print(productDetail.value.data!.specialDiscount);
+    print(productDetail.value.data!.discountPrice);
     double price =
-        productQuantity.value * double.parse(productDetail.value.data!.price);
+        productQuantity.value * double.parse(  productDetail.value.data!.specialDiscount ==
+            "0.000"?productDetail.value.data!.price:productDetail.value.data!.discountPrice);
     if (productDetail.value.data != null) {
       if (productDetail.value.data!.isWholesale &&
           productDetail.value.data!.wholesalePrices != null) {
