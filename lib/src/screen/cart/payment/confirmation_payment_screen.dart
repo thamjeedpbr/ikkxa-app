@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:saudi_adaminnovations/src/utils/responsive.dart';
 import '../../profile/order_history_screen.dart';
 
-
 class PaymentConfirmationScreen extends StatelessWidget {
   PaymentConfirmationScreen({Key? key}) : super(key: key);
   final homeScreenController = Get.find<DashboardController>();
@@ -58,7 +57,7 @@ class PaymentConfirmationScreen extends StatelessWidget {
                     height: 18.h,
                   ),
                   Text(
-                    AppTags.successfulPayment.tr,
+                    AppTags.orderCompleted.tr,
                     style: AppThemeData.seccessfulPayTextStyle_18,
                   ),
                   SizedBox(
@@ -66,7 +65,10 @@ class PaymentConfirmationScreen extends StatelessWidget {
                   ),
                   Text(
                     AppTags.thankYouPurchasing.tr,
-                    style: isMobile(context)? AppThemeData.titleTextStyle_14:AppThemeData.titleTextStyle_14.copyWith(fontSize: 11.sp),
+                    style: isMobile(context)
+                        ? AppThemeData.titleTextStyle_14
+                        : AppThemeData.titleTextStyle_14
+                            .copyWith(fontSize: 11.sp),
                   ),
                   SizedBox(
                     height: 50.h,
@@ -76,107 +78,113 @@ class PaymentConfirmationScreen extends StatelessWidget {
             ),
             //Calculate Card
 
-            LocalDataHelper().getUserToken() != null?
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      // width: 160,
-                      height: 48.h,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          LocalDataHelper().box.remove("trxId");
-                          homeScreenController.changeTabIndex(4);
-                          if (LocalDataHelper().getUserToken() != null){
-                          Get.offAllNamed(
-                            Routes.orderHistory,
-                            parameters: {
-                              'routeName': RouteCheckOfOrderHistory
-                                  .paymentCompleteScreen
-                                  .toString(),
-                            },
-                          );
-                          }else{
-                            Get.toNamed(Routes.trackingOrder);
-                          }
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppThemeData.headlineTextColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.r),
+            LocalDataHelper().getUserToken() != null
+                ? Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 30.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: SizedBox(
+                            // width: 160,
+                            height: 48.h,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                LocalDataHelper().box.remove("trxId");
+                                homeScreenController.changeTabIndex(4);
+                                if (LocalDataHelper().getUserToken() != null) {
+                                  Get.offAllNamed(
+                                    Routes.orderHistory,
+                                    parameters: {
+                                      'routeName': RouteCheckOfOrderHistory
+                                          .paymentCompleteScreen
+                                          .toString(),
+                                    },
+                                  );
+                                } else {
+                                  Get.toNamed(Routes.trackingOrder);
+                                }
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppThemeData.headlineTextColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                              child: Text(
+                                LocalDataHelper().getUserToken() != null
+                                    ? AppTags.getInvoice.tr
+                                    : AppTags.trackOrder.tr,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: isMobile(context) ? 13.sp : 10.sp,
+                                  fontFamily: "Poppins",
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                        child: Text(
-                            LocalDataHelper().getUserToken() != null?AppTags.getInvoice.tr:AppTags.trackOrder.tr,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: isMobile(context)? 13.sp:10.sp,
-                            fontFamily: "Poppins",
+                        SizedBox(
+                          width: 15.w,
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            // width: 160,
+                            height: 48.h,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                LocalDataHelper().box.remove("trxId");
+                                homeScreenController.changeTabIndex(0);
+                                Get.offAllNamed(Routes.dashboardScreen);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: AppThemeData.headlineTextColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.r),
+                                ),
+                              ),
+                              child: Text(
+                                AppTags.continueShopping.tr,
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: isMobile(context) ? 13.sp : 10.sp,
+                                  fontFamily: "Poppins",
+                                ),
+                              ),
+                            ),
                           ),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox(
+                    width: 240.w,
+                    height: 48.h,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Get.offAllNamed(Routes.orderHistory, parameters: {
+                          'routeName': RouteCheckOfOrderHistory
+                              .paymentCompleteScreen
+                              .toString()
+                        });
+                        LocalDataHelper().box.remove("trxId");
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppThemeData.headlineTextColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                      child: Text(
+                        AppTags.orderHistory.tr,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 13,
+                          fontFamily: "Poppins",
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 15.w,
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      // width: 160,
-                      height: 48.h,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          LocalDataHelper().box.remove("trxId");
-                          homeScreenController.changeTabIndex(0);
-                          Get.offAllNamed(Routes.dashboardScreen);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: AppThemeData.headlineTextColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.r),
-                          ),
-                        ),
-                        child: Text(
-                          AppTags.continueShopping.tr,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: isMobile(context)? 13.sp:10.sp,
-                            fontFamily: "Poppins",
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ): SizedBox(
-              width: 240.w,
-              height: 48.h,
-              child: ElevatedButton(
-                onPressed: () {
-                  Get.offAllNamed(Routes.orderHistory, parameters: {
-                    'routeName': RouteCheckOfOrderHistory.paymentCompleteScreen.toString()});
-                  LocalDataHelper().box.remove("trxId");
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppThemeData.headlineTextColor,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.r),
-                  ),
-                ),
-                child: Text(
-                  AppTags.orderHistory.tr,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 13,
-                    fontFamily: "Poppins",
-                  ),
-                ),
-              ),
-            ),
 
             SizedBox(
               height: 40.h,

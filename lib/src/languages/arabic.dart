@@ -57,6 +57,7 @@ const Map<String, String> arSA = {
   "paymentGateway": "بوابة الدفع",
   "confirmation": "التأكيد",
   "successfulPayment": "دفع ناجح",
+  "orderCompleted": "تم اكتمال الطلب",
   "orderNumber": "رقم الأمر",
   "thankYouPurchasing": "شكرا لك على عملية الشراء",
   "continueShopping": "مواصلة التسوق",
