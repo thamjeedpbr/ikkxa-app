@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/models/all_notifications.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
+import 'package:yoori_ecommerce/src/models/all_notifications.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
 
 class AllNotificationsController extends GetxController {
   final _dataAvailable = false.obs;

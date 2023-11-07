@@ -1,7 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/utils/images.dart';
+import 'package:yoori_ecommerce/src/utils/images.dart';
 import '../utils/app_theme_data.dart';
 import 'package:flutter/material.dart';
 

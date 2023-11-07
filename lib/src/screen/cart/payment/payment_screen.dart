@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/_route/routes.dart';
+import 'package:yoori_ecommerce/src/_route/routes.dart';
 import '../../../controllers/payment_controller.dart';
 import '../../../servers/network_service.dart';
 import '../../../utils/app_tags.dart';
@@ -12,7 +12,7 @@ import '../../../utils/constants.dart';
 import '../../../../../config.dart';
 import '../../../controllers/currency_converter_controller.dart';
 import '../../../data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import 'package:yoori_ecommerce/src/utils/responsive.dart';
 import '../../../widgets/loader/loader_widget.dart';
 
 
@@ -21,8 +21,7 @@ class PaymentScreen extends GetView<PaymentController> {
   final currencyConverterController = Get.find<CurrencyConverterController>();
   final String trxId = Get.parameters['trxId']!;
   final String token = Get.parameters['token']!;
-  final String langCurrCode =
-      "lang=${LocalDataHelper().getLangCode()??"en"}&curr=${LocalDataHelper().getCurrCode()??""}";
+  final String langCurrCode = "lang=${LocalDataHelper().getLangCode()??"en"}&curr=${LocalDataHelper().getCurrCode()??""}";
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +64,7 @@ class PaymentScreen extends GetView<PaymentController> {
                           paymentController.webViewController = controller;
                         },
                         onLoadStart: (controller, url) {
+                          print(url);
                           if (url == Uri.parse("${Config.apiServerUrl}/payment-success")) {
                             Get.offAllNamed(Routes.paymentConfirm);
                           }

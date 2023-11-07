@@ -123,10 +123,10 @@ class Links {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['url'] = this.url;
-    data['label'] = this.label;
-    data['active'] = this.active;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['url'] = url;
+    data['label'] = label;
+    data['active'] = active;
     return data;
   }
 }
@@ -163,15 +163,15 @@ class Product {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['image_190x230'] = this.image190x230;
-    data['image_40x40'] = this.image40x40;
-    data['image_72x72'] = this.image72x72;
-    data['image_110x122'] = this.image110x122;
-    data['special_discount_check'] = this.specialDiscountCheck;
-    data['discount_percentage'] = this.discountPercentage;
-    data['product_name'] = this.productName;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['image_190x230'] = image190x230;
+    data['image_40x40'] = image40x40;
+    data['image_72x72'] = image72x72;
+    data['image_110x122'] = image110x122;
+    data['special_discount_check'] = specialDiscountCheck;
+    data['discount_percentage'] = discountPercentage;
+    data['product_name'] = productName;
     return data;
   }
 }

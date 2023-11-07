@@ -3,12 +3,14 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../utils/app_theme_data.dart';
 
 class LoaderWidget extends StatelessWidget {
-  const LoaderWidget({Key? key}) : super(key: key);
+  final double? size;
+  const LoaderWidget({Key? key, this.size}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return  Center(
       child: SpinKitCircle(
+        size: size ?? 50.0,
         color: AppThemeData.loaderColor,
       ),
     );

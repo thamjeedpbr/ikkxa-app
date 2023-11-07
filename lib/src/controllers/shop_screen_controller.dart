@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/models/visit_shop_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
+import 'package:yoori_ecommerce/src/models/visit_shop_model.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
 
 class ShopScreenController extends GetxController{
   Rx<VisitShopModel> visitShopModel = VisitShopModel().obs;

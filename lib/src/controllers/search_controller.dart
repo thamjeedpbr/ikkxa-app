@@ -1,7 +1,7 @@
 import 'package:get/state_manager.dart';
-import 'package:saudi_adaminnovations/src/models/search_product_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/utils/analytics_helper.dart';
+import 'package:yoori_ecommerce/src/models/search_product_model.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
 
 
 class ProductSearchController extends GetxController {

@@ -5,7 +5,7 @@ class AppThemeData {
   //splash screen
   static const Color splashScreenColor = Color(0xffFFFDF5);
   //home
-  static const Color homeAppBarColor = Color.fromARGB(255, 255, 255, 255);
+  static const Color homeAppBarColor = Color(0xffFCB800);
   //button Color
   static const Color buttonColor = Color(0xff333333);
   static const Color buttonTextColor = Color(0xffFFFFFF);
@@ -36,10 +36,13 @@ class AppThemeData {
   static const Color darkBackgroundBottomNavColor = Color(0xFF1F1C34);
   static const Color dividerColor = Color(0xFFF3F3F3);
 
+
   static const Color drawerBoxColor = Color(0xff1E2836);
   static const Color drawerIconColor = Color(0xff666666);
   //invoice
   static const Color invoiceDividerColor = Color(0xFFEEEEEE);
+
+
 
   //product
   static const Color boxShadowColor = Color(0xff404040);
@@ -52,6 +55,7 @@ class AppThemeData {
   //Cart Item
   static const Color cartItemBoxDecorationColor = Color(0xffFFFFFF);
   static const Color cartItemIconColor = Color(0xff333333);
+
 
   //status bar color
   static const Color statusBarLight = Colors.white;
@@ -92,16 +96,15 @@ class AppThemeData {
   static const Color borderColor = Color(0xff808080);
   static const Color borderSideColor = Color(0xfff4f4f4);
   static const Color detailsIconColor = Color(0xff999999);
-  static const colorWhite = 0xffffffff;
-  static const colorBlack = 0xff808080;
+  static const colorWhite=0xffffffff;
+  static const colorBlack=0xff808080;
   //tracking order
   static const Color actColor = Color(0xff21CC26);
   static Color inActColor = const Color(0xff21CC26).withOpacity(0.3);
   static const Color bgColor = Color(0xffFAFAFA);
   static const Color dashedLineConnectorColor = Color(0xFF6DBEA3);
   static Color trackingSelectorColor = const Color(0xff6DBEA3);
-  static Color trackingUnSelectorColor =
-      const Color(0xff6DBEA3).withOpacity(0.3);
+  static Color trackingUnSelectorColor = const Color(0xff6DBEA3).withOpacity(0.3);
 
   //my reward, my download and wallet
   static const Color myRewardAppBarColor = Color(0xffF8F8F8);
@@ -201,9 +204,7 @@ class AppThemeData {
   static final addressDefaultTextStyle_10 = TextStyle(
       color: const Color(0xff666666), fontFamily: "Poppins", fontSize: 10.sp);
   static final priceVideoTextStyle_14 = TextStyle(
-      color: const Color(0xffF51E46),
-      fontFamily: "Poppins Medium",
-      fontSize: 14.sp);
+      color: const Color(0xffF51E46), fontFamily: "Poppins Medium", fontSize: 14.sp);
   static final headerTextStyle = TextStyle(
       color: const Color(0xff333333),
       fontFamily: "Poppins Medium",

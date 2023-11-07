@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/screen/auth_screen/login_screen.dart';
-import 'package:saudi_adaminnovations/src/screen/auth_screen/set_new_password_screen.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/screen/auth_screen/login_screen.dart';
+import 'package:yoori_ecommerce/src/screen/auth_screen/set_new_password_screen.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
 
 class ForgotPasswordController extends GetxController {
   var isValue = false.obs;

@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_file_plus/open_file_plus.dart';
-import 'package:saudi_adaminnovations/src/controllers/color_selection_controller.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/models/product_details_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/utils/analytics_helper.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
-import 'package:saudi_adaminnovations/src/utils/validators.dart';
+import 'package:yoori_ecommerce/src/controllers/color_selection_controller.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/models/product_details_model.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
+import 'package:yoori_ecommerce/src/utils/validators.dart';
 
 class DetailsPageController extends GetxController {
   PageController pageController = PageController();

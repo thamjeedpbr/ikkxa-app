@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:money_formatter/money_formatter.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/models/config_model.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/models/config_model.dart';
 
 class CurrencyConverterController extends GetxController implements GetxService{
   late String appCurrencyCode;

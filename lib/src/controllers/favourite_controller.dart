@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/models/favorite_product_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/models/favorite_product_model.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
 
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/utils/analytics_helper.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
 
 class FavouriteController extends GetxController {
   final _isLoading = true.obs;

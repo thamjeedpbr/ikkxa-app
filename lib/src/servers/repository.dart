@@ -54,7 +54,7 @@ import '../utils/app_tags.dart';
 import '../utils/constants.dart';
 import '../utils/validators.dart';
 import '../../config.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
 import '../models/all_brand_model.dart';
 import 'network_service.dart';
 
@@ -177,7 +177,6 @@ class Repository {
   //User Phone Registration
   Future<bool?> postPhoneRegistration(
       {String? firstName, String? lastName, String? phoneNumber}) async {
-    print("inside_post_phone_registration");
     var headers = {"apiKey": Config.apiKey};
     String? registrationOTpScreen = "registrationOTpScreen";
     var body = {
@@ -188,7 +187,6 @@ class Repository {
     printLog(body);
     var url =
         Uri.parse("${NetworkService.apiUrl}/register-by-phone?$langCurrCode");
-    print("${NetworkService.apiUrl}/register-by-phone?$langCurrCode");
     final response = await http.post(url, body: body, headers: headers);
 
     var data = json.decode(response.body);
@@ -631,11 +629,6 @@ class Repository {
       'variants_name': variantsNames.toString(),
       'trx_id': trxId,
     };
-    printLog("addToCart: productId ${productId.toString()}");
-    printLog("addToCart: quantity ${quantity.toString()}");
-    printLog("addToCart: variants_ids ${variantsIds.toString()}");
-    printLog("addToCart: variants_name ${variantsNames.toString()}");
-    printLog("addToCart: trx_id $trxId");
 
     var url = Uri.parse(
         "${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
@@ -1073,8 +1066,7 @@ class Repository {
   //All Shop
   Future<List<all_shop.Data>> getAllShop({int page = 1}) async {
     String? token = LocalDataHelper().getUserToken();
-    var url =
-        "${NetworkService.apiUrl}/all-shop?page=$page&$langCurrCode&token=$token";
+    var url = "${NetworkService.apiUrl}/all-shop?page=$page&$langCurrCode&token=$token";
     final response = await _service.fetchJsonData(url);
     return all_shop.AllShopModel.fromJson(response).data;
   }
@@ -1090,7 +1082,6 @@ class Repository {
     try {
       if (visitShopModel != null) {
         visitShopModel = VisitShopModel.fromJson(data);
-        // visitShopModel.data!.addAll(VisitShopModel.fromJson(data).data!);
         return visitShopModel;
       } else {
         visitShopModel = VisitShopModel.fromJson(data);
@@ -1158,14 +1149,27 @@ class Repository {
   Future<ShippingAddressModel> getShippingAddress() async {
     ShippingAddressModel shippingAddressModel;
     var headers = {"apiKey": Config.apiKey};
-    var url = Uri.parse(
-        "${NetworkService.apiUrl}/user/shipping-addresses?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    var url = Uri.parse("${NetworkService.apiUrl}/user/shipping-addresses?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
     final response = await http.get(url, headers: headers);
 
     try {
       var data = json.decode(response.body);
       shippingAddressModel = ShippingAddressModel.fromJson(data);
       return shippingAddressModel;
+    } catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  // find shipping cost
+  Future<Calculations> findShippingCost({required String cityId}) async {
+    var headers = {"apiKey": Config.apiKey};
+    var url = Uri.parse(
+        "${NetworkService.apiUrl}/find/shipping-cost?city_id=$cityId&trx_id=${LocalDataHelper().getCartTrxId()}&token=${LocalDataHelper().getUserToken()}&$langCurrCode");
+    final response = await http.post(url, headers: headers);
+    try {
+      var data = json.decode(response.body);
+      return AddToCartListModel.fromJson(data).data!.calculations!;
     } catch (e) {
       throw Exception(e);
     }

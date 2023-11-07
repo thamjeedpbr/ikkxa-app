@@ -7,8 +7,8 @@ import '../../controllers/invoice_screen_controller.dart';
 import '../../servers/network_service.dart';
 import '../../data/local_data_helper.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:yoori_ecommerce/src/utils/responsive.dart';
 import '../../widgets/loader/shimmer_invoice.dart';
 
 class InvoiceScreen extends StatelessWidget {
@@ -77,7 +77,7 @@ class InvoiceScreen extends StatelessWidget {
                       sortColumnIndex: 1,
                       sortAscending: true,
                       columnSpacing: 8,
-                      dataRowHeight: 70,
+                      dataRowMinHeight: 70,
                       columns: [
                         DataColumn(
                           label: Text(
@@ -180,16 +180,12 @@ class InvoiceScreen extends StatelessWidget {
               color: AppThemeData.invoiceDividerColor,
               thickness: 1,
             ),
-            SizedBox(
-              height: 15.h,
-            ),
+            SizedBox(height: 15.h),
             invoiceScreenController.trackingOrderModel!.data!.order!.billingAddress != null
                 ? Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10.r),
-                ),
+                borderRadius: BorderRadius.all(Radius.circular(10.r),),
                 border: Border.all(
                   color: AppThemeData.invoiceDividerColor,
                   width: 1,
@@ -201,9 +197,7 @@ class InvoiceScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      height: 15.h,
-                    ),
+                    SizedBox(height: 15.h,),
                     Text(
                       AppTags.accountDetails.tr,
                       style: TextStyle(

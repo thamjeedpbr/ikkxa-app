@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:badges/badges.dart' as badges;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/utils/images.dart';
+import 'package:yoori_ecommerce/src/utils/images.dart';
 import '../../controllers/dashboard_controller.dart';
 import '../../screen/cart/cart_screen.dart';
 import '../../screen/category/category_screen.dart';

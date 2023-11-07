@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.ikkxa.saudi_adaminnovations">
+    package="com.spagreen.yoori">
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -9,7 +9,7 @@
     <application
         android:requestLegacyExternalStorage="true"
         android:usesCleartextTraffic="true"
-        android:label="Saudi"
+        android:label="YOORI"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data
@@ -20,7 +20,7 @@
             android:value="@string/facebook_client_token"/>
    
         <activity
-            android:name="com.ikkxa.saudi_adaminnovations.MainActivity"
+            android:name=".MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

@@ -1,11 +1,11 @@
 
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/models/add_to_cart_list_model.dart';
-import 'package:saudi_adaminnovations/src/models/coupon_applied_list.dart';
-import 'package:saudi_adaminnovations/src/utils/analytics_helper.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/models/add_to_cart_list_model.dart';
+import 'package:yoori_ecommerce/src/models/coupon_applied_list.dart';
+import 'package:yoori_ecommerce/src/utils/analytics_helper.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
 
 class CartContentController extends GetxController {
   final Rx<AddToCartListModel> _addToCartListModel = AddToCartListModel().obs;
@@ -34,9 +34,9 @@ class CartContentController extends GetxController {
 
 
   int incrementProduct(int productId){
-   int index =  _addToCartListModel.value.data!.carts!.indexWhere((element) =>element.productId==productId);
+   int? index =  _addToCartListModel.value.data?.carts!.indexWhere((element) =>element.productId==productId);
    //printLog("index == $index");
-   return index;
+   return index ?? -1;
   }
 
   Future getCartList({bool isShowLoading = true}) async {

@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:saudi_adaminnovations/src/utils/images.dart';
+import 'package:yoori_ecommerce/src/utils/images.dart';
 import '../../_route/routes.dart';
 import '../../controllers/auth_controller.dart';
 import '../../controllers/dashboard_controller.dart';
@@ -11,9 +11,9 @@ import '../../controllers/profile_content_controller.dart';
 import '../../data/local_data_helper.dart';
 import '../../models/user_data_model.dart';
 import '../../servers/repository.dart';
-import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
+import 'package:yoori_ecommerce/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import 'package:yoori_ecommerce/src/utils/responsive.dart';
 import '../../utils/validators.dart';
 import '../../widgets/loader/shimmer_profile_screen.dart';
 import 'edit_profile_screen.dart';
@@ -576,8 +576,8 @@ class _ProfileContentState extends State<ProfileContent> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width - 100.w,
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       btnOkColor: AppThemeData.okButton,
       btnCancelColor: AppThemeData.cancelButton,
       buttonsTextStyle: TextStyle(fontSize: isMobile(context) ? 13.sp : 10.sp),
@@ -608,8 +608,8 @@ class _ProfileContentState extends State<ProfileContent> {
           ? MediaQuery.of(context).size.width
           : MediaQuery.of(context).size.width - 100.w,
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       btnOkColor: AppThemeData.okButton,
       btnCancelColor: AppThemeData.cancelButton,
       body: Padding(

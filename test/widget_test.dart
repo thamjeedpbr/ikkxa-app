@@ -8,11 +8,9 @@
 import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
-import 'package:saudi_adaminnovations/config.dart';
-import 'package:saudi_adaminnovations/src/models/my_reward_model.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
-
-
+import 'package:yoori_ecommerce/config.dart';
+import 'package:yoori_ecommerce/src/models/my_reward_model.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
 
 
 void main() {
@@ -22,9 +20,7 @@ void main() {
       headers:  {"apiKey": Config.apiKey}
     );
     try {
-      print("response_body${response.body}");
       var data = json.decode(response.body);
-      print("data:$data");
       var myRewardModel = MyRewardModel.fromJson(data);
       printLog("myRewardModel => ${myRewardModel.data!.rewardDetails!.data!.length}");
       return myRewardModel;

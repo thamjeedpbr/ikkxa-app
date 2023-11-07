@@ -174,23 +174,25 @@ class AppConfig {
   bool? disableGuest;
   bool? disableEmail;
   String? defaultCountry;
+  String? shippingType;
 
-  AppConfig(
-      {this.loginMandatory,
-      this.introSkippable,
-      this.privacyPolicyUrl,
-      this.termsConditionUrl,
-      this.supportUrl,
-      this.sellerSystem,
-      this.colorSystem,
-      this.pickupPointSystem,
-      this.walletSystem,
-      this.couponSystem,
-        this.disableOtp,
-        this.disableGuest,
-        this.disableEmail,
-        this.defaultCountry,
-      });
+  AppConfig({
+    this.loginMandatory,
+    this.introSkippable,
+    this.privacyPolicyUrl,
+    this.termsConditionUrl,
+    this.supportUrl,
+    this.sellerSystem,
+    this.colorSystem,
+    this.pickupPointSystem,
+    this.walletSystem,
+    this.couponSystem,
+    this.disableOtp,
+    this.disableGuest,
+    this.disableEmail,
+    this.defaultCountry,
+    this.shippingType,
+  });
 
   AppConfig.fromJson(Map<String, dynamic> json) {
     loginMandatory = json['login_mandatory'];
@@ -207,6 +209,7 @@ class AppConfig {
     disableGuest = json['disable_guest'];
     disableEmail = json['disable_email'];
     defaultCountry = json['default_country'];
+    shippingType = json['shipping_type'];
   }
 
   Map<String, dynamic> toJson() {
@@ -225,6 +228,7 @@ class AppConfig {
     data['disable_guest'] = disableGuest;
     data['disable_email'] = disableEmail;
     data['default_country'] = defaultCountry;
+    data['shipping_type'] = shippingType;
     return data;
   }
 }
@@ -370,7 +374,6 @@ class Languages {
     return data;
   }
 }
-
 
 class AddonData {
   String? title;

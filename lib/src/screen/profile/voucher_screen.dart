@@ -3,25 +3,35 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:yoori_ecommerce/src/controllers/currency_converter_controller.dart';
+import 'package:yoori_ecommerce/src/controllers/voucher_controller.dart';
+import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:yoori_ecommerce/src/utils/app_theme_data.dart';
 
-import '../../controllers/currency_converter_controller.dart';
-import '../../controllers/voucher_controller.dart';
-import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
-import '../../utils/app_theme_data.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import '../../utils/responsive.dart';
 import '../../widgets/loader/shimmer_voucher_list.dart';
 
 
 
 class VoucherList extends StatefulWidget {
   const VoucherList({Key? key}) : super(key: key);
+
   @override
   State<VoucherList> createState() => _VoucherListState();
 }
+
 class _VoucherListState extends State<VoucherList> {
   final voucherController = Get.put(VoucherController());
 
   final currencyConverterController = Get.find<CurrencyConverterController>();
+  final List fixedColor = const [
+    Color(0xFF6DBEA3),
+    Color(0xFFFAB75A),
+    Color(0xFF4179E0),
+    Color(0xFFD16D86),
+    Color(0xFF56A8C7),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +77,7 @@ class _VoucherListState extends State<VoucherList> {
         ),
         body: Obx(
           () => voucherController.couponListModel.value!.data != null
-              ? voucherController.couponListModel.value!.data!.coupons!.isNotEmpty? ListView.builder(
+              ? ListView.builder(
                   itemCount: voucherController.couponListModel.value!.data!.coupons!.length,
                   itemBuilder: (context, index) {
                     return Padding(
@@ -76,10 +86,10 @@ class _VoucherListState extends State<VoucherList> {
                       child: Container(
                         height: isMobile(context)? 100.h:120.h,
                         decoration: BoxDecoration(
-                          color: AppThemeData.voucherMultipleColor[index % AppThemeData.voucherMultipleColor.length]
+                          color: fixedColor[index % fixedColor.length]
                               .withOpacity(0.1),
                           border: Border.all(
-                              color: AppThemeData.voucherMultipleColor[index % AppThemeData.voucherMultipleColor.length]),
+                              color: fixedColor[index % fixedColor.length]),
                           borderRadius:
                                BorderRadius.all(Radius.circular(10.r)),
                           boxShadow: [
@@ -108,8 +118,8 @@ class _VoucherListState extends State<VoucherList> {
                                         voucherController.couponListModel.value!
                                             .data!.coupons![index].title!,
                                         style: TextStyle(
-                                          color: AppThemeData.voucherMultipleColor[
-                                              index % AppThemeData.voucherMultipleColor.length],
+                                          color: fixedColor[
+                                              index % fixedColor.length],
                                           fontFamily: "Poppins",
                                           fontSize: isMobile(context)? 14.sp:10.sp,
                                         )),
@@ -136,24 +146,40 @@ class _VoucherListState extends State<VoucherList> {
                                               onPressed: () {
                                                 Clipboard.setData(
                                                   ClipboardData(
-                                                      text: voucherController.couponListModel.value!.data!.coupons![index].code!),
+                                                      text: voucherController
+                                                          .couponListModel
+                                                          .value!
+                                                          .data!
+                                                          .coupons![index]
+                                                          .code ?? ''),
                                                 ).then(
-                                                  (value) => ScaffoldMessenger.of(context).showSnackBar(
-                                                    SnackBar(content: Text(AppTags.couponCodeCopied.tr),),
+                                                  (value) =>
+                                                      ScaffoldMessenger.of(
+                                                              context)
+                                                          .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(AppTags
+                                                          .couponCodeCopied.tr),
+                                                    ),
                                                   ),
                                                 );
                                               },
                                               style: ElevatedButton.styleFrom(
-                                                backgroundColor: AppThemeData.voucherMultipleColor[
-                                                    index % AppThemeData.voucherMultipleColor.length],
+                                                backgroundColor: fixedColor[
+                                                    index % fixedColor.length],
                                                 elevation: 6,
                                                 shape: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(4.r),
+                                                  borderRadius:
+                                                      BorderRadius.circular(4.r),
                                                 ),
-                                                shadowColor: const Color(0xFF404040).withOpacity(0.10),
+                                                shadowColor:
+                                                    const Color(0xFF404040)
+                                                        .withOpacity(0.10),
                                               ),
                                               child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceAround,
                                                 children: [
                                                   Text(
                                                     AppTags.copy.tr,
@@ -164,7 +190,8 @@ class _VoucherListState extends State<VoucherList> {
                                                       fontSize: isMobile(context)? 12.sp:9.sp,
                                                     ),
                                                   ),
-                                                  SvgPicture.asset("assets/icons/copy.svg"),
+                                                  SvgPicture.asset(
+                                                      "assets/icons/copy_.svg"),
                                                 ],
                                               ),
                                             ),
@@ -173,10 +200,14 @@ class _VoucherListState extends State<VoucherList> {
                                             width: isMobile(context)? 100.w:75.w,
                                             alignment: Alignment.centerRight,
                                             child: Text(
-                                              voucherController.couponListModel.value!.data!.coupons![index].code!.toString(),
+                                              voucherController
+                                                  .couponListModel
+                                                  .value!
+                                                  .data!.coupons![index].code!
+                                                  .toString(),
                                               style: TextStyle(
-                                                  color: AppThemeData.voucherMultipleColor[index %
-                                                      AppThemeData.voucherMultipleColor.length],
+                                                  color: fixedColor[index %
+                                                      fixedColor.length],
                                                   fontFamily: "Poppins Medium",
                                                   fontSize: isMobile(context)? 14.sp:10.sp),
                                               overflow: TextOverflow.ellipsis,
@@ -194,7 +225,7 @@ class _VoucherListState extends State<VoucherList> {
                                 child: CustomPaint(
                                   size:  Size(isMobile(context)?3.r:0.r, double.infinity),
                                   painter: DashedLineVerticalPainter(
-                                      AppThemeData.voucherMultipleColor[index % AppThemeData.voucherMultipleColor.length]),
+                                      fixedColor[index % fixedColor.length]),
                                 ),
                               ),
                               SizedBox(
@@ -210,8 +241,8 @@ class _VoucherListState extends State<VoucherList> {
                                         ? Text(
                                             "${voucherController.couponListModel.value!.data!.coupons![index].discount!.toString()}%",
                                             style: TextStyle(
-                                              color: AppThemeData.voucherMultipleColor[
-                                                  index % AppThemeData.voucherMultipleColor.length],
+                                              color: fixedColor[
+                                                  index % fixedColor.length],
                                               fontFamily: "Poppins Medium",
                                               fontSize: isMobile(context)? 18.sp:13.sp,
                                             ),
@@ -228,8 +259,8 @@ class _VoucherListState extends State<VoucherList> {
                                                         .discount!
                                                         .toString()),
                                             style: TextStyle(
-                                                color: AppThemeData.voucherMultipleColor[
-                                                    index % AppThemeData.voucherMultipleColor.length],
+                                                color: fixedColor[
+                                                    index % fixedColor.length],
                                                 fontFamily: "Poppins Medium",
                                                 fontSize: isMobile(context)? 18.sp:13.sp),
                                             maxLines: 1,
@@ -238,8 +269,8 @@ class _VoucherListState extends State<VoucherList> {
                                     Text(
                                       AppTags.off.tr,
                                       style: TextStyle(
-                                          color: AppThemeData.voucherMultipleColor[
-                                              index % AppThemeData.voucherMultipleColor.length],
+                                          color: fixedColor[
+                                              index % fixedColor.length],
                                           fontFamily: "Poppins Medium",
                                           fontSize:isMobile(context)? 14.sp:11.sp),
                                     ),
@@ -252,7 +283,7 @@ class _VoucherListState extends State<VoucherList> {
                       ),
                     );
                   },
-                ):Center(child: Text(AppTags.noCouponAvailable.tr),)
+                )
               : const ShimmerVoucherList(),
         ));
   }

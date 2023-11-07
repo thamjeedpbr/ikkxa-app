@@ -58,7 +58,6 @@ class Data {
   int returnData = 0;
   dynamic stockVisibility;
   List<WholesalePrices>? wholesalePrices;
-  List<AlsoAvaialbleIn>? alsoAvaialbleIn;
   FormData? form;
   Links? links;
 
@@ -105,7 +104,6 @@ class Data {
     this.links,
     this.catalogExternalLink,
     this.classifiedContactInfo,
-    this.alsoAvaialbleIn,
   });
 
   Data.fromJson(Map<String, dynamic> json) {
@@ -134,12 +132,6 @@ class Data {
         attributes!.add(Attributes.fromJson(v));
       });
     }
-    if (json['also_avaialble_in'] != null) {
-      alsoAvaialbleIn = <AlsoAvaialbleIn>[];
-      json['also_avaialble_in'].forEach((v) {
-        alsoAvaialbleIn!.add(AlsoAvaialbleIn.fromJson(v));
-      });
-    }
     specialDiscountStart = json['special_discount_start'];
     specialDiscountEnd = json['special_discount_end'];
     description = json['description'];
@@ -150,7 +142,6 @@ class Data {
     isCatalog = json['is_catalog'];
     isFeatured = json['is_featured'];
     isClassified = json['is_classified'];
-    // alsoAvaialbleIn = json['also_avaialble_in'];
     isDigital = json['is_digital'];
     isRefundable = json['is_refundable'];
     descriptionImages = json['description_images'].cast<String>();
@@ -217,11 +208,6 @@ class Data {
     data['is_refundable'] = isRefundable;
     data['description_images'] = descriptionImages;
     data['specifications'] = specifications;
-    if (alsoAvaialbleIn != null) {
-      data['also_avaialble_in'] =
-          alsoAvaialbleIn!.map((e) => e.toJson()).toList();
-    }
-
     if (reviews != null) {
       data['reviews'] = reviews!.map((v) => v.toJson()).toList();
     }
@@ -307,24 +293,6 @@ class ColorsData {
     data['id'] = id;
     data['name'] = name;
     data['hex_code'] = hexCode;
-    return data;
-  }
-}
-
-class AlsoAvaialbleIn {
-  int? id;
-  String? image_72x72;
-
-  AlsoAvaialbleIn({this.id, this.image_72x72});
-
-  AlsoAvaialbleIn.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    image_72x72 = json['image_72x72'];
-  }
-  Map<String, dynamic> toJson() {
-    final data = <String, dynamic>{};
-    data['id'] = id;
-    data['image_72x72'] = image_72x72;
     return data;
   }
 }

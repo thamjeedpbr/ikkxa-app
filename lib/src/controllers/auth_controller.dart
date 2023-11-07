@@ -5,14 +5,14 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:saudi_adaminnovations/src/models/user_data_model.dart';
-import 'package:saudi_adaminnovations/src/screen/auth_screen/login_screen.dart';
-import 'package:saudi_adaminnovations/src/screen/dashboard/dashboard_screen.dart';
+import 'package:yoori_ecommerce/src/models/user_data_model.dart';
+import 'package:yoori_ecommerce/src/screen/auth_screen/login_screen.dart';
+import 'package:yoori_ecommerce/src/screen/dashboard/dashboard_screen.dart';
 
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
-import 'package:saudi_adaminnovations/src/utils/constants.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/utils/app_tags.dart';
+import 'package:yoori_ecommerce/src/utils/constants.dart';
 
 class AuthController extends GetxController {
   final GoogleSignIn _googleSign = GoogleSignIn();

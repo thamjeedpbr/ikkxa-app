@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:saudi_adaminnovations/src/data/local_data_helper.dart';
-import 'package:saudi_adaminnovations/src/models/order_list_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/data/local_data_helper.dart';
+import 'package:yoori_ecommerce/src/models/order_list_model.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
 
 class OrderHistoryController extends GetxController {
   var isLoading = true.obs;

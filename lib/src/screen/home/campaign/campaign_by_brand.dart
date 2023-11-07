@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../models/campaign_details_model.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import 'package:yoori_ecommerce/src/utils/responsive.dart';
 import '../category/product_by_brand_screen.dart';
 
 class CampaignByBrand extends StatelessWidget {

@@ -295,7 +295,6 @@ const Map<String, String> enUS = {
   "doNotMatchCredential": "Don't match credential",
   "customProduct": "Custom Product",
   "noProduct": "No product found",
-  "noBrand": "No brand found",
-  "emptyOrderHistory": "Empty Order history",
-  "alsoAvailableIn": "Also Available In"
+  "noBrand" : "No brand found",
+  "emptyOrderHistory" : "Empty Order history"
 };

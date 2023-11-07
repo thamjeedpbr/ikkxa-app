@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../controllers/my_reward_controller.dart';
 import '../../models/user_data_model.dart';
-import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
+import 'package:yoori_ecommerce/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
-import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import 'package:yoori_ecommerce/src/utils/responsive.dart';
 import '../../widgets/loader/loader_widget.dart';
 
 class MyRewardScreen extends StatelessWidget {
@@ -259,8 +259,8 @@ class MyRewardScreen extends StatelessWidget {
   convertRewardWallet(context) {
     return AwesomeDialog(
       context: context,
-      animType: AnimType.SCALE,
-      dialogType: DialogType.NO_HEADER,
+      animType: AnimType.scale,
+      dialogType: DialogType.noHeader,
       btnOkColor: const Color(0xFF333333),
       body: Obx(() => Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.w),

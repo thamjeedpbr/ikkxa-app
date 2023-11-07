@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:saudi_adaminnovations/src/models/config_model.dart';
-import 'package:saudi_adaminnovations/src/models/home_data_model.dart';
-import 'package:saudi_adaminnovations/src/models/profile_data_model.dart';
-import 'package:saudi_adaminnovations/src/models/user_data_model.dart';
-import 'package:saudi_adaminnovations/src/widgets/network_image_checker.dart';
+import 'package:yoori_ecommerce/src/models/config_model.dart';
+import 'package:yoori_ecommerce/src/models/home_data_model.dart';
+import 'package:yoori_ecommerce/src/models/profile_data_model.dart';
+import 'package:yoori_ecommerce/src/models/user_data_model.dart';
+import 'package:yoori_ecommerce/src/widgets/network_image_checker.dart';
 
 
 class LocalDataHelper {

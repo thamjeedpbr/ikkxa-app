@@ -20,7 +20,6 @@ class WVScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("here is url:$url");
     return Obx(
       () => Scaffold(
         appBar: AppBar(

@@ -287,7 +287,7 @@ const Map<String, String> arSA = {
   "totalAmountYouWillGet": "المبلغ الإجمالي الذي ستحصل عليه",
   "selectDateOfBirth": "حدد تاريخ الميلاد",
   "selectGender": "اختر الجنس",
-  "selectAttr": "الرجاء تحديد اللون والمواصفات الأخرى.",
+  "selectAttr" : "الرجاء تحديد اللون والمواصفات الأخرى.",
   "videoShopping": "تسوق فيديو",
   "recommendedProducts": "المنتجات الموصى بها",
   "relatedProducts": "منتجات ذات صله",
@@ -295,8 +295,7 @@ const Map<String, String> arSA = {
   "doNotMatchCredential": "لا تطابق بيانات الاعتماد",
   "customProduct": "منتج مخصص",
   "noProduct": "لم يتم العثور على منتج",
-  "noBrand": "لم يتم العثور على علامة تجارية",
-  "emptyOrderHistory": "محفوظات الطلبات الفارغة",
-  "backToShopping": "العودة إلى التسوق",
-  "alsoAvailableIn": "Also Available In"
+  "noBrand" : "لم يتم العثور على علامة تجارية",
+  "emptyOrderHistory" : "محفوظات الطلبات الفارغة",
+  "backToShopping": "العودة إلى التسوق"
 };

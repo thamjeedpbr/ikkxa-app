@@ -1,5 +1,5 @@
 import 'package:get/instance_manager.dart';
-import 'package:saudi_adaminnovations/src/controllers/payment_controller.dart';
+import 'package:yoori_ecommerce/src/controllers/payment_controller.dart';
 
 
 

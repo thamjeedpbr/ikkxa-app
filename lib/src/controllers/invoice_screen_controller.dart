@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 import '../models/track_order_model.dart';
-import 'package:saudi_adaminnovations/src/servers/repository.dart';
+import 'package:yoori_ecommerce/src/servers/repository.dart';
 
 class InvoiceScreenController extends GetxController{
   var isLoading = false.obs;

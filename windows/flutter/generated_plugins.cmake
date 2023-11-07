@@ -3,9 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  connectivity_plus_windows
   file_selector_windows
+  firebase_auth
   firebase_core
+  rive_common
   smart_auth
   syncfusion_pdfviewer_windows
   url_launcher_windows
