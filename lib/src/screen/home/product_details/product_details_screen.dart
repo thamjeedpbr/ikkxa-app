@@ -1201,7 +1201,8 @@ class DetailsPage extends StatelessWidget {
                                                             .data!
                                                             .attributes![i]
                                                             .attributeValue!
-                                                            .length>6?GridView.builder(
+                                                            .length>6?
+                                                        GridView.builder(
                                                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2,
                                                               crossAxisSpacing: 5.h,
                                                               childAspectRatio: 0.44),
@@ -1329,16 +1330,11 @@ class DetailsPage extends StatelessWidget {
                                                                   _colorSelectionController
                                                                       .changeAttrSelection(
                                                                       attrIndex:
-                                                                      i,
-                                                                      value:
-                                                                      index);
+                                                                      i, value: index);
                                                                   _colorSelectionController.insertAttrNameToList(
                                                                       name: detailsModel
                                                                           .data!
-                                                                          .attributes![
-                                                                      i]
-                                                                          .attributeValue![
-                                                                      index]
+                                                                          .attributes![i].attributeValue![index]
                                                                           .value!,
                                                                       index: i);
                                                                   _colorSelectionController.insertAttrIdToList(
@@ -2668,6 +2664,10 @@ class DetailsPage extends StatelessWidget {
                                           !_colorSelectionController
                                               .selectedAttrName.value
                                               .contains("**")) {
+                                        print( _colorSelectionController
+                                            .selectedAttrId.value);
+                                        print( _colorSelectionController
+                                            .selectedAttrName.value);
                                         _cartController.addToCart(
                                           productId: productId.toString(),
                                           quantity: detailsController
@@ -2689,6 +2689,11 @@ class DetailsPage extends StatelessWidget {
                                           isError: true);
                                     }
                                   } else {
+
+                                    print( _colorSelectionController
+                                        .selectedAttrId.value);
+                                    print( _colorSelectionController
+                                        .selectedAttrName.value);
                                     _cartController.addToCart(
                                       productId: productId.toString(),
                                       quantity: detailsController

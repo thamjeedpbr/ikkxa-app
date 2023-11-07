@@ -627,8 +627,8 @@ class Repository {
     var body = {
       'product_id': productId.toString(),
       'quantity': quantity.toString(),
-      'variants_ids': variantsIds.toString(),
-      'variants_name': variantsNames.toString(),
+      'variants_ids': variantsIds.toString().replaceFirst("-", ""),
+      'variants_name': variantsNames.toString().replaceFirst("-", ""),
       'trx_id': trxId,
     };
     printLog("addToCart: productId ${productId.toString()}");
@@ -643,6 +643,8 @@ class Repository {
 
     var data = json.decode(response.body);
     if (response.statusCode == 200) {
+      print("ppppp");
+      print(response.body);
       AddToCartModel addToCartModel = AddToCartModel.fromJson(data);
       LocalDataHelper().saveCartTrxId(addToCartModel.data!.trxId.toString());
       showShortToast(data["message"]);
@@ -662,9 +664,13 @@ class Repository {
     var body = {
       'product_id': productId.toString(),
       'quantity': quantity.toString(),
-      'variants_ids': variantsIds.toString(),
-      'variants_name': variantsNames.toString(),
+      'variants_ids': variantsIds.toString().replaceFirst("-", ""),
+      'variants_name': variantsNames.toString().replaceAll("-", ""),
     };
+    print(body);
+    print(productId.toString());
+    print( variantsIds.toString().replaceFirst("-", ""));
+    print( variantsNames.toString());
 
     var url = Uri.parse(
         "${NetworkService.apiUrl}/cart-store?token=${LocalDataHelper().getUserToken()}&$langCurrCode");
