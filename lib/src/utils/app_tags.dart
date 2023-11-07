@@ -85,6 +85,7 @@ class AppTags {
   static const String paymentGateway = "paymentGateway";
   static const String confirmation = "confirmation";
   static const String successfulPayment = "successfulPayment";
+  static const String orderCompleted = "orderCompleted";
   static const String orderNumber = "orderNumber";
   static const String thankYouPurchasing = "thankYouPurchasing";
   static const String continueShopping = "continueShopping";
