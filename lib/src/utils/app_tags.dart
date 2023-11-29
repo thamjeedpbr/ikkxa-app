@@ -11,6 +11,7 @@ class AppTags {
   static const String rateThisApp = "rateThisApp";
   static const String help = "help";
   static const String aboutThisApp = "aboutThisApp";
+  static const String quantityQty = "QTY: ";
   static const String contactUS = "contactUS";
   static const String privacyPolicy = "privacyPolicy";
   static const String termsCondition = "termsCondition";
@@ -78,6 +79,8 @@ class AppTags {
   static const String officeAddress = "officeAddress";
   static const String homeAddress = "homeAddress";
   static const String addAddress = "addAddress";
+  static const String editAddress = "editAddress";
+  static const String optional = "optional";
   static const String continues = "continues";
   static const String delete = "delete";
   static const String edit = "edit";
@@ -144,6 +147,10 @@ class AppTags {
   static const String brandStore = "brandStore";
   static const String bestShop = "bestShop";
   static const String allNews = "allNews";
+  static const String latestontop = "Latest on top";
+  static const String oldestontop = "Oldest on top";
+  static const String hightolow = "High to low";
+  static const String lowtohigh = "Low to high";
   static const String featureProducts = "featureProducts";
   static const String searchProduct = "searchProduct";
   static const String searchResult = "searchResult";
@@ -212,6 +219,7 @@ class AppTags {
 
   // Details Page
   static const String selectAttr = "selectAttr";
+  static const String selectStateandcity = "Please select a state and city";
   static const String quickView = "quickView";
   static const String productDetails = "productDetails";
   static const String delivery = "delivery";

@@ -31,6 +31,8 @@ class ProfileContent extends StatefulWidget {
 
 class _ProfileContentState extends State<ProfileContent> {
   final homeScreenController = Get.put(DashboardController());
+  late final DashboardController dashScreenController;
+
   var emailPhoneController = TextEditingController();
   final ProfileContentController _profileContentController =
       Get.put(ProfileContentController());
@@ -38,6 +40,11 @@ class _ProfileContentState extends State<ProfileContent> {
   bool isWallet = LocalDataHelper().getConfigData().data!.appConfig!.walletSystem!;
 
   var addons = LocalDataHelper().getConfigData().data!.addons!;
+  @override
+  void initState() {
+    super.initState();
+    dashScreenController = Get.put(DashboardController());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +54,19 @@ class _ProfileContentState extends State<ProfileContent> {
   Widget _profileWithLogin(UserDataModel userDataModel) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+
+            dashScreenController.tabIndex.value = 0;
+          },),
+      ),
       body: SizedBox(
         width: size.width,
         height: size.height,

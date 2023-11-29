@@ -19,9 +19,10 @@ class CartItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Slidable(
+    return Slidable(useTextDirection: true,
       key: ValueKey(cart),
-      startActionPane: ActionPane(
+      endActionPane: ActionPane(
+
         motion: const ScrollMotion(),
         dismissible: DismissiblePane(
           onDismissed: () async {
@@ -163,11 +164,16 @@ class CartItem extends StatelessWidget {
                             child: child,
                           );
                         },
-                        child: Text(
-                          cart.quantity.toString(),
-                          style: isMobile(context)
-                              ? AppThemeData.priceTextStyle_14
-                              : AppThemeData.titleTextStyle_11Tab,
+                        child: Row(
+                          children: [
+                            Text(AppTags.quantityQty,style: TextStyle(fontSize: 11),),
+                            Text(
+                              cart.quantity.toString(),
+                              style: isMobile(context)
+                                  ? AppThemeData.priceTextStyle_14
+                                  : AppThemeData.titleTextStyle_11Tab,
+                            ),
+                          ],
                         ),
                       ),
                       Obx(

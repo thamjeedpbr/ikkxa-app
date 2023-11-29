@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pagination_view/pagination_view.dart';
+import 'package:provider/provider.dart';
 import 'package:saudi_adaminnovations/src/controllers/home_screen_controller.dart';
 import '../../../models/flash_sale_model.dart';
 import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../servers/repository.dart';
 import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import '../../../utils/custom_provider.dart';
 import '../../../widgets/product_card_widgets/category_product_card.dart';
 import '../../../widgets/loader/shimmer_load_data.dart';
 import '../../../widgets/loader/shimmer_products.dart';
@@ -29,16 +31,20 @@ class _FlashSalesState extends State<FlashSales> {
   Future<List<Data>> getData(int offset) async {
     //page = (offset / 1).round();
     page++;
-    return await Repository().getFlashSaleProduct(page: page);
+    return await Repository().getFlashSaleProduct(sort:themeProvider.getSortKey(),page: page);
   }
 
   @override
   void initState() {
+    themeProvider=Provider.of<ThemeProvider>(context, listen: false);
     super.initState();
   }
+  late ThemeProvider themeProvider;
 
   @override
   Widget build(BuildContext context) {
+    themeProvider=Provider.of<ThemeProvider>(context, listen: true);
+
     return Scaffold(
       appBar: isMobile(context)? AppBar(
         backgroundColor: Colors.transparent,
@@ -52,6 +58,8 @@ class _FlashSalesState extends State<FlashSales> {
 
           onPressed: () {
             Get.back();
+            themeProvider.setSort(AppTags.latestontop);
+            themeProvider.setSortKey("latest_on_top");
           }, // null disables the button
         ),
         centerTitle: true,
@@ -72,6 +80,8 @@ class _FlashSalesState extends State<FlashSales> {
           ),
 
           onPressed: () {
+            themeProvider.setSort(AppTags.latestontop);
+            themeProvider.setSortKey("latest_on_top");
             Get.back();
           }, // null disables the button
         ),
@@ -81,33 +91,83 @@ class _FlashSalesState extends State<FlashSales> {
           style: AppThemeData.headerTextStyle_14,
         ),
       ),
-      body: PaginationView<Data>(
-        key: key,
-        paginationViewType: paginationViewType,
-        pageFetch: getData,
-        pullToRefresh: false,
-        onError: (dynamic error) =>  Center(
-          child: Text(AppTags.someErrorOccurred.tr),
-        ),
-        onEmpty: Center(
-          child: Text(AppTags.noProduct.tr),
-        ),
-        bottomLoader: const ShimmerLoadData(),
-        initialLoader: const ShimmerProducts(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: isMobile(context)? 2:3,
-          childAspectRatio: 0.68,
-          mainAxisSpacing: isMobile(context)? 15:20,
-          crossAxisSpacing: isMobile(context)? 15:20,
-        ),
-        itemBuilder: (BuildContext context, Data product, int index) {
-          return CategoryProductCard(
-            dataModel: product,
-            index: index,
-          );
-        },
-        padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-        shrinkWrap: true,
+      body: ListView(physics: NeverScrollableScrollPhysics(),
+        children: [
+
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Container(
+
+              child: DropdownButton<String>(
+                isExpanded: false,
+
+                value: themeProvider.getSort(),
+
+
+                hint: Text("Sort"),
+                items: <String>[AppTags.latestontop,AppTags.oldestontop, AppTags.hightolow, AppTags.lowtohigh].map((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+                onChanged: (value) {
+                  themeProvider.setSort(value!);
+                  if(themeProvider.getSort()==AppTags.latestontop){
+                    themeProvider.setSortKey("latest_on_top");
+                  }
+                  else if(themeProvider.getSort()==AppTags.oldestontop){
+                    themeProvider.setSortKey("oldest_on_top");
+
+                  }
+                  else if(themeProvider.getSort()==AppTags.hightolow){
+                    themeProvider.setSortKey("high_to_low");
+                  }
+                  else{
+                    themeProvider.setSortKey("low_to_high");
+                  }
+
+
+                  Get.back();
+                  Get.to(() => const FlashSales());
+
+
+                },
+              ),
+            ),
+          ),
+          PaginationView<Data>(
+            key: key,
+            physics: BouncingScrollPhysics(),
+
+            paginationViewType: paginationViewType,
+            pageFetch: getData,
+            pullToRefresh: false,
+            onError: (dynamic error) =>  Center(
+              child: Text(AppTags.someErrorOccurred.tr),
+            ),
+            onEmpty: Center(
+              child: Text(AppTags.noProduct.tr),
+            ),
+            bottomLoader: const ShimmerLoadData(),
+            initialLoader: const ShimmerProducts(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: isMobile(context)? 2:3,
+              childAspectRatio: 0.68,
+              mainAxisSpacing: isMobile(context)? 15:20,
+              crossAxisSpacing: isMobile(context)? 15:20,
+            ),
+            itemBuilder: (BuildContext context, Data product, int index) {
+              return CategoryProductCard(
+                dataModel: product,
+                index: index,
+              );
+            },
+            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+            shrinkWrap: true,
+          ),
+        ],
       ),
     );
   }

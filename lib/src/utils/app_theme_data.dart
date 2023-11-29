@@ -159,6 +159,10 @@ class AppThemeData {
       color: const Color(0xff333333),
       fontFamily: "Poppins Medium",
       fontSize: 18.sp);
+  static final seccessfulPayTextStyle_18_red = TextStyle(
+      color: const Color(0xffF51E46),
+      fontFamily: "Poppins Medium",
+      fontSize: 18.sp);
   static final welComeTextStyle_24 = TextStyle(
       color: const Color(0xff333333),
       fontFamily: "Poppins Medium",
@@ -225,6 +229,10 @@ class AppThemeData {
       color: const Color(0xff333333), fontFamily: "Poppins", fontSize: 16.sp);
   static final headerTextStyle_14 = TextStyle(
       color: const Color(0xff333333),
+      fontFamily: "Poppins Medium",
+      fontSize: 14.sp);
+  static final headerTextStyle_14_red = TextStyle(
+      color: const Color(0xffF51E46),
       fontFamily: "Poppins Medium",
       fontSize: 14.sp);
   static final voucherTitle = TextStyle(

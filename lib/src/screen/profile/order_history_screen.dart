@@ -149,26 +149,15 @@ class OrderHistory extends StatelessWidget {
                                 children: [
                                   InkWell(
                                     onTap: () async {
-                                      var url =
-                                          "${NetworkService.apiUrl}/invoice-download/${orderHistoryController.orderListModel.data!.orders![index].id}?token=${LocalDataHelper().getUserToken()}";
-                                      try {
-                                        await launchUrl(Uri.parse(url),
-                                            mode:
-                                                LaunchMode.externalApplication);
-                                      } catch (e) {
-                                        Get.showSnackbar(
-                                            GetSnackBar(
-                                          backgroundColor: Colors.red,
-                                          message: "Can't open link.",
-                                          maxWidth: 200.w,
-                                          duration: const Duration(seconds: 3),
-                                          snackStyle: SnackStyle.FLOATING,
-                                          margin: EdgeInsets.all(10.r),
-                                          borderRadius: 5.r,
-                                          isDismissible: true,
-                                          dismissDirection:
-                                              DismissDirection.horizontal,
-                                        ));
+
+
+                                      Uri url = Uri.parse(
+                                          "${NetworkService.apiUrl}/invoice-download/${orderHistoryController.orderListModel.data!.orders![index].id}?token=${LocalDataHelper().getUserToken()}");
+
+                                      if (await canLaunchUrl(url)) {
+                                        await launchUrl(url);
+                                      } else {
+                                        throw 'could not launch $url';
                                       }
                                     },
                                     child: Container(
@@ -210,8 +199,7 @@ class OrderHistory extends StatelessWidget {
                                                 Get.toNamed(
                                                   Routes.paymentScreen,
                                                   parameters: {
-                                                    'trxId': LocalDataHelper()
-                                                            .getCartTrxId() ??
+                                                    'trxId': orderHistoryController.orderListModel.data!.orders![index].trxId ??
                                                         "",
                                                     'token': LocalDataHelper()
                                                             .getUserToken() ??

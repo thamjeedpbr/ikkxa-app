@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import '../../controllers/splash_controller.dart';
 import '../../utils/app_theme_data.dart';
+import '../../utils/custom_provider.dart';
 
 class SplashScreen extends GetView<SplashController> {
   const SplashScreen({Key? key}) : super(key: key);

@@ -5,6 +5,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:provider/provider.dart';
+import 'package:saudi_adaminnovations/src/utils/custom_provider.dart';
 import 'firebase_option.dart';
 import 'src/bindings/init_bindings.dart';
 import 'src/controllers/init_controller.dart';
@@ -17,7 +19,7 @@ late final FirebaseAuth auth;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   app = await Firebase.initializeApp(
-    name: 'ikxxa-saudi',
+
     options: DefaultFirebaseOptions.currentPlatform,
   );
   auth = FirebaseAuth.instanceFor(app: app);
@@ -26,7 +28,10 @@ void main() async {
   await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(MyApp());
+    runApp(MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => ThemeProvider()),
+        ],child: MyApp()));
   });
 }
 

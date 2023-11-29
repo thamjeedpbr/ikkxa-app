@@ -141,9 +141,11 @@ class HomeScreenContent extends StatelessWidget {
                           onPressed: () {
                            if(controller.locale.toString()=="en_US") {
                              controller.updateLocale("ar_SA");
+                             homeScreenContentController.getHomeDataFromServer();
                            }
                            else{
                              controller.updateLocale("en_US");
+                             homeScreenContentController.getHomeDataFromServer();
 
                            }
                            },

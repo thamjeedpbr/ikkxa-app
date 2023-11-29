@@ -902,6 +902,7 @@ class Repository {
   Future<HomeDataModel> getHomeScreenData() async {
     String? token = LocalDataHelper().getUserToken();
     var url = "${NetworkService.apiUrl}/home-screen?$langCurrCode&token=$token";
+
     final response = await _service.fetchJsonData(url);
     return HomeDataModel.fromJson(response);
   }
@@ -914,34 +915,34 @@ class Repository {
   }
 
   //Flash Sale
-  Future<List<flash_sale.Data>> getFlashSaleProduct({required int page}) async {
+  Future<List<flash_sale.Data>> getFlashSaleProduct({required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/get-flash-deals-products?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/get-flash-deals-products?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return flash_sale.FlashSaleModel.fromJson(response).data;
   }
 
   //Best Selling Product
   Future<List<best_sell.Data>> getBestSellingProduct(
-      {required int page}) async {
+      {required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/get-best-selling-products?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/get-best-selling-products?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return best_sell.BestSellingProductsModel.fromJson(response).data;
   }
 
   //Offer Ending Product
   Future<List<offer_ending.Data>> getOfferEndingProduct(
-      {required int page}) async {
+      {required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/get-offer-ending-products?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/get-offer-ending-products?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return offer_ending.OfferEndingProductsModel.fromJson(response).data;
   }
 
   //All Product
-  Future<List<all_product.Data>> getAllProduct({required int page}) async {
-    var url = "${NetworkService.apiUrl}/get-products?page=$page&$langCurrCode";
+  Future<List<all_product.Data>> getAllProduct({required String sortData,required int page}) async {
+    var url = "${NetworkService.apiUrl}/get-products?s=$sortData&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return all_product.AllProductModel.fromJson(response).data;
   }
@@ -974,9 +975,9 @@ class Repository {
   }
 
   //Today Deal
-  Future<List<today_deal.Data>> getTodayDealProduct({required int page}) async {
+  Future<List<today_deal.Data>> getTodayDealProduct({required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/get-today-deals-products?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/get-today-deals-products?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return today_deal.TodayDealModel.fromJson(response).data;
   }
@@ -993,9 +994,9 @@ class Repository {
 
   //Product By Brand
   Future<List<brand.Data>> getProductByBrand(
-      {int? id, required int page}) async {
+      {int? id, required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/products-by-brand/$id?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/products-by-brand/$id?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return brand.ProductByBrandModel.fromJson(response).data;
   }
@@ -1018,9 +1019,9 @@ class Repository {
 
   //Product By Category
   Future<List<product.CategoryProductData>> getProductByCategoryItem(
-      {int? id, required int page}) async {
+      {int? id, required int page,required String sort}) async {
     var url =
-        "${NetworkService.apiUrl}/products-by-category/$id?page=$page&$langCurrCode";
+        "${NetworkService.apiUrl}/products-by-category/$id?s=$sort&page=$page&$langCurrCode";
     final response = await _service.fetchJsonData(url);
     return product.ProductByCategoryModel.fromJson(response).data;
   }

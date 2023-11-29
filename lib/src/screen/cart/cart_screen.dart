@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:saudi_adaminnovations/src/controllers/home_screen_controller.dart';
 import '../../_route/routes.dart';
 import '../../controllers/cart_content_controller.dart';
 import '../../controllers/currency_converter_controller.dart';
+import '../../controllers/dashboard_controller.dart';
 import '../../data/local_data_helper.dart';
 import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
@@ -25,12 +27,14 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   late final TextEditingController couponController = TextEditingController();
   late final CartContentController _cartController;
+  late final DashboardController homeScreenController;
   final currencyConverterController = Get.find<CurrencyConverterController>();
 
   @override
   void initState() {
     super.initState();
     _cartController = Get.put(CartContentController());
+    homeScreenController = Get.put(DashboardController());
   }
 
   @override
@@ -49,6 +53,15 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+        icon: const Icon(
+        Icons.arrow_back,
+        color: Colors.black,
+    ),
+    onPressed: () {
+
+      homeScreenController.tabIndex.value = 0;
+    },),
         title: Text(
           AppTags.myCart.tr,
           style: isMobile(context)

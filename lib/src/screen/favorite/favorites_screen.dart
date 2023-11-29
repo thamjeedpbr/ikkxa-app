@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../../controllers/dashboard_controller.dart';
 import '../../controllers/favourite_controller.dart';
 import 'package:saudi_adaminnovations/src/utils/app_tags.dart';
 import '../../utils/app_theme_data.dart';
@@ -12,14 +13,26 @@ import 'favorite_store.dart';
 class FavoritesScreen extends StatelessWidget {
    FavoritesScreen({Key? key}) : super(key: key);
   final controller = Get.put(FavouriteController());
+   late final DashboardController dashScreenController;
 
   @override
   Widget build(BuildContext context) {
+    dashScreenController = Get.put(DashboardController());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.black,
+          ),
+          onPressed: () {
+
+            dashScreenController.tabIndex.value = 0;
+          },),
         title: Text(
           AppTags.favorites.tr,
           style: AppThemeData.headerTextStyle_16,

@@ -18,6 +18,7 @@ import '../../../utils/app_tags.dart';
 import '../../../utils/app_theme_data.dart';
 import '../../../utils/constants.dart';
 import 'package:saudi_adaminnovations/src/utils/responsive.dart';
+import '../../../utils/validators.dart';
 import '../../../widgets/loader/loader_widget.dart';
 
 
@@ -425,7 +426,11 @@ class _AddressesState extends State<Addresses> {
   //Create Address
 
   //Create Address
-  Future createAddress() {
+  Future createAddress() async{
+    _selectedCountry=countryListModel.data!.countries![0].id;
+
+    await getStateList(countryListModel.data!.countries![0].id);
+
     return showDialog(
       //barrierColor: Colors.red,
       barrierDismissible: false,
@@ -648,7 +653,7 @@ class _AddressesState extends State<Addresses> {
                                 AppTags.selectCountry.tr,
                                 style: isMobile(context)? AppThemeData.hintTextStyle_13:AppThemeData.hintTextStyle_10Tab,
                               ),
-                              value: _selectedCountry,
+                              value:_selectedCountry ,
                               onChanged: (newValue) {
                                 setState(() {
                                   _selectedCountry = newValue;
@@ -656,6 +661,7 @@ class _AddressesState extends State<Addresses> {
                               },
                               items: countryListModel.data!.countries!
                                   .map((country) {
+                                 getStateList(countryListModel.data!.countries![0].id);
                                 return DropdownMenuItem(
                                   onTap: () async {
                                     await getStateList(country.id);
@@ -663,7 +669,7 @@ class _AddressesState extends State<Addresses> {
                                   },
                                   value: country.id,
                                   child: Text(country.name.toString()),
-                                );
+                                 );
                               }).toList(),
                             ),
                           ),
@@ -1021,10 +1027,7 @@ class _AddressesState extends State<Addresses> {
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
-                            validator: (value) => textFieldValidator(
-                              AppTags.landmark.tr,
-                              landMarkController,
-                            ),
+
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: AppTags.landmark.tr,
@@ -1041,7 +1044,7 @@ class _AddressesState extends State<Addresses> {
                           height: 10.h,
                         ),
                         Text(
-                          AppTags.address.tr,
+                          AppTags.optional.tr,
                           style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
                         ),
                         SizedBox(
@@ -1063,10 +1066,7 @@ class _AddressesState extends State<Addresses> {
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
-                            validator: (value) => textFieldValidator(
-                              AppTags.address.tr,
-                              addressController,
-                            ),
+
                             decoration: InputDecoration(
                               border: InputBorder.none,
                               hintText: AppTags.streetAddress.tr,
@@ -1093,24 +1093,33 @@ class _AddressesState extends State<Addresses> {
                     child: InkWell(
                       onTap: () async {
                         if (formKey.currentState!.validate()) {
-                          await Repository()
-                              .postCreateAddress(
-                            name: nameController.text.toString(),
-                            email: emailController.text.toString(),
-                            phoneNo:
-                            "+$phoneCode ${phoneController.text.toString()}",
-                            countryId: _selectedCountry,
-                            stateId: _selectedState,
-                            cityId: _selectedCity,
-                            postalCode: postalCodeController.text.toString(),
-                            street: streetController.text.toString(),
-                            building: buildingController.text.toString(),
-                            area: areaController.text.toString(),
-                            landmark: landMarkController.text.toString(),
-                            address: addressController.text.toString(),
-                          )
-                              .then((value) => getShippingAddress());
-                          Get.back();
+                          if (
+                              _selectedState != null &&
+                              _selectedCity != null) {
+                            await Repository()
+                                .postCreateAddress(
+                              name: nameController.text.toString(),
+                              email: emailController.text.toString(),
+                              phoneNo:
+                              "+$phoneCode ${phoneController.text.toString()}",
+                              countryId: _selectedCountry,
+                              stateId: _selectedState,
+                              cityId: _selectedCity,
+                              postalCode: postalCodeController.text.toString(),
+                              street: streetController.text.toString(),
+                              building: buildingController.text.toString(),
+                              area: areaController.text.toString(),
+                              landmark: landMarkController.text.toString(),
+                              address: addressController.text.toString(),
+                            )
+                                .then((value) => getShippingAddress());
+                            Get.back();
+
+                        }else{
+                            showCustomSnackBar(
+                                AppTags.selectStateandcity.tr,
+                                isError: true);
+                        }
                         }
                       },
                       child: Container(
@@ -1145,7 +1154,10 @@ class _AddressesState extends State<Addresses> {
   }
 
   //Edit Address
-  Future editAddress(int? addressId, EditViewModel editViewModel) {
+  Future editAddress(int? addressId, EditViewModel editViewModel)async {
+    _selectedCountry=countryListModel.data!.countries![0].id;
+   await getStateList(countryListModel.data!.countries![0].id);
+
     return showDialog(
       //barrierColor: Colors.red,
       barrierDismissible: false,
@@ -1161,11 +1173,20 @@ class _AddressesState extends State<Addresses> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        AppTags.addAddress.tr,
+                        AppTags.editAddress.tr,
                         style: isMobile(context)? AppThemeData.priceTextStyle_14:AppThemeData.priceTextStyle_14.copyWith(fontSize: 11.sp),
                       ),
                       InkWell(
                         onTap: () {
+                          nameController.clear();
+                          emailController.clear();
+                          phoneController .clear();
+                          postalCodeController.clear();
+                          buildingController.clear();
+                          streetController.clear();
+                          areaController.clear();
+                          landMarkController.clear();
+                          addressController.clear();
                           Get.back();
                         },
                         child: Container(
@@ -1216,7 +1237,7 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextField(
-                            controller: nameController,
+                            controller: nameController..text=editViewModel.data!.address!.name.toString(),
                             maxLines: 1,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1251,7 +1272,7 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextField(
-                            controller: emailController,
+                            controller: emailController..text=editViewModel.data!.address!.email.toString(),
                             maxLines: 1,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.emailAddress,
@@ -1293,7 +1314,7 @@ class _AddressesState extends State<Addresses> {
                                 child: CountryPickerDropdown(
                                   isFirstDefaultIfInitialValueNotProvided:
                                   false,
-                                  initialValue: 'BD',
+                                  initialValue: 'SA',
                                   isExpanded: true,
                                   itemBuilder: _buildDropdownItem,
                                   onValuePicked: (Country country) {
@@ -1307,7 +1328,9 @@ class _AddressesState extends State<Addresses> {
                               Expanded(
                                 flex: 9,
                                 child: TextField(
-                                  controller: phoneController,
+                                  controller: phoneController..text= editViewModel
+                                      .data!.address!.phoneNo
+                                      .toString(),
                                   keyboardType: TextInputType.phone,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
@@ -1354,19 +1377,26 @@ class _AddressesState extends State<Addresses> {
                               // Not necessary for Option 1
                               value: _selectedCountry,
                               onChanged: (newValue) {
+                                print(newValue);
+                                debugPrint(newValue.toString());
                                 setState(() {
                                   _selectedCountry = newValue;
+
+
                                 });
                               },
                               items: countryListModel.data!.countries!
                                   .map((country) {
+                                getStateList(countryListModel.data!.countries![0].id);
+
                                 return DropdownMenuItem(
                                   onTap: () async {
-                                    await getStateList(country.id);
+                                    await getStateList( country.id);
                                     setState(() {});
                                   },
                                   value: country.id,
                                   child: Text(country.name.toString()),
+
                                 );
                               }).toList(),
                             ),
@@ -1599,7 +1629,9 @@ class _AddressesState extends State<Addresses> {
                                         ),
                                       ),
                                       child: TextField(
-                                        controller: postalCodeController,
+                                        controller: postalCodeController..text=editViewModel
+                                            .data!.address!.postalCode!
+                                            .toString(),
                                         maxLines: 1,
                                         textAlign: TextAlign.left,
                                         keyboardType: TextInputType.name,
@@ -1645,7 +1677,8 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: buildingController,
+                            controller: buildingController..text= editViewModel.data!.address!.building!=null? editViewModel.data!.address!.building!
+                                .toString():"",
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1685,7 +1718,8 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: streetController,
+                            controller: streetController..text=editViewModel.data!.address!.street!=null?editViewModel.data!.address!.street!
+                                .toString():"",
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1725,7 +1759,8 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: areaController,
+                            controller: areaController..text=editViewModel.data!.address!.area!=null?editViewModel.data!.address!.area!
+                                .toString():"",
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1765,7 +1800,8 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextFormField(
-                            controller: landMarkController,
+                            controller: landMarkController..text= editViewModel.data!.address!.landMark!=null?editViewModel.data!.address!.landMark!
+                                .toString():"",
                             maxLines: 2,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1787,7 +1823,7 @@ class _AddressesState extends State<Addresses> {
                           height: 16.h,
                         ),
                         Text(
-                          AppTags.address.tr,
+                          AppTags.optional.tr,
                           style: isMobile(context)? AppThemeData.titleTextStyle_13:AppThemeData.titleTextStyleTab,
                         ),
                         SizedBox(
@@ -1806,7 +1842,8 @@ class _AddressesState extends State<Addresses> {
                             ),
                           ),
                           child: TextField(
-                            controller: addressController,
+                            controller: addressController..text=editViewModel.data!.address!.address!
+                                .toString(),
                             maxLines: 3,
                             textAlign: TextAlign.left,
                             keyboardType: TextInputType.name,
@@ -1850,6 +1887,15 @@ class _AddressesState extends State<Addresses> {
                             addressId: addressId!,
                           )
                               .then((value) => getShippingAddress());
+                          nameController.clear();
+                          emailController.clear();
+                          phoneController .clear();
+                          postalCodeController.clear();
+                          buildingController.clear();
+                          streetController.clear();
+                          areaController.clear();
+                          landMarkController.clear();
+                          addressController.clear();
                           Get.back();
                         },
                         child: Container(

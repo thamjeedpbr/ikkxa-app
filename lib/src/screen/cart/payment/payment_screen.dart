@@ -36,6 +36,8 @@ class PaymentScreen extends GetView<PaymentController> {
             backgroundColor: Colors.white,
             elevation: 0,
             centerTitle: true,
+            iconTheme: IconThemeData(color: Colors.black),
+            automaticallyImplyLeading: true,
             title: Text(
               AppTags.paymentGateway.tr,
               style: isMobile(context)? AppThemeData.headerTextStyle_16:AppThemeData.headerTextStyle_16.copyWith(fontSize: 13.sp),

@@ -827,9 +827,9 @@ class DetailsPage extends StatelessWidget {
                                                   "${currencyConverterController.convertCurrency(detailsModel.data!.price)}",
                                                   style: isMobile(context)
                                                       ? AppThemeData
-                                                          .seccessfulPayTextStyle_18
+                                                          .seccessfulPayTextStyle_18_red
                                                       : AppThemeData
-                                                          .headerTextStyle_14,
+                                                          .headerTextStyle_14_red,
                                                 ),
                                               ],
                                             )
@@ -839,9 +839,9 @@ class DetailsPage extends StatelessWidget {
                                                   "${currencyConverterController.convertCurrency(detailsModel.data!.discountPrice)}",
                                                   style: isMobile(context)
                                                       ? AppThemeData
-                                                          .seccessfulPayTextStyle_18
+                                                          .seccessfulPayTextStyle_18_red
                                                       : AppThemeData
-                                                          .headerTextStyle_14,
+                                                          .headerTextStyle_14_red,
                                                 ),
                                                 SizedBox(width: 5.w),
                                                 Text(
