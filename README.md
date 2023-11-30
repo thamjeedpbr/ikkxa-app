@@ -1,4 +1,4 @@
-# yoori_ecommerce
+# Ikkxa_ecommerce
 https://docs.google.com/spreadsheets/d/1wPOyYOt8GJoFgANBR6D6OmELgrFPPIqwHok0mKvww8Q/edit#gid=0
 A new Flutter project.
 
