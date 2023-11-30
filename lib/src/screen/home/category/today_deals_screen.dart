@@ -130,34 +130,36 @@ class _TodayDealState extends State<TodayDeal> {
               ),
             ),
           ),
-          PaginationView<Data>(
-            key: key,
-            physics: BouncingScrollPhysics(),
-            paginationViewType: paginationViewType,
-            pageFetch: getData,
-            pullToRefresh: false,
-            onError: (dynamic error) => Center(
-              child: Text(AppTags.someErrorOccurred.tr),
+          Container(height: MediaQuery.of(context).size.height,
+            child: PaginationView<Data>(
+              key: key,
+              physics: BouncingScrollPhysics(),
+              paginationViewType: paginationViewType,
+              pageFetch: getData,
+              pullToRefresh: false,
+              onError: (dynamic error) => Center(
+                child: Text(AppTags.someErrorOccurred.tr),
+              ),
+              onEmpty: Center(
+                child: Text(AppTags.noProduct.tr),
+              ),
+              bottomLoader: const ShimmerLoadData(),
+              initialLoader: const ShimmerProducts(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isMobile(context) ? 2 : 3,
+                childAspectRatio: 0.68,
+                mainAxisSpacing: isMobile(context) ? 15 : 20,
+                crossAxisSpacing: isMobile(context) ? 15 : 20,
+              ),
+              itemBuilder: (BuildContext context, Data product, int index) {
+                return CategoryProductCard(
+                  dataModel: product,
+                  index: index,
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+              shrinkWrap: true,
             ),
-            onEmpty: Center(
-              child: Text(AppTags.noProduct.tr),
-            ),
-            bottomLoader: const ShimmerLoadData(),
-            initialLoader: const ShimmerProducts(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isMobile(context) ? 2 : 3,
-              childAspectRatio: 0.68,
-              mainAxisSpacing: isMobile(context) ? 15 : 20,
-              crossAxisSpacing: isMobile(context) ? 15 : 20,
-            ),
-            itemBuilder: (BuildContext context, Data product, int index) {
-              return CategoryProductCard(
-                dataModel: product,
-                index: index,
-              );
-            },
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-            shrinkWrap: true,
           ),
         ],
       ),

@@ -137,35 +137,37 @@ class _ProductByCategoryState extends State<ProductByCategory> {
               ),
             ),
           ),
-          PaginationView<CategoryProductData>(
-            key: key,
-            physics: BouncingScrollPhysics(),
-            paginationViewType: PaginationViewType.gridView,
-            pageFetch: getData,
-            pullToRefresh: false,
-            onError: (dynamic error) => Center(
-              child: Text(AppTags.somethingWentWrong.tr),
+          Container(height: MediaQuery.of(context).size.height,
+            child: PaginationView<CategoryProductData>(
+              key: key,
+              physics: BouncingScrollPhysics(),
+              paginationViewType: PaginationViewType.gridView,
+              pageFetch: getData,
+              pullToRefresh: false,
+              onError: (dynamic error) => Center(
+                child: Text(AppTags.somethingWentWrong.tr),
+              ),
+              onEmpty: Center(
+                child: Text(AppTags.noProduct.tr),
+              ),
+              bottomLoader: const ShimmerLoadData(),
+              initialLoader: const ShimmerProducts(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: isMobile(context)? 2:3,
+                childAspectRatio: 0.68,
+                mainAxisSpacing: isMobile(context)? 15:20,
+                crossAxisSpacing:  isMobile(context)? 15:20,
+              ),
+              itemBuilder:
+                  (BuildContext context, CategoryProductData product, int index) {
+                return CategoryProductCard(
+                  dataModel: product,
+                  index: index,
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+              shrinkWrap: true,
             ),
-            onEmpty: Center(
-              child: Text(AppTags.noProduct.tr),
-            ),
-            bottomLoader: const ShimmerLoadData(),
-            initialLoader: const ShimmerProducts(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: isMobile(context)? 2:3,
-              childAspectRatio: 0.68,
-              mainAxisSpacing: isMobile(context)? 15:20,
-              crossAxisSpacing:  isMobile(context)? 15:20,
-            ),
-            itemBuilder:
-                (BuildContext context, CategoryProductData product, int index) {
-              return CategoryProductCard(
-                dataModel: product,
-                index: index,
-              );
-            },
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-            shrinkWrap: true,
           ),
         ],
       ),

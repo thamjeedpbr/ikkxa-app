@@ -109,36 +109,38 @@ class _OfferEndingProductsViewState extends State<OfferEndingProductsView> {
               ),
             ),
           ),
-          PaginationView<Data>(
-            key: key,
-            physics: BouncingScrollPhysics(),
-            paginationViewType: paginationViewType,
-            pageFetch: getData,
-            pullToRefresh: false,
-            onError: (dynamic error) => Center(
-              child: Text(AppTags.someErrorOccurred.tr),
+          Container(height: MediaQuery.of(context).size.height,
+            child: PaginationView<Data>(
+              key: key,
+              physics: BouncingScrollPhysics(),
+              paginationViewType: paginationViewType,
+              pageFetch: getData,
+              pullToRefresh: false,
+              onError: (dynamic error) => Center(
+                child: Text(AppTags.someErrorOccurred.tr),
+              ),
+              onEmpty: Center(
+                child: Text(AppTags.noProduct.tr),
+              ),
+              bottomLoader: const Center(
+                child: CircularProgressIndicator(),
+              ),
+              initialLoader: const ShimmerProducts(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.68,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+              ),
+              itemBuilder: (BuildContext context, Data product, int index) {
+                return CategoryProductCard(
+                  dataModel: product,
+                  index: index,
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+              shrinkWrap: true,
             ),
-            onEmpty: Center(
-              child: Text(AppTags.noProduct.tr),
-            ),
-            bottomLoader: const Center(
-              child: CircularProgressIndicator(),
-            ),
-            initialLoader: const ShimmerProducts(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.68,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15,
-            ),
-            itemBuilder: (BuildContext context, Data product, int index) {
-              return CategoryProductCard(
-                dataModel: product,
-                index: index,
-              );
-            },
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-            shrinkWrap: true,
           ),
         ],
       ),

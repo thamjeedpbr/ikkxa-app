@@ -111,33 +111,35 @@ class _ProductByBrandState extends State<ProductByBrand> {
               ),
             ),
           ),
-          PaginationView<Data>(
-            physics: BouncingScrollPhysics(),
-            key: key,
-            paginationViewType: paginationViewType,
-            pageFetch: getData,
-            pullToRefresh: true,
-            onError: (dynamic error) =>  Center(
-              child: Text(AppTags.someErrorOccurred.tr),
+          Container(height: MediaQuery.of(context).size.height,
+            child: PaginationView<Data>(
+              physics: BouncingScrollPhysics(),
+              key: key,
+              paginationViewType: paginationViewType,
+              pageFetch: getData,
+              pullToRefresh: false,
+              onError: (dynamic error) =>  Center(
+                child: Text(AppTags.someErrorOccurred.tr),
+              ),
+              onEmpty: Center(
+                child: Text(AppTags.noProduct.tr),
+              ),
+              bottomLoader: const ShimmerLoadData(),
+              initialLoader: const ShimmerProducts(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 0.68,
+                mainAxisSpacing: 15,
+                crossAxisSpacing: 15,
+              ),
+              itemBuilder: (BuildContext context, Data product, int index) {
+                return BrandCard(
+                  data: product,
+                );
+              },
+              padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
+              shrinkWrap: true,
             ),
-            onEmpty: Center(
-              child: Text(AppTags.noProduct.tr),
-            ),
-            bottomLoader: const ShimmerLoadData(),
-            initialLoader: const ShimmerProducts(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: 0.68,
-              mainAxisSpacing: 15,
-              crossAxisSpacing: 15,
-            ),
-            itemBuilder: (BuildContext context, Data product, int index) {
-              return BrandCard(
-                data: product,
-              );
-            },
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 8.h),
-            shrinkWrap: true,
           ),
         ],
       ),
