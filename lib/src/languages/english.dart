@@ -57,7 +57,7 @@ const Map<String, String> enUS = {
   "paymentGateway": "Payment Gateway",
   "confirmation": "Confirmation",
   "successfulPayment": "Successful Payment",
-  "orderCompleted": "Order Conform",
+  "orderCompleted": "Order Confirmed",
   "orderNumber": "Order Number",
   "thankYouPurchasing": "Thank you for Purchasing",
   "continueShopping": "Continue Shopping",
