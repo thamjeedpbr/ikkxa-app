@@ -82,7 +82,7 @@ class BrandCard extends StatelessWidget {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))} OFF",
+                                    "${currencyConverterController.convertCurrency(homeController.removeTrailingZeros(data.specialDiscount.toString()))} ${ AppTags.off.tr}",
                                     style: AppThemeData.todayDealNewStyle,
                                   ),
                                 ),

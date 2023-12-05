@@ -113,7 +113,7 @@ class _ProductByCampaignState extends State<ProductByCampaign> {
                                             ),
                                             child: Center(
                                               child: Text(
-                                                "\$ ${homeController.removeTrailingZeros(productByCampaignModel.data![index].specialDiscount.toString())} OFF",
+                                                "\$ ${homeController.removeTrailingZeros(productByCampaignModel.data![index].specialDiscount.toString())} ${ AppTags.off.tr}",
                                                 style: AppThemeData
                                                     .todayDealNewStyle,
                                               ),

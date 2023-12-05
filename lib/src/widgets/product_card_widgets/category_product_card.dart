@@ -89,7 +89,7 @@ class CategoryProductCard extends StatelessWidget {
                                         ),
                                         child: Center(
                                           child: Text(
-                                            "${currencyConverterController.convertCurrency(dataModel.specialDiscount)} OFF",
+                                            "${currencyConverterController.convertCurrency(dataModel.specialDiscount)} ${ AppTags.off.tr}",
                                             style: isMobile(context)? AppThemeData.todayDealNewStyle :AppThemeData.todayDealNewStyleTab,
                                           ),
                                         ),

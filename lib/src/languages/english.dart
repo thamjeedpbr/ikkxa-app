@@ -234,6 +234,13 @@ const Map<String, String> enUS = {
   "paymentStatus": "Payment Status",
   "subtotal": "Subtotal",
   "discountOffer": "Discount Offer",
+  "optional":"optional",
+  "editAddress":"editAddress",
+  "building":"building",
+  "street":"street",
+  "area":"area",
+  "landmark":"landmark",
+
   "totalCost": "Total Cost",
   "invoice": "Invoice",
   "amount": "Amount",

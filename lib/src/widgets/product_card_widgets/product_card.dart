@@ -82,7 +82,7 @@ class ProductCard extends StatelessWidget {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "${currencyConverterController.convertCurrency(dataModel.data![index].specialDiscount)} OFF",
+                                        "${currencyConverterController.convertCurrency(dataModel.data![index].specialDiscount)} ${ AppTags.off.tr}",
                                         style: AppThemeData.todayDealNewStyle,
                                       ),
                                     ),

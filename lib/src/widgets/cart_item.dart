@@ -157,6 +157,7 @@ class CartItem extends StatelessWidget {
                       ),
                       AnimatedSwitcher(
                         duration: const Duration(milliseconds: 500),
+
                         transitionBuilder:
                             (Widget child, Animation<double> animation) {
                           return ScaleTransition(
@@ -166,7 +167,7 @@ class CartItem extends StatelessWidget {
                         },
                         child: Row(
                           children: [
-                            Text(AppTags.quantityQty,style: TextStyle(fontSize: 11),),
+                            Text(AppTags.qty.tr+" ",style: TextStyle(fontSize: 11),),
                             Text(
                               cart.quantity.toString(),
                               style: isMobile(context)

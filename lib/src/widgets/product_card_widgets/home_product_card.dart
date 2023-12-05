@@ -94,7 +94,7 @@ class HomeProductCard extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "${currencyConverterController.convertCurrency(dataModel![index].specialDiscount!)} OFF",
+                                      "${currencyConverterController.convertCurrency(dataModel![index].specialDiscount!)} ${ AppTags.off.tr}",
                                       style:isMobile(context)? AppThemeData.todayDealNewStyle:AppThemeData.todayDealNewStyleTab,
                                     ),
                                   ),

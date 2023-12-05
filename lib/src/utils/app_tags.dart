@@ -11,7 +11,7 @@ class AppTags {
   static const String rateThisApp = "rateThisApp";
   static const String help = "help";
   static const String aboutThisApp = "aboutThisApp";
-  static const String quantityQty = "QTY: ";
+  static const String quantityQty = "qtycart";
   static const String contactUS = "contactUS";
   static const String privacyPolicy = "privacyPolicy";
   static const String termsCondition = "termsCondition";
