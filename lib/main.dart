@@ -19,7 +19,7 @@ late final FirebaseAuth auth;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   app = await Firebase.initializeApp(
-
+    name: 'ikxxa-saudi',
     options: DefaultFirebaseOptions.currentPlatform,
   );
   auth = FirebaseAuth.instanceFor(app: app);
@@ -28,10 +28,9 @@ void main() async {
   await GetStorage.init();
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((_) {
-    runApp(MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => ThemeProvider()),
-        ],child: MyApp()));
+    runApp(MultiProvider(providers: [
+      ChangeNotifierProvider(create: (_) => ThemeProvider()),
+    ], child: MyApp()));
   });
 }
 
